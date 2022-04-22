@@ -1,0 +1,54 @@
+input[type=text], select, [type=password], [type=email], [type=number] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+input[type=submit] {
+    background-color: #000066;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin-top: 20px;
+}
+input[type=submit]:hover {
+    background-color: #000066d3;
+    color: black;
+}   
+.container-form {
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px 2px #888888;
+    padding: 30px;
+    width: 50%;
+    margin-top: 100px;
+    text-align: center;
+}
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.col-25 {
+    float: left;
+    width: 20%;
+    margin-top: 6px;
+}
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
