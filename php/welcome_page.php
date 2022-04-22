@@ -116,7 +116,7 @@
                     <label for="mobile_no">Mobile Number</label>
                 </div>
                 <div class="col-75">
-                    <input type="email" id="mobile_no" name="mobile_no" placeholder="Enter your Mobile Number">
+                    <input type="number" id="mobile_no" name="mobile_no" placeholder="Enter your Mobile Number">
                 </div>
             </div>
             <div class="row">

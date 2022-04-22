@@ -52,3 +52,17 @@ input[type=submit]:hover {
     display: table;
     clear: both;
 }
+.alert {
+    padding: 20px;
+    color: #000;
+    margin-top: 8px;
+    margin-left: -8px;
+    margin-right: -7px;
+    text-align: left;
+}
+.red{
+    background-color: red;
+}
+.green{
+    background-color: green;
+}
