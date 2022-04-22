@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2022 at 11:42 AM
+-- Generation Time: Apr 22, 2022 at 01:32 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -81,6 +81,25 @@ CREATE TABLE `tbl_roles` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_role_types`
+--
+
+CREATE TABLE `tbl_role_types` (
+  `id` int(11) NOT NULL,
+  `role_type` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_role_types`
+--
+
+INSERT INTO `tbl_role_types` (`id`, `role_type`) VALUES
+(1, 'Kraftsman'),
+(2, 'Klient');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_services`
 --
 
@@ -118,6 +137,7 @@ CREATE TABLE `tbl_users` (
   `password` varchar(255) NOT NULL,
   `mobile_no` int(11) NOT NULL,
   `address_id` int(10) NOT NULL,
+  `role_id` int(3) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -148,6 +168,12 @@ ALTER TABLE `tbl_documents`
 -- Indexes for table `tbl_roles`
 --
 ALTER TABLE `tbl_roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_role_types`
+--
+ALTER TABLE `tbl_role_types`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -195,6 +221,12 @@ ALTER TABLE `tbl_documents`
 --
 ALTER TABLE `tbl_roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_role_types`
+--
+ALTER TABLE `tbl_role_types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_services`
