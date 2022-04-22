@@ -14,9 +14,12 @@
     <title>Jentle Kare</title>
 </head>
 <body>
-    <!--CONNECTION TO THE DATABASE-->
     <?php
+        //CONNECTION TO THE DATABASE
         include_once("connection.php");
+
+        //ALERT MESSAGES
+        include_once("msg.php"); 
     ?>
 </body>
 </html>

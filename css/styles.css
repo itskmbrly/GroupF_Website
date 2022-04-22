@@ -1,3 +1,7 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+}
 input[type=text], select, [type=password], [type=email], [type=number] {
     width: 100%;
     padding: 12px;

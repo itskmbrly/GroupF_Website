@@ -19,6 +19,9 @@
         //CONNECTIVITY TO THE DATABASE
         include_once("connection.php");
 
+        //ALERT MESSAGES
+        include_once("msg.php"); 
+
         //SELECT QUERY FOR ROLE TYPES
         $execQuery = mysqli_query($con, "SELECT * FROM tbl_role_types");
         $roles = "";
