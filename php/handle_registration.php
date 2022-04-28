@@ -51,10 +51,7 @@
     $numOfRows = mysqli_num_rows($execQuery);
 
     if($numOfRows > 0){
-        echo"Duplicate Record! This user already exists."; 
-        echo"<center><div class='goBackBtn'>
-        <a href='form-reg.php'>Go Back</a>
-        </div></center>"; exit;
+        header("Location: welcome_page.php?msg=20"); exit;
     } 
 
     //CHECKING IF THE PASSWORD IS THE SAME WITH THE CONFIRM PASSWORD
@@ -87,7 +84,7 @@
 
         //EXECUTE QUERY CONDITIONS
         if($execQuery2){
-            header("Location: welcome_page.php?msg=17"); exit;
+            header("Location: welcome_page.php?msg=18"); exit;
         } else{
             header("Location: welcome_page.php?msg=17"); exit;
         } 

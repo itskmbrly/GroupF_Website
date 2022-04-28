@@ -22,7 +22,7 @@
         //PASSWORD VERIFICATION
         if(password_verify($password, $encryptedPass)){
             $_SESSION["sess-role"] = $fetchPass["role_id"];
-            $_SESSION["sess-name"] = $fetchPass["first_name"];
+            $_SESSION["sess-id"]   = $fetchPass["id"]; 
             //LOGIN SUCCESSFULLY
             header("Location: index.php?msg=14");
         } else{

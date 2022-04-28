@@ -35,11 +35,7 @@
     <!--END OF PROCESS-->
 
     <!--PLEASE REMOVE WHEN DONE: pakiayos nalang ajyl ha. Papalitan nalang mga ininput kong basic design, need ko lang makita yung structure ng maayos rn hihihoho-->
-
-    <!--PLEASE REMOVE WHEN DONE: include the side navigation bar here, mag include_once kana lang ajyl para mas clean-->
-    <!--SIDE NAVIGATION STARTS HERE-->
     
-    <!--SIDE NAVIGATION ENDS HERE-->
     <!--PLEASE REMOVE WHEN DONE: cinenter ko muna ajyl ha, pwede mo naman ng tanggalin yung <center></center> once na ieedit mo na to-->
     <!--PLEASE REMOVE WHEN DONE: yung form ajyl, naka pop up ha, thank you-->
     <center>

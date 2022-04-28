@@ -70,3 +70,24 @@ input[type=submit]:hover {
 .green{
     background-color: green;
 }
+.main-body{
+    margin-left: 20%;
+    padding: 0 4%;
+    font-family: 'Mulish', sans-serif;
+    display: block;
+    position: relative;
+}
+.sidenavbar{
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #faf8e8;
+    overflow-x: hidden;
+    padding-top: 16px;
+}
+.logo img{
+    width: 200px;
+}

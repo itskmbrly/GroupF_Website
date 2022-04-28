@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2022 at 04:27 AM
+-- Generation Time: Apr 28, 2022 at 07:31 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -37,13 +37,6 @@ CREATE TABLE `tbl_address` (
   `zip` int(5) NOT NULL,
   `country` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_address`
---
-
-INSERT INTO `tbl_address` (`id`, `user_id`, `address`, `barangay`, `city`, `province`, `zip`, `country`) VALUES
-(1, 1, 'a', 'a', 'a', 'a', 1, 'a');
 
 -- --------------------------------------------------------
 
@@ -102,7 +95,9 @@ CREATE TABLE `tbl_role_types` (
 
 INSERT INTO `tbl_role_types` (`id`, `role_type`) VALUES
 (1, 'Kraftsman'),
-(2, 'Klient');
+(2, 'Klient'),
+(3, 'Admin'),
+(4, 'Moderator');
 
 -- --------------------------------------------------------
 
@@ -165,13 +160,6 @@ CREATE TABLE `tbl_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_users`
---
-
-INSERT INTO `tbl_users` (`id`, `first_name`, `last_name`, `email`, `password`, `mobile_no`, `address_id`, `role_id`, `created_at`, `updated_at`) VALUES
-(1, 'a', 'a', 'guzmankimberlyedgede@yahoo.com', '$2y$10$w97SPhIqWOBzUCLmxbIYL.FArdbSLxDU/SVdrZcDCvY2Q00P0mBjO', 1, 1, 1, NULL, NULL);
-
---
 -- Indexes for dumped tables
 --
 
@@ -231,7 +219,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_address`
 --
 ALTER TABLE `tbl_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
@@ -255,7 +243,7 @@ ALTER TABLE `tbl_roles`
 -- AUTO_INCREMENT for table `tbl_role_types`
 --
 ALTER TABLE `tbl_role_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_services`
@@ -273,7 +261,7 @@ ALTER TABLE `tbl_transactions`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

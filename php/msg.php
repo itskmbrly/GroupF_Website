@@ -39,6 +39,8 @@
             echo"<h3>You are successfully registered.</h3>";
         } else if($_GET["msg"] == 19){
             echo"<h3>Password does not matched.</h3>";
-        }
+        } else if($_GET["msg"] == 20){
+            echo"<h3>Duplicate Record! This user already exists.</h3>";
+        } 
     } 
 ?>
