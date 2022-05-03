@@ -62,7 +62,7 @@
         //IF THERE'S NO DUPLICATION ON THE DATABASE AND PASSWORD IS THE SAME WITH CONFIRM PASSWORD, NEXT WILL BE INSERT QUERY
 
         //INSERTION IN TBL_USERS
-        $execQuery2 = mysqli_query($con, "INSERT INTO tbl_users(first_name, last_name, email, password, mobile_no, role_id) values('$fname', '$lname', '$email', '$encPassword', '$mobile_no', '$role')");
+        $execQuery2 = mysqli_query($con, "INSERT INTO tbl_users(first_name, last_name, email, password, mobile_no, role_id, created_at) values('$fname', '$lname', '$email', '$encPassword', '$mobile_no', '$role', now())");
 
         //FETCHING THE USER_ID SO WE CAN INPUT IT IN THE TBL_ADDRESS
         $execQuery3 = mysqli_query($con, "SELECT * FROM tbl_users WHERE mobile_no = '$mobile_no'");
