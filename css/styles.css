@@ -5,6 +5,7 @@
 *{
     font-family: 'Chihaya';
     font-size: 20px;
+    color: #000; /*dw, temporary lang, para makita ko HAHAHA*/
 }
 input[type=text], select, [type=password], [type=email], [type=number] {
     width: 100%;
@@ -51,6 +52,7 @@ input[type=submit]:hover {
     top: 0px;
     right: 150px;
     display: flex;
+    border-radius: 20px;
     flex-direction: column;
 }
 .create-acct{
@@ -128,4 +130,60 @@ input[type=submit]:hover {
 }
 .green{
     background-color: green;
+}
+.sidenavbar{
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 16px;
+    background-color: #eed0cf;
+}
+
+.sidenavbar img{
+    width: 100px;
+    background-color: #eed0cf;
+}
+
+.sidenavbar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+  
+.sidenavbar a:hover {
+    color: #f1f1f1;
+}
+
+.main-body {
+    margin-left: 18%;
+    padding: 0 4%;
+    color: #ffffff;
+    font-family: 'Mulish', sans-serif;
+    display: block;
+    position: relative;
+    background: #faf8e8;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8c615f; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a17d7b;
 }

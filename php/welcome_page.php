@@ -25,7 +25,7 @@
     include_once("msg.php");
 
     //SELECT QUERY FOR ROLE TYPES
-    $execQuery = mysqli_query($con, "SELECT * FROM tbl_role_types");
+    $execQuery = mysqli_query($con, "SELECT * FROM tbl_role_types WHERE id NOT IN(3, 4)");
     $roles = "";
 
     //FETCHING DATA FOR ROLE TYPES
@@ -48,7 +48,7 @@
         <!-- The slideshow/carousel -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../images/hair.jpg" alt="Hair Care" class="d-block" style="width:100%">
+                <img src="../images/hair.jpeg" alt="Hair Care" class="d-block" style="width:100%">
             </div>
             <div class="carousel-item">
                 <img src="../images/manicure.jpg" alt="Nail Care" class="d-block" style="width:100%">
@@ -93,7 +93,7 @@
                 <a href=""><button type="button" class="btn btn-primary create-acct-btn" data-bs-toggle="modal" data-bs-target="#myModal">Create an account</button></a>
             </div>
         </div>
-
+        
         <!-- The Modal -->
         <div class="modal" id="myModal">
             <div class="modal-dialog">
