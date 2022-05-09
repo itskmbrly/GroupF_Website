@@ -8,7 +8,6 @@
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!--Shortcut Icon of Jentle Kare-->
     <link rel="shortcut icon" href="../images/JK.png">
     <!--CSS File-->
     <link rel="stylesheet" href="../css/styles.css">
@@ -48,7 +47,7 @@
         <!-- The slideshow/carousel -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../images/hair.jpg" alt="Hair Care" class="d-block" style="width:100%">
+                <img src="../images/hair.jpeg" alt="Hair Care" class="d-block" style="width:100%">
             </div>
             <div class="carousel-item">
                 <img src="../images/manicure.jpg" alt="Nail Care" class="d-block" style="width:100%">
@@ -90,7 +89,7 @@
                 <!--SIGN IN FORM ENDS HERE-->
             </div>
             <div class="create-acct">
-                <a href=""><button type="button" class="btn btn-primary create-acct-btn" data-bs-toggle="modal" data-bs-target="#myModal">Create an account</button></a>
+                <button type="button" class="btn btn-primary create-acct-btn" data-bs-toggle="modal" data-bs-target="#myModal">Create an account</button>
             </div>
         </div>
 
@@ -199,6 +198,7 @@
                                     <input type="text" id="country" name="country" placeholder="Enter your Country">
                                 </div>
                             </div>
+                            <br>
                             <select name="inputRole">
                                 <option value="" disabled selected hidden>Choose a Role</option>
                                 <?php echo $roles; ?>
