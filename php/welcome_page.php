@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 5-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!--Shortcut Icon of Jentle Kare-->
     <link rel="shortcut icon" href="../images/JK.png">
     <!--CSS File-->
     <link rel="stylesheet" href="../css/styles.css">
@@ -24,7 +25,7 @@
     include_once("msg.php");
 
     //SELECT QUERY FOR ROLE TYPES
-    $execQuery = mysqli_query($con, "SELECT * FROM tbl_role_types");
+    $execQuery = mysqli_query($con, "SELECT * FROM tbl_role_types WHERE id NOT IN(3, 4)");
     $roles = "";
 
     //FETCHING DATA FOR ROLE TYPES
@@ -92,7 +93,7 @@
                 <button type="button" class="btn btn-primary create-acct-btn" data-bs-toggle="modal" data-bs-target="#myModal">Create an account</button>
             </div>
         </div>
-
+        
         <!-- The Modal -->
         <div class="modal" id="myModal">
             <div class="modal-dialog">
