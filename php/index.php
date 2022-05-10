@@ -12,9 +12,7 @@
             $lname = $fetchInfo["last_name"];
             $id   = $fetchInfo["id"];
         }
-    } else{
-        header("Location: welcome_page.php"); exit;
-    }
+    } 
 
 ?>
 <!DOCTYPE html>
@@ -98,6 +96,36 @@
                             <h5>Welcome to JentleKare.</h5>
                         </div>";
 
+                } else{
+                    echo"
+                        <div class='container p-5 my-5 bg-dark text-white'>
+                            <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
+                            <h2>Good Morning, Guest!</h2>
+                            <h5>Welcome to JentleKare.</h5>
+                        </div>";
+                        echo"<h6>Book your appointments now! <input type='date'></form></h6>";
+                    echo"<h3>SERVICES</h3>";
+                    //CATEGORIES OF OFFERED SERVICES
+                    echo'
+                        <div class="column">
+                            <div class="card">
+                            <h3>Hair Care Services</h3>
+                            <img src="../images/hair.jpeg" alt="Hair Services" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="card">
+                            <h3>Nail Care Services</h3>
+                            <img src="../images/manicure.jpg" alt="Nail Services" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="card">
+                            <h3>Spa Services</h3>
+                            <img src="../images/spa.jpg" alt="Spa Services" style="width:100%">
+                            </div>
+                        </div>
+                    ';
                 }
             ?>
         </div>
