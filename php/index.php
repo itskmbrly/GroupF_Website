@@ -62,7 +62,7 @@
         <!--ALERT MESSAGE-->
         <?php include_once("msg.php"); ?>
 
-        <div class="w3-container">
+        <div class="w3-container body">
             <?php 
                 if($_SESSION["sess-role"] == 1){ //kraftsman
                     //REMOVE WHEN DONE: put here the welcome banner
@@ -100,7 +100,7 @@
                             <h3>Spa Services</h3>
                             <a href = "#spaServ"><img src="../images/spa.jpg" alt="Spa Services" style="width:100%; height: 195px;"></a>
                             </div>
-                        </div><br>
+                        </div><br><br><br><br><br><br><br><br><br><br>
                     ';
                     //PLEASE REMOVE WHEN DONE: i already provided the data, pa-design nalang ajyl
                     echo"
@@ -124,6 +124,12 @@
                             </table>
                         </div>
                     ";
+                    echo'
+                        <div class="about-our-team bg-white">
+                            <h1>About Our Team</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus dolorem fuga ipsum voluptatum, architecto ea exercitationem excepturi iure pariatur nisi ut vitae eos ex aperiam alias voluptatem molestiae quidem fugit!</p>                      
+                        </div>
+                    ';
                 } else if($_SESSION["sess-role"] == 3){ //admin
                     echo"
                         <div class='container p-5 my-5 border bg-white'>

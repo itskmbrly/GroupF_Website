@@ -38,6 +38,9 @@ input[type=submit]:hover {
 .main-container{
     background-color: #EED0CF;
 }
+.body{
+    margin: 0 20px;
+}
 /* .opaque{
     background-color: #000;
     color: #fff;
@@ -209,3 +212,10 @@ input[type=submit]:hover {
     text-align: center;
     background-color: #f1f1f1;
   }
+
+.about-our-team{
+    text-align: justify;
+    width: 50%;
+    border-radius: 11px;
+    padding: 25px;
+}
