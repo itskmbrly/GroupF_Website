@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2022 at 07:31 AM
+-- Generation Time: May 10, 2022 at 05:59 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -38,6 +38,14 @@ CREATE TABLE `tbl_address` (
   `country` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_address`
+--
+
+INSERT INTO `tbl_address` (`id`, `user_id`, `address`, `barangay`, `city`, `province`, `zip`, `country`) VALUES
+(1, 0, 'Ad', 'Ba', 'Ci', 'Pr', 1870, 'Philippines'),
+(2, 0, 'Ad', 'Ba', 'Ci', 'Pr', 1870, 'Philippines');
+
 -- --------------------------------------------------------
 
 --
@@ -63,19 +71,6 @@ CREATE TABLE `tbl_documents` (
   `user_id` int(10) NOT NULL,
   `id_type` enum('Passport','Driver''s License','PhilHealth ID','SSS UMID Card','Postal ID','TIN ID','Voter''s ID','PRC ID','Senior Citizen ID','PWD ID','OFW ID','National ID','Student ID') NOT NULL,
   `filename` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_roles`
---
-
-CREATE TABLE `tbl_roles` (
-  `id` int(11) NOT NULL,
-  `user_id` int(10) NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_At` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -160,6 +155,14 @@ CREATE TABLE `tbl_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `tbl_users`
+--
+
+INSERT INTO `tbl_users` (`id`, `first_name`, `last_name`, `email`, `password`, `mobile_no`, `address_id`, `role_id`, `created_at`, `updated_at`) VALUES
+(1, 'Kimberly Edge', 'de Guzman', 'guzmankimberlyedgede@yahoo.com', '$2y$10$QKwiJA4Tl99VnHEFxp2zm.9fLDZ8uHyP.Dqg4IDDeI033ahbqL6kW', 2147483647, 2, 2, '2022-05-10 11:49:40', NULL),
+(2, 'Erica Edge', 'de Guzman', 'guzmanericaedgede@yahoo.com', '$2y$10$8YzzsYtsfSvFoN0WoluPs.wbMHZLr3A5PU2E7iV0bT5wVqqhvnIyq', 2147483647, 2, 1, '2022-05-10 11:51:47', NULL);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -179,12 +182,6 @@ ALTER TABLE `tbl_category`
 -- Indexes for table `tbl_documents`
 --
 ALTER TABLE `tbl_documents`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_roles`
---
-ALTER TABLE `tbl_roles`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -219,7 +216,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_address`
 --
 ALTER TABLE `tbl_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
@@ -231,12 +228,6 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT for table `tbl_documents`
 --
 ALTER TABLE `tbl_documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tbl_roles`
---
-ALTER TABLE `tbl_roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -261,7 +252,7 @@ ALTER TABLE `tbl_transactions`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
