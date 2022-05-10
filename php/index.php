@@ -45,7 +45,7 @@
                 if($_SESSION["sess-role"] == 1){ //kraftsman
                     //REMOVE WHEN DONE: put here the welcome banner
                     echo"
-                        <div class='container p-5 my-5 bg-dark text-white'>
+                        <div class='container p-5 my-5 border bg-white'>
                             <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
                             <h2>Good Morning, $fname!</h2>
                             <h5>Welcome to JentleKare.</h5>
@@ -83,14 +83,14 @@
                     ';
                 } else if($_SESSION["sess-role"] == 3){ //admin
                     echo"
-                        <div class='container p-5 my-5 bg-dark text-white'>
+                        <div class='container p-5 my-5 border bg-white'>
                             <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
                             <h2>Good Morning, $fname!</h2>
                             <h5>Welcome to JentleKare.</h5>
                         </div>";
                 } else if($_SESSION["sess-role"] == 4){ //moderator
                     echo"
-                        <div class='container p-5 my-5 bg-dark text-white'>
+                        <div class='container p-5 my-5 border bg-white'>
                             <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
                             <h2>Good Morning, $fname!</h2>
                             <h5>Welcome to JentleKare.</h5>
@@ -98,7 +98,7 @@
 
                 } else{
                     echo"
-                        <div class='container p-5 my-5 bg-dark text-white'>
+                        <div class='container p-5 my-5 border bg-white'>
                             <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
                             <h2>Good Morning, Guest!</h2>
                             <h5>Welcome to JentleKare.</h5>

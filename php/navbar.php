@@ -9,7 +9,11 @@
     <!--MY APPOINTMENTS-->
     <a href="appointments.php" class="w3-bar-item w3-button"><i class="fa fa-calendar"></i> My Appointments</a>
     <!--MY FAVORITES-->
-    <a href="favorites.php" class="w3-bar-item w3-button"><i class="fa fa-heart"></i> My Favorites</a>
+    <?php
+      if($_SESSION["sess-role"] == 2){
+        echo"<a href='favorites.php' class='w3-bar-item w3-button'><i class='fa fa-heart'></i> My Favorites</a>";
+      }
+    ?>
     <!--LOG OUT-->
     <!--PLEASE REMOVE WHEN DONE: pakibaba nalang ajyl katulad ng nasa wireframe natin-->
     <a href="logout.php" class="w3-bar-item w3-button"></i>Logout</a>
