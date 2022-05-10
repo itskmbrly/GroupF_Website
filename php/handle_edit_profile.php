@@ -1,19 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap 5-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <!--Shortcut Icon of Jentle Kare-->
-    <link rel="shortcut icon" href="../images/JK.png">
-    <!--CSS File-->
-    <link rel="stylesheet" href="../css/styles.css">
-    <title>Jentle Kare</title>
-</head>
-<body>
-    
-</body>
-</html>
+<?php
+    $id = $_POST["id"];
+    //IF NULL, THE CODE WILL EXIT
+    if($_POST["fname"] == ""){ 
+        header("Location: index.php?msg=1"); exit;
+    } else if($_POST["lname"] == ""){ 
+        header("Location: index.php?msg=2"); exit;
+    } else if($_POST["email"] == ""){
+        header("Location: index.php?msg=3"); exit;
+    } else if($_POST["password1"] == ""){
+        header("Location: index.php?msg=4"); exit;
+    } else if($_POST["password2"] == ""){
+        header("Location: index.php?msg=5"); exit;
+    } else if($_POST["mobile_no"] == ""){
+        header("Location: index.php?msg=6"); exit;
+    } else if($_POST["address"] == ""){
+        header("Location: index.php?msg=7"); exit;
+    } else if($_POST["barangay"] == ""){
+        header("Location: index.php?msg=8"); exit;
+    } else if($_POST["city"] == ""){
+        header("Location: index.php?msg=9"); exit;
+    } else if($_POST["province"] == ""){
+        header("Location: index.php?msg=10"); exit;
+    } else if($_POST["zipcode"] == ""){
+        header("Location: index.php?msg=11"); exit;
+    }
+
+    //VAR_DUMP, USE TRIM TO REMOVE THE UNWANTED SPACES INFRON AND BACK
+    $fname      = trim($_POST["fname"]);
+    $lname      = trim($_POST["lname"]);
+    $email      = trim($_POST["email"]);
+    $password1  = trim($_POST["password1"]);
+    $password2  = trim($_POST["password2"]);
+    $mobile_no  = trim($_POST["mobile_no"]);
+    $address    = trim($_POST["address"]);
+    $barangay   = trim($_POST["barangay"]);
+    $city       = trim($_POST["city"]);
+    $province   = trim($_POST["province"]);
+    $zipcode    = trim($_POST["zipcode"]);
+
+    //CONNECTION TO THE DATABASE
+    include_once("connection.php");
+
+    //CHECKING IF THE INPUT EMAIL IS SAME AS THE EMAIL INSIDE THE DATABASE
+    $execQuery    = mysqli_query($con, "SELECT * FROM tbl_users WHERE id = '$id'");
+    $fetchEmail   = mysqli_fetch_assoc($execQuery);
+    $stored_email = $fetchEmail["email"];
+    $numOfRows    = mysqli_num_rows($execQuery);
+
+    if($stored_email != $email){
+        header("Location: index.php?msg=20"); exit;
+    } 
+
+    //CHECKING IF THE PASSWORD IS THE SAME WITH THE CONFIRM PASSWORD
+    if($password1 == $password2){
+        //PASSWORD HASH, FOR DATA PRIVACY
+        $encPassword = password_hash($password1, PASSWORD_DEFAULT);
+
+        //IF THERE'S NO DUPLICATION ON THE DATABASE AND PASSWORD IS THE SAME WITH CONFIRM PASSWORD, NEXT WILL BE INSERT QUERY
+
+        //UPDATE IN TBL_USERS
+        $execQuery2 = mysqli_query($con, "UPDATE tbl_users SET first_name = '$fname', last_name = '$lname', email = '$email', password = '$encPassword', mobile_no = '$mobile_no', updated_at = now() WHERE id = '$id'");
+        
+        // print_r("UPDATE tbl_users SET first_name = '$fname', last_name = '$lname', email = '$email', password = '$encPassword', mobile_no = '$mobile_no', updated_at = now() WHERE id = '$id'"); exit;
+        //UPDATE IN TBL_ADDRESS
+        $execQuery4 = mysqli_query($con, "UPDATE tbl_address SET user_id = '$userId', address = '$address', barangay = '$barangay', city = '$city', province = '$province', zip = '$zipcode', country = '$country') WHERE user_id = '$id'");
+
+        //EXECUTE QUERY CONDITIONS
+        if($execQuery2){
+            header("Location: index.php?msg=21"); exit;
+        } else{
+            header("Location: index.php?msg=17"); exit;
+        } 
+    } else{
+        header("Location: index.php?msg=19"); exit;
+    }
+?>

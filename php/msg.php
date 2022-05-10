@@ -118,9 +118,15 @@
                     </div>";
             } else if($_GET["msg"] == 20){
                 echo"
-                    <div class='alert alert-danger alert-dismissiblealert-dismissible'>
+                    <div class='alert alert-danger alert-dismissible'>
                         <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                         <strong>Duplicate Record!</strong> This user already exists.
+                    </div>";
+            } else if($_GET["msg"] == 21){
+                echo"
+                    <div class='alert alert-success alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Success!</strong> Profile Information was updated.
                     </div>";
             } 
         } 

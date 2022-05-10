@@ -219,3 +219,7 @@ input[type=submit]:hover {
     border-radius: 11px;
     padding: 25px;
 }
+.edit-profile-container{
+    width: 50%;
+    background-color: #EED0CF;
+}

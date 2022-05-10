@@ -98,32 +98,32 @@
                         <div class="column">
                             <div class="card">
                             <h3>Spa Services</h3>
-                            <a href = "#spaServ"><img src="../images/spa.jpg" alt="Spa Services" style="width:100%; height: 195px;"></a>
+                            <a href = "#spaServ"><img src="../images/spa.jpg" alt="Spa Services" style="width:100%; height: 165px;"></a>
                             </div>
                         </div><br><br><br><br><br><br><br><br><br><br>
                     ';
                     //PLEASE REMOVE WHEN DONE: i already provided the data, pa-design nalang ajyl
-                    echo"
-                        <div id='hairServ' class='wrapper'>
-                            <table id='hair-services'>
-                                $hair_serv
-                            </table>
-                        </div>
-                    ";
-                    echo"
-                        <div id='nailServ' class='wrapper'>
-                            <table id='nail-services'>
-                                $nail_serv
-                            </table>
-                        </div>
-                    ";
-                    echo"
-                        <div id='spaServ' class='wrapper'>
-                            <table id='spa-services'>
-                                $spa_serv
-                            </table>
-                        </div>
-                    ";
+                    // echo"
+                    //     <div id='hairServ' class='wrapper'>
+                    //         <table id='hair-services'>
+                    //             $hair_serv
+                    //         </table>
+                    //     </div>
+                    // ";
+                    // echo"
+                    //     <div id='nailServ' class='wrapper'>
+                    //         <table id='nail-services'>
+                    //             $nail_serv
+                    //         </table>
+                    //     </div>
+                    // ";
+                    // echo"
+                    //     <div id='spaServ' class='wrapper'>
+                    //         <table id='spa-services'>
+                    //             $spa_serv
+                    //         </table>
+                    //     </div>
+                    // ";
                     echo'
                         <div class="about-our-team bg-white">
                             <h1>About Our Team</h1>
