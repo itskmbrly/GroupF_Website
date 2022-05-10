@@ -59,28 +59,29 @@
                             <h5>Welcome to JentleKare.</h5>
                         </div>";
                     echo"<h6>Book your appointments now! <input type='date'></form></h6>";
-                    echo"<h3>SERVICES</h3>";
+                    echo"<h1>SERVICES</h1>";
                     //CATEGORIES OF OFFERED SERVICES
                     echo'
                         <div class="column">
                             <div class="card">
                             <h3>Hair Care Services</h3>
-                            <img src="../images/hair.jpeg" alt="Hair Services" style="width:100%">
+                            <a href = "#hairServ"><img src="../images/hair.jpeg" alt="Hair Services" style="width:100%"></a>
                             </div>
                         </div>
                         <div class="column">
                             <div class="card">
                             <h3>Nail Care Services</h3>
-                            <img src="../images/manicure.jpg" alt="Nail Services" style="width:100%">
+                            <a href = "#nailServ"><img src="../images/manicure.jpg" alt="Nail Services" style="width:100%"></a>
                             </div>
                         </div>
                         <div class="column">
                             <div class="card">
                             <h3>Spa Services</h3>
-                            <img src="../images/spa.jpg" alt="Spa Services" style="width:100%">
+                            <a href = "#spaServ"><img src="../images/spa.jpg" alt="Spa Services" style="width:100%; height: 195px;"></a>
                             </div>
                         </div>
                     ';
+                    
                 } else if($_SESSION["sess-role"] == 3){ //admin
                     echo"
                         <div class='container p-5 my-5 border bg-white'>
@@ -130,5 +131,6 @@
             ?>
         </div>
     </div>
+    
 </body>
 </html>

@@ -14,6 +14,15 @@
     <title>Jentle Kare</title>
 </head>
 <body>
+    <!--SIDE NAVIGATION BAR-->
+    <?php include_once("navbar.php"); ?>
     
+    <div class="main-body">
+        <?php 
+            //ALERT MESSAGES
+            include_once("msg.php"); 
+        ?>
+        
+    </div>
 </body>
 </html>

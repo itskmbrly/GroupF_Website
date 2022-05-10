@@ -6,10 +6,12 @@
     <a href="profile_page.php?id=<?php echo $id; ?>" class="w3-bar-item w3-button"><?php echo $fname; echo " ".$lname; ?></a>
     <!--HOME-->
     <a href="index.php" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a>
-    <!--MY APPOINTMENTS-->
-    <a href="appointments.php" class="w3-bar-item w3-button"><i class="fa fa-calendar"></i> My Appointments</a>
-    <!--MY FAVORITES-->
     <?php
+      // MY APPOINTMENTS
+      if($_SESSION["sess-role"] == 1 || $_SESSION["sess-role"] == 2){
+        echo"<a href='appointments.php' class='w3-bar-item w3-button'><i class='fa fa-calendar'></i> My Appointments</a>";
+      }
+      //MY FAVORITES
       if($_SESSION["sess-role"] == 2){
         echo"<a href='favorites.php' class='w3-bar-item w3-button'><i class='fa fa-heart'></i> My Favorites</a>";
       }
