@@ -4,8 +4,7 @@
 }
 *{
     font-family: 'Chihaya';
-    font-size: 20px;
-    color: #000; /*dw, temporary lang, para makita ko HAHAHA*/
+    font-size: 25px;
 }
 input[type=text], select, [type=password], [type=email], [type=number] {
     width: 100%;
@@ -37,6 +36,7 @@ input[type=submit]:hover {
 }
 .main-container{
     background-color: #EED0CF;
+    border-radius: 5px;
 }
 /* .opaque{
     background-color: #000;
@@ -88,14 +88,16 @@ input[type=submit]:hover {
 .forgot-pass{
     margin-bottom: 20px;
 }
+.modal{
+    /* position: relative; */
+    left: 100px;
+}
 .container-form-reg{
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #EED0CF;
     box-shadow: 0 0 10px 2px #888888;
     padding: 30px;
-    width: 50%;
-    margin-top: 100px;
-    text-align: center;
+    width: 200%;
 }
 .center{
     display: flex;
