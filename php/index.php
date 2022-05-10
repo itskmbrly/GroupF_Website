@@ -1,16 +1,38 @@
 <?php
     //CONNECTION TO THE DATABASE
     include_once("connection.php");    
-    //FETCHING THE USER'S NAME AND ROLE
+    $hair_serv = '';
+    $nail_serv = '';
+    $spa_serv  = '';
+
     if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
         $sessId = $_SESSION["sess-id"];
 
+        //FETCHING THE USER'S NAME AND ROLE
         $userInfo = mysqli_query($con,  "SELECT * FROM tbl_users WHERE id = '$sessId'");
         
         while($fetchInfo = mysqli_fetch_assoc($userInfo)){
             $fname = $fetchInfo["first_name"];
             $lname = $fetchInfo["last_name"];
             $id   = $fetchInfo["id"];
+        }
+
+        //FETCHING THE LIST OF HAIR SERVICES
+        $listOfHairServices = mysqli_query($con, "SELECT * FROM tbl_services WHERE category = 'Hair Care Services'");
+        while ($row1 = mysqli_fetch_assoc($listOfHairServices)) {
+            $hair_serv .= "<tr value='" . $row1["id"] . "'>" . $row1['service_name'] . " </tr>";
+        }
+
+        //FETCHING THE LIST OF NAIL SERVICES
+        $listOfNailServices = mysqli_query($con, "SELECT * FROM tbl_services WHERE category = 'Nail Services'");
+        while ($row2 = mysqli_fetch_assoc($listOfNailServices)) {
+            $nail_serv .= "<tr value='" . $row2["id"] . "'>" . $row2['service_name'] . " </tr>";
+        }
+
+        //FETCHING THE LIST OF SPA SERVICES
+        $listOfSpaServices = mysqli_query($con, "SELECT * FROM tbl_services WHERE category = 'Spa Services'");
+        while ($row3 = mysqli_fetch_assoc($listOfSpaServices)) {
+            $spa_serv .= "<tr value='" . $row3["id"] . "'>" . $row3['service_name'] . " </tr>";
         }
     } 
 
@@ -50,7 +72,6 @@
                             <h2>Good Morning, $fname!</h2>
                             <h5>Welcome to JentleKare.</h5>
                         </div>";
-                    echo"<h6>Book your appointments now!</h6>";
                 } else if($_SESSION["sess-role"] == 2){ //klient
                     echo"
                         <div class='container p-5 my-5 border bg-white'>
@@ -79,9 +100,30 @@
                             <h3>Spa Services</h3>
                             <a href = "#spaServ"><img src="../images/spa.jpg" alt="Spa Services" style="width:100%; height: 195px;"></a>
                             </div>
-                        </div>
+                        </div><br>
                     ';
-                    
+                    //PLEASE REMOVE WHEN DONE: i already provided the data, pa-design nalang ajyl
+                    echo"
+                        <div id='hairServ' class='wrapper'>
+                            <table id='hair-services'>
+                                $hair_serv
+                            </table>
+                        </div>
+                    ";
+                    echo"
+                        <div id='nailServ' class='wrapper'>
+                            <table id='nail-services'>
+                                $nail_serv
+                            </table>
+                        </div>
+                    ";
+                    echo"
+                        <div id='spaServ' class='wrapper'>
+                            <table id='spa-services'>
+                                $spa_serv
+                            </table>
+                        </div>
+                    ";
                 } else if($_SESSION["sess-role"] == 3){ //admin
                     echo"
                         <div class='container p-5 my-5 border bg-white'>
@@ -104,7 +146,7 @@
                             <h2>Good Morning, Guest!</h2>
                             <h5>Welcome to JentleKare.</h5>
                         </div>";
-                        echo"<h6>Book your appointments now! <input type='date'></form></h6>";
+                    echo"<h6>Book your appointments now! <input type='date'></form></h6>";
                     echo"<h3>SERVICES</h3>";
                     //CATEGORIES OF OFFERED SERVICES
                     echo'
