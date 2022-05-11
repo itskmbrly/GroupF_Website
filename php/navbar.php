@@ -24,11 +24,14 @@
         //LOG OUT
         //PLEASE REMOVE WHEN DONE: pakibaba nalang ajyl katulad ng nasa wireframe natin
         echo'
-          <a href="logout.php" class="w3-bar-item w3-button logout-btn"></i>Logout</a>
+          <a href="logout.php" class="w3-bar-item w3-button logout-btn"><i class="fa fa-sign-out"></i>Logout</a>
         ';
       } else{
           echo'
             <a href="index.php" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a>
+          ';
+          echo'
+            <a href="welcome_page.php" class="w3-bar-item w3-button"><i class="fa fa-sign-in"></i> Sign In | Sign Up</a>
           ';
       }
     ?>
