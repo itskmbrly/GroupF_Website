@@ -196,16 +196,19 @@ input[type=submit]:hover {
     clear: both;
   }
   .logout-btn{
-    margin-top: 500px;
-    background-color: #8c615f;
+    position: absolute;
+    bottom: 0;
   }
   .navbarr{
     background-color: #eed0cf;
     text-align: center;
   }
-  .userName{
-    background-color: #8c615f;
+  .c1:focus, .c2:focus, .c3:focus, .c4:focus, .c5:focus, .c6:focus, .c7:focus{
+    background: #8c615f;
   }
+  /* .userName{
+    background-color: #8c615f;
+  } */
   
   /* Responsive columns */
   /* @media screen and (max-width: 600px) {
