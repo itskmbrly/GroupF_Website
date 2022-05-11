@@ -64,92 +64,94 @@
 
         <div class="w3-container body">
             <?php 
-                if($_SESSION["sess-role"] == 1){ //kraftsman
-                    //REMOVE WHEN DONE: put here the welcome banner
-                    echo"
-                        <div class='container p-5 my-5 border bg-white'>
-                            <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
-                            <h2>Good Morning, $fname!</h2>
-                            <h5>Welcome to JentleKare.</h5>
-                        </div>";
-                } else if($_SESSION["sess-role"] == 2){ //klient
-                    echo"
-                        <div class='container p-5 my-5 border bg-white'>
-                            <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
-                            <h2>Good Morning, $fname!</h2>
-                            <h5>Welcome to JentleKare.</h5>
-                        </div>";
-                    echo"<h6>Book your appointments now! <input type='date'></form></h6>";
-                    echo"<h1>SERVICES</h1>";
-                    //CATEGORIES OF OFFERED SERVICES
-                    echo'
-                        <div class="column">
-                            <div class="card">
-                            <h3>Hair Care Services</h3>
-                            <a href = "#hairServ"><img src="../images/hair.jpeg" alt="Hair Services" style="width:100%"></a>
+                if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
+                    if($_SESSION["sess-role"] == 1){ //kraftsman
+                        //REMOVE WHEN DONE: put here the welcome banner
+                        echo"
+                            <div class='container p-5 my-5 border bg-white'>
+                                <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
+                                <h2>Good Morning, $fname!</h2>
+                                <h5>Welcome to JentleKare.</h5>
+                            </div>";
+                    } else if($_SESSION["sess-role"] == 2){ //klient
+                        echo"
+                            <div class='container p-5 my-5 border bg-white'>
+                                <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
+                                <h2>Good Morning, $fname!</h2>
+                                <h5>Welcome to JentleKare.</h5>
+                            </div>";
+                        echo"<h6>Book your appointments now! <input type='date'></form></h6>";
+                        echo"<h1>SERVICES</h1>";
+                        //CATEGORIES OF OFFERED SERVICES
+                        echo'
+                            <div class="column">
+                                <div class="card">
+                                <h3>Hair Care Services</h3>
+                                <a href = "#hairServ"><img src="../images/hair.jpeg" alt="Hair Services" style="width:100%"></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="card">
-                            <h3>Nail Care Services</h3>
-                            <a href = "#nailServ"><img src="../images/manicure.jpg" alt="Nail Services" style="width:100%"></a>
+                            <div class="column">
+                                <div class="card">
+                                <h3>Nail Care Services</h3>
+                                <a href = "#nailServ"><img src="../images/manicure.jpg" alt="Nail Services" style="width:100%"></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="card">
-                            <h3>Spa Services</h3>
-                            <a href = "#spaServ"><img src="../images/spa.jpg" alt="Spa Services" style="width:100%; height: 165px;"></a>
+                            <div class="column">
+                                <div class="card">
+                                <h3>Spa Services</h3>
+                                <a href = "#spaServ"><img src="../images/spa.jpg" alt="Spa Services" style="width:100%; height: 165px;"></a>
+                                </div>
+                            </div><br><br><br><br><br><br><br><br><br><br>
+                        ';
+                        //PLEASE REMOVE WHEN DONE: i already provided the data, pa-design nalang ajyl
+                        // echo"
+                        //     <div id='hairServ' class='wrapper'>
+                        //         <table id='hair-services'>
+                        //             $hair_serv
+                        //         </table>
+                        //     </div>
+                        // ";
+                        // echo"
+                        //     <div id='nailServ' class='wrapper'>
+                        //         <table id='nail-services'>
+                        //             $nail_serv
+                        //         </table>
+                        //     </div>
+                        // ";
+                        // echo"
+                        //     <div id='spaServ' class='wrapper'>
+                        //         <table id='spa-services'>
+                        //             $spa_serv
+                        //         </table>
+                        //     </div>
+                        // ";
+                        echo'
+                            <div class="about-our-team">
+                                <div class="zg-left">
+                                    <img width="250px" src="../images/aboutus.jpg">
+                                </div>
+                                <div class="zg-right content">
+                                    <h1>About Our Team</h1>
+                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora id aliquam magnam quam dignissimos, corrupti ex distinctio debitis aut tenetur reiciendis veniam repudiandae qui expedita facilis, vel assumenda pariatur doloribus!</p>
+                                </div>
                             </div>
-                        </div><br><br><br><br><br><br><br><br><br><br>
-                    ';
-                    //PLEASE REMOVE WHEN DONE: i already provided the data, pa-design nalang ajyl
-                    // echo"
-                    //     <div id='hairServ' class='wrapper'>
-                    //         <table id='hair-services'>
-                    //             $hair_serv
-                    //         </table>
-                    //     </div>
-                    // ";
-                    // echo"
-                    //     <div id='nailServ' class='wrapper'>
-                    //         <table id='nail-services'>
-                    //             $nail_serv
-                    //         </table>
-                    //     </div>
-                    // ";
-                    // echo"
-                    //     <div id='spaServ' class='wrapper'>
-                    //         <table id='spa-services'>
-                    //             $spa_serv
-                    //         </table>
-                    //     </div>
-                    // ";
-                    echo'
-                        <div class="about-our-team section1">
-                            <div class="zg-left">
-                                <img width="250px" src="../images/aboutus.jpg">
-                            </div>
-                            <div class="zg-right content">
-                                <h1>About Our Team</h1>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora id aliquam magnam quam dignissimos, corrupti ex distinctio debitis aut tenetur reiciendis veniam repudiandae qui expedita facilis, vel assumenda pariatur doloribus!</p>
-                            </div>
-                        </div>
-                    ';
-                } else if($_SESSION["sess-role"] == 3){ //admin
-                    echo"
-                        <div class='container p-5 my-5 border'>
-                            <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
-                            <h2>Good Morning, $fname!</h2>
-                            <h5>Welcome to JentleKare.</h5>
-                        </div>";
-                } else if($_SESSION["sess-role"] == 4){ //moderator
-                    echo"
-                        <div class='container p-5 my-5 border bg-white'>
-                            <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
-                            <h2>Good Morning, $fname!</h2>
-                            <h5>Welcome to JentleKare.</h5>
-                        </div>";
-
+                        ';
+                    } else if($_SESSION["sess-role"] == 3){ //admin
+                        echo"
+                            <div class='container p-5 my-5 border'>
+                                <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
+                                <h2>Good Morning, $fname!</h2>
+                                <h5>Welcome to JentleKare.</h5>
+                            </div>";
+                    } else if($_SESSION["sess-role"] == 4){ //moderator
+                        echo"
+                            <div class='container p-5 my-5 border bg-white'>
+                                <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
+                                <h2>Good Morning, $fname!</h2>
+                                <h5>Welcome to JentleKare.</h5>
+                            </div>";
+    
+                    }
                 } else{
                     echo"
                         <div class='container p-5 my-5 border bg-white'>
