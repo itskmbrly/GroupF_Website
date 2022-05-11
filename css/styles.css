@@ -195,6 +195,16 @@ input[type=submit]:hover {
     display: table;
     clear: both;
   }
+  .logout-btn{
+    margin-top: 500px;
+  }
+  .navbarr{
+    background-color: #eed0cf;
+    text-align: center;
+  }
+  .userName{
+    background-color: #8c615f;
+  }
   
   /* Responsive columns */
   @media screen and (max-width: 600px) {

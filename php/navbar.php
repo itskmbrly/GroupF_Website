@@ -1,9 +1,9 @@
-<div class="w3-sidebar w3-bar-block w3-card" style="width:20%; background-color: #8c615f;">
+<div class="w3-sidebar w3-bar-block w3-card navbarr" style="width:20%; background-color: #CB8F8D;">
   <!--LOGO-->
   <center><img src="../images/JentleKare.png" alt="Logo" style="width: 55%"></center>
     <!--REMOVE WHEN DONE: you can insert here the profile picture-->
     <!--NAME OF THE USER-->
-    <a href="profile_page.php?id=<?php echo $id; ?>" class="w3-bar-item w3-button"><?php echo $fname; echo " ".$lname; ?></a>
+    <a href="profile_page.php?id=<?php echo $id; ?>" class="w3-bar-item w3-button userName"><?php echo $fname; echo " ".$lname; ?></a>
     <!--HOME-->
     <a href="index.php" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a>
     <?php
@@ -18,5 +18,5 @@
     ?>
     <!--LOG OUT-->
     <!--PLEASE REMOVE WHEN DONE: pakibaba nalang ajyl katulad ng nasa wireframe natin-->
-    <a href="logout.php" class="w3-bar-item w3-button"></i>Logout</a>
+    <a href="logout.php" class="w3-bar-item w3-button logout-btn"></i>Logout</a>
 </div>
