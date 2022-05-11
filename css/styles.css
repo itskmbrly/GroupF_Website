@@ -197,6 +197,7 @@ input[type=submit]:hover {
   }
   .logout-btn{
     margin-top: 500px;
+    background-color: #8c615f;
   }
   .navbarr{
     background-color: #eed0cf;
@@ -213,6 +214,23 @@ input[type=submit]:hover {
       display: block;
       margin-bottom: 20px;
     }
+    .about-our-team{
+        margin: auto;
+    }
+    .aboutus-boxcontainer{
+        margin: 0;
+    }
+    .img-team{
+        float: none;
+        margin-left: 15px;
+    }
+    .img-team > img{
+        width: 400px;
+    }
+    .aboutus-word{
+        text-align: justify;
+        float: none;
+    }
   }
   
   /* Style the counter cards */
@@ -224,10 +242,33 @@ input[type=submit]:hover {
   }
 
 .about-our-team{
-    text-align: justify;
-    width: 50%;
+    margin: 100px 200px 50px 200px;
+    text-align: center;
+    /* width: 90%; */
     border-radius: 11px;
-    padding: 25px;
+    padding: 30px;
+    background-color: #CB8F8D;
+}
+.aboutus-title{
+    text-align: left;
+}
+.aboutus-boxcontainer{    
+    /* margin: 0 200px 0 200px; */
+    height: 400px;
+    display: flex;
+}
+.img-team{
+    /* float: left; */
+    margin-top: 100px;
+    order: 1;
+}
+.aboutus-word{
+    text-align: justify;
+    width: 450px;
+    /* float: right; */
+    text-justify: auto;
+    margin-top: 20px;
+    order: 2;
 }
 .edit-profile-container{
     width: 50%;

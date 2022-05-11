@@ -125,14 +125,23 @@
                     //     </div>
                     // ";
                     echo'
-                        <div class="about-our-team bg-white">
-                            <h1>About Our Team</h1>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus dolorem fuga ipsum voluptatum, architecto ea exercitationem excepturi iure pariatur nisi ut vitae eos ex aperiam alias voluptatem molestiae quidem fugit!</p>                      
+                        <div class="about-our-team">
+                            <div class="aboutus-title">
+                                <h1>About Our Team</h1>
+                            </div>
+                            <div class="aboutus-boxconatiner">
+                                <div class="img-team">
+                                    <img width="500px" src="../images/aboutus.jpg">
+                                </div>
+                                <div class="aboutus-word">
+                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus dolorem fuga ipsum voluptatum, architecto ea exercitationem excepturi iure pariatur nisi ut vitae eos ex aperiam alias voluptatem molestiae quidem fugit!</p>
+                                </div>
+                            </div>
                         </div>
                     ';
                 } else if($_SESSION["sess-role"] == 3){ //admin
                     echo"
-                        <div class='container p-5 my-5 border bg-white'>
+                        <div class='container p-5 my-5 border'>
                             <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
                             <h2>Good Morning, $fname!</h2>
                             <h5>Welcome to JentleKare.</h5>
