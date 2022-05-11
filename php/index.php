@@ -125,17 +125,13 @@
                     //     </div>
                     // ";
                     echo'
-                        <div class="about-our-team">
-                            <div class="aboutus-title">
-                                <h1>About Our Team</h1>
+                        <div class="about-our-team section1">
+                            <div class="zg-left">
+                                <img width="250px" src="../images/aboutus.jpg">
                             </div>
-                            <div class="aboutus-boxconatiner">
-                                <div class="img-team">
-                                    <img width="500px" src="../images/aboutus.jpg">
-                                </div>
-                                <div class="aboutus-word">
-                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus dolorem fuga ipsum voluptatum, architecto ea exercitationem excepturi iure pariatur nisi ut vitae eos ex aperiam alias voluptatem molestiae quidem fugit!</p>
-                                </div>
+                            <div class="zg-right content">
+                                <h1>About Our Team</h1>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora id aliquam magnam quam dignissimos, corrupti ex distinctio debitis aut tenetur reiciendis veniam repudiandae qui expedita facilis, vel assumenda pariatur doloribus!</p>
                             </div>
                         </div>
                     ';

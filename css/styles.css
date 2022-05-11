@@ -208,7 +208,7 @@ input[type=submit]:hover {
   }
   
   /* Responsive columns */
-  @media screen and (max-width: 600px) {
+  /* @media screen and (max-width: 600px) {
     .column {
       width: 100%;
       display: block;
@@ -231,45 +231,57 @@ input[type=submit]:hover {
         text-align: justify;
         float: none;
     }
-  }
+  } */
   
   /* Style the counter cards */
-  .card {
+.card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 16px;
     text-align: center;
     background-color: #f1f1f1;
-  }
+}
 
 .about-our-team{
-    margin: 100px 200px 50px 200px;
-    text-align: center;
-    /* width: 90%; */
-    border-radius: 11px;
-    padding: 30px;
-    background-color: #CB8F8D;
+    background-color: #eed0cf;
+    height: 350px;
+    padding: 25px 35px;
+    margin: 20px 0 21px 200px;
+    width: 65%;
+    border-radius: 10px;
 }
+.zg-right{
+    width: 49%;
+    float: right;
+}
+.zg-left{
+    float: left;
+    width: 49%;
+}
+.content{
+    padding-top: 20px;
+}
+/*
 .aboutus-title{
     text-align: left;
 }
 .aboutus-boxcontainer{    
-    /* margin: 0 200px 0 200px; */
+    margin: 0 200px 0 200px;
     height: 400px;
     display: flex;
 }
 .img-team{
-    /* float: left; */
+    float: left;
     margin-top: 100px;
     order: 1;
 }
 .aboutus-word{
     text-align: justify;
     width: 450px;
-    /* float: right; */
+    float: right;
     text-justify: auto;
     margin-top: 20px;
     order: 2;
-}
+} */
 .edit-profile-container{
     width: 50%;
     background-color: #EED0CF;
