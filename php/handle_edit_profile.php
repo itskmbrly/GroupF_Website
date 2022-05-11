@@ -47,8 +47,10 @@
     $stored_email = $fetchEmail["email"];
     $numOfRows    = mysqli_num_rows($execQuery);
 
-    if($stored_email != $email){
-        header("Location: index.php?msg=20"); exit;
+    if($numOfRows > 1){
+        if($stored_email == $email){
+            header("Location: index.php?msg=20"); exit;
+        }
     } 
 
     //CHECKING IF THE PASSWORD IS THE SAME WITH THE CONFIRM PASSWORD
@@ -56,13 +58,11 @@
         //PASSWORD HASH, FOR DATA PRIVACY
         $encPassword = password_hash($password1, PASSWORD_DEFAULT);
 
-        //IF THERE'S NO DUPLICATION ON THE DATABASE AND PASSWORD IS THE SAME WITH CONFIRM PASSWORD, NEXT WILL BE INSERT QUERY
+        //IF THERE'S NO DUPLICATION IN THE DATABASE AND PASSWORD IS THE SAME WITH CONFIRM PASSWORD, NEXT WILL BE INSERT QUERY
 
         //UPDATE IN TBL_USERS
         $execQuery2 = mysqli_query($con, "UPDATE tbl_users SET first_name = '$fname', last_name = '$lname', email = '$email', password = '$encPassword', mobile_no = '$mobile_no', updated_at = now() WHERE id = '$id'");
         
-        // print_r("UPDATE tbl_users SET first_name = '$fname', last_name = '$lname', email = '$email', password = '$encPassword', mobile_no = '$mobile_no', updated_at = now() WHERE id = '$id'"); exit;
-        //UPDATE IN TBL_ADDRESS
         $execQuery4 = mysqli_query($con, "UPDATE tbl_address SET user_id = '$userId', address = '$address', barangay = '$barangay', city = '$city', province = '$province', zip = '$zipcode', country = '$country') WHERE user_id = '$id'");
 
         //EXECUTE QUERY CONDITIONS
