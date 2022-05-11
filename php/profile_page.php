@@ -38,7 +38,7 @@
         $role_id   = $fetchInfo["role_id"]; 
         //FETCHING ALL THE INFORMATION UNDER THE ADDRESS ID OF THE USER
         $execQuery2 = mysqli_query($con, "SELECT * FROM tbl_address WHERE id = '$address_id'");
-        
+
         $fetchInfo2 = mysqli_fetch_assoc($execQuery2);
         $address    = $fetchInfo2["address"];
         $barangay   = $fetchInfo2["barangay"];
@@ -58,43 +58,43 @@
                 </div>
                 <div class="mb-3">
                     <label for="lname" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lname" value=<?php echo $lname; ?> name="lname">
+                    <input type="text" class="form-control" id="lname" value="<?php echo $lname; ?>" name="lname">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" value=<?php echo $email; ?> name="email">
+                    <input type="email" class="form-control" id="email" value="<?php echo $email; ?>" name="email">
                 </div>
                 <div class="mb-3">
                     <label for="pwd" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="pwd1" value=<?php echo $password; ?> name="password1">
+                    <input type="password" class="form-control" id="pwd1" value="<?php echo $password; ?>" name="password1">
                 </div>
                 <div class="mb-3">
                     <label for="pwd" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="pwd2" value=<?php echo $password; ?> name="password2">
+                    <input type="password" class="form-control" id="pwd2" value="<?php echo $password; ?>" name="password2">
                 </div>
                 <div class="mb-3">
                     <label for="m_no" class="form-label">Mobile Number</label>
-                    <input type="number" class="form-control" id="m_no" value=<?php echo $mobile_no; ?> name="mobile_no">
+                    <input type="number" class="form-control" id="m_no" value="<?php echo $mobile_no; ?>" name="mobile_no">
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="address" value=<?php echo $address; ?> name="address">
+                    <input type="text" class="form-control" id="address" value="<?php echo $address; ?>" name="address">
                 </div>
                 <div class="mb-3">
                     <label for="pwd" class="form-label">Barangay</label>
-                    <input type="text" class="form-control" id="pwd" value=<?php echo $barangay; ?> name="barangay">
+                    <input type="text" class="form-control" id="pwd" value="<?php echo $barangay; ?>" name="barangay">
                 </div>
                 <div class="mb-3">
                     <label for="city" class="form-label">City</label>
-                    <input type="text" class="form-control" id="city" value=<?php echo $city; ?> name="city">
+                    <input type="text" class="form-control" id="city" value="<?php echo $city; ?>" name="city">
                 </div>
                 <div class="mb-3">
                     <label for="province" class="form-label">Province</label>
-                    <input type="text" class="form-control" id="province" value=<?php echo $province; ?> name="province">
+                    <input type="text" class="form-control" id="province" value="<?php echo $province; ?>" name="province">
                 </div>
                 <div class="mb-3">
                     <label for="zipcode" class="form-label">Zip Code</label>
-                    <input type="number" class="form-control" id="zipcode" value=<?php echo $zip; ?> name="zipcode">
+                    <input type="number" class="form-control" id="zipcode" value="<?php echo $zip; ?>" name="zipcode">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
