@@ -200,12 +200,13 @@ input[type=submit]:hover {
     bottom: 0;
   }
   .navbarr{
-    background-color: #eed0cf;
-    text-align: center;
+    width:20%; 
+    background-color: #CB8F8D;
   }
-  .c1:focus, .c2:focus, .c3:focus, .c4:focus, .c5:focus, .c6:focus, .c7:focus{
-    background: #8c615f;
-  }
+  /* .c1:focus, .c2:focus, .c3:focus, .c4:focus, .c5:focus, .c6:focus, .c7:focus{
+    background: #eed0cf;
+  } */
+  .ca1:focus, .ca1:active{background-color: #CB8F8D;}
   /* .userName{
     background-color: #8c615f;
   } */

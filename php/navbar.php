@@ -1,4 +1,4 @@
-<div class="w3-sidebar w3-bar-block w3-card navbarr" style="width:20%; background-color: #CB8F8D;">
+<div class="w3-sidebar w3-bar-block w3-card navbarr">
   <!--LOGO-->
   <center><img src="../images/JentleKare.png" alt="Logo" style="width: 55%"></center>
     <?php
@@ -6,7 +6,7 @@
         //REMOVE WHEN DONE: you can insert here the profile picture
         //NAME
         echo"
-          <a href='profile_page.php?id=$id' class='w3-bar-item w3-button c1'> $fname $lname</a>
+          <a href='profile_page.php?id=$id' class='w3-bar-item w3-button ca1'> $fname $lname</a>
         ";
         //HOME
         echo'
