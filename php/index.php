@@ -180,8 +180,19 @@
                             <h3>Spa Services</h3>
                             <img src="../images/spa.jpg" alt="Spa Services" style="width:100%">
                             </div>
-                        </div>
+                        </div><br><br><br><br><br><br><br><br><br><br>
                     ';
+                    echo'
+                            <div class="about-our-team">
+                                <div class="zg-left">
+                                    <img width="250px" src="../images/aboutus.jpg">
+                                </div>
+                                <div class="zg-right content">
+                                    <h1>About Our Team</h1>
+                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora id aliquam magnam quam dignissimos, corrupti ex distinctio debitis aut tenetur reiciendis veniam repudiandae qui expedita facilis, vel assumenda pariatur doloribus!</p>
+                                </div>
+                            </div>
+                        ';
                 }
             ?>
         </div>
