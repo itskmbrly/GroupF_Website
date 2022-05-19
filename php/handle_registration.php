@@ -67,8 +67,10 @@
         //FETCHING THE USER_ID SO WE CAN INPUT IT IN THE TBL_ADDRESS
         $execQuery3 = mysqli_query($con, "SELECT * FROM tbl_users WHERE mobile_no = '$mobile_no'");
         $row = mysqli_fetch_assoc($execQuery3);
-        $userId = $row["id"];   
+        $userId = $row["id"];
 
+        print_r($userId);
+        exit;
         //INSERTION IN TBL_ADDRESS
         $execQuery4 = mysqli_query($con, "INSERT INTO tbl_address(user_id, address, barangay, city, province, zip, country) values('$userId', '$address', '$barangay', '$city', '$province', '$zipcode', '$country')");
 
