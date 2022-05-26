@@ -1,5 +1,7 @@
 <?php
+    date_default_timezone_set("Asia/Manila");
     $id = $_POST["id"];
+    // var_dump($_FILES["inputFile"]);
     //IF NULL, THE CODE WILL EXIT
     if($_POST["fname"] == ""){ 
         header("Location: index.php?msg=1"); exit;
@@ -36,6 +38,8 @@
     $password1  = trim($_POST["password1"]);
     $password2  = trim($_POST["password2"]);
     $mobile_no  = trim($_POST["mobile_no"]);
+    $bday       = trim($_POST["birthdate"]);
+    $sex        = trim($_POST["sex"]);
     $address    = trim($_POST["address"]);
     $barangay   = trim($_POST["barangay"]);
     $city       = trim($_POST["city"]);
@@ -67,8 +71,30 @@
         //UPDATE IN TBL_USERS
         $execQuery2 = mysqli_query($con, "UPDATE tbl_users SET first_name = '$fname', last_name = '$lname', email = '$email', password = '$encPassword', mobile_no = '$mobile_no', updated_at = now() WHERE id = '$id'");
         
-        $execQuery4 = mysqli_query($con, "UPDATE tbl_address SET user_id = '$userId', address = '$address', barangay = '$barangay', city = '$city', province = '$province', zip = '$zipcode', country = '$country') WHERE user_id = '$id'");
+        $execQuery4 = mysqli_query($con, "UPDATE tbl_address SET user_id = '$id', address = '$address', barangay = '$barangay', city = '$city', province = '$province', zip = '$zipcode') WHERE user_id = '$id'");
 
+        $filename = "PIC_" . $id . "_" . date("Ymd_His") . "_" . $_FILES["inputFile"]["name"][0];
+        $targetfile = "uploads/credentials/" . $filename;
+        $filetype = $_FILES["inputFile"]["type"][0];
+
+        // CHECK FILE SIZE
+        // if ($_FILES["inputFile"]["size"] > 500000) {
+        //     header("Location: index.php?msg=27"); exit;
+        // }
+        // ALLOW CERTAIN FORMATS
+        if($filetype != "image/jpg" && $filetype != "image/png" && $filetype != "image/jpeg") {
+            header("Location: index.php?msg=24"); exit;
+        }
+        
+        //UPLOAD
+        if(move_uploaded_file($_FILES["inputFile"]["tmp_name"][0], $targetfile)){
+            $updateCredentials = mysqli_query($con, "UPDATE tbl_users SET credentials = '$filename' WHERE id = '$id'");
+            if($updateCredentials){
+                header("Location: index.php?msg=25"); exit;
+            }
+        } else{
+            header("Location: index.php?msg=26"); exit;
+        }
         //EXECUTE QUERY CONDITIONS
         if($execQuery2){
             header("Location: index.php?msg=21"); exit;

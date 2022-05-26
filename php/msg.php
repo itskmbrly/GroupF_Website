@@ -140,7 +140,31 @@
                         <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                         <strong>Error!</strong> Sex is null.
                     </div>";
-            } 
+            } else if($_GET["msg"] == 24){
+                echo"
+                    <div class='alert alert-danger alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Sorry,</strong> only JPG, JPEG & PNG files are allowed.
+                    </div>";
+            } else if($_GET["msg"] == 25){
+                echo"
+                    <div class='alert alert-success alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Sucess!</strong> File/s has been uploaded.
+                    </div>";
+            } else if($_GET["msg"] == 26){
+                echo"
+                    <div class='alert alert-danger alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Error!</strong> Something went wrong.
+                    </div>";
+            } else if($_GET["msg"] == 27){
+                echo"
+                    <div class='alert alert-danger alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Error!</strong> Sorry, your file is too large.
+                    </div>";
+            }
         } 
     echo"</div>";
 ?>
