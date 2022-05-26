@@ -23,6 +23,10 @@
         header("Location: index.php?msg=10"); exit;
     } else if($_POST["zipcode"] == ""){
         header("Location: index.php?msg=11"); exit;
+    } else if($_POST["birthdate"] == ""){
+        header("Location: index.php?msg=22"); exit;
+    } else if($_POST["sex"] == ""){
+        header("Location: index.php?msg=23"); exit;
     }
 
     //VAR_DUMP, USE TRIM TO REMOVE THE UNWANTED SPACES INFRON AND BACK

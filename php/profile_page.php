@@ -34,6 +34,8 @@
         $email     = $fetchInfo["email"];
         $password  = $fetchInfo["password"];
         $mobile_no = $fetchInfo["mobile_no"];
+        $sex_id    = $fetchInfo["sex"];
+        $birthdate = $fetchInfo["birthdate"];
         $address_id= $fetchInfo["address_id"];
         $role_id   = $fetchInfo["role_id"]; 
         //FETCHING ALL THE INFORMATION UNDER THE ADDRESS ID OF THE USER
@@ -45,13 +47,18 @@
         $city       = $fetchInfo2["city"];
         $province   = $fetchInfo2["province"];
         $zip        = $fetchInfo2["zip"];
+        //FETTCHING SEX_TYPE
+        $execQuery3 = mysqli_query($con, "SELECT * FROM tbl_sex WHERE id = '$sex_id'");
+
+        $fetchInfo3 = mysqli_fetch_assoc($execQuery3);
+        $sex        = $fetchInfo3["sex_type"];
         include_once("navbar.php"); //SIDE NAVIGATION BAR
     ?>
     
     <div style="margin-left:20%; background-color: #faf8e8;">
         <?php include_once("msg.php"); //ALERT MESSAGES ?>
-        <div class="w3-container body edit-profile-container">
-            <form action="handle_edit_profile.php" method="POST">
+        <div class="w3-container body ">
+            <form action="handle_edit_profile.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-3 mt-3">
                     <label for="fname" class="form-label">First Name</label>
                     <input type="text" class="form-control" id="fname" value="<?php echo $fname; ?>" name="fname">
@@ -77,6 +84,14 @@
                     <input type="number" class="form-control" id="m_no" value="<?php echo $mobile_no; ?>" name="mobile_no">
                 </div>
                 <div class="mb-3">
+                    <label for="bday" class="form-label">Birthdate</label>
+                    <input type="date" class="form-control" id="bday" value="<?php echo $birthdate; ?>" name="birthdate">
+                </div>
+                <div class="mb-3">
+                    <label for="sex" class="form-label">Sex</label>
+                    <input type="text" class="form-control" id="sex" value="<?php echo $sex; ?>" name="sex">
+                </div>
+                <div class="mb-3">
                     <label for="address" class="form-label">Address</label>
                     <input type="text" class="form-control" id="address" value="<?php echo $address; ?>" name="address">
                 </div>
@@ -95,6 +110,10 @@
                 <div class="mb-3">
                     <label for="zipcode" class="form-label">Zip Code</label>
                     <input type="number" class="form-control" id="zipcode" value="<?php echo $zip; ?>" name="zipcode">
+                </div>
+                <div class="mb-3">
+                    <label for="file" class="form-label">File Upload</label>
+                    <input type="file" class="form-control" id="fileupload" name="inputFile[]"multiple="multiple">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <input type="hidden" name="id" value="<?php echo $id; ?>">

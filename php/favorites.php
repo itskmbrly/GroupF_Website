@@ -44,7 +44,22 @@
             //ALERT MESSAGES
             include_once("msg.php"); 
         ?>
-        
+        <div class="w3-container body">
+            <div class="container mt-3">
+                <h2>My Favorites</h2>          
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Kraftsman</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </body>
 </html>

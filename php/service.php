@@ -14,6 +14,12 @@
     <title>Jentle Kare</title>
 </head>
 <body>
-    
+    <!--SIDE NAVIGATION BAR-->
+    <?php include_once("navbar.php"); ?>
+    <div style="margin-left:20%; background-color: #faf8e8;">
+        <!--ALERT MESSAGE-->
+        <?php include_once("msg.php"); ?>
+
+    </div>
 </body>
 </html>

@@ -31,6 +31,14 @@
         $roles .= "<option value='" . $row["id"] . "'>" . $row['role_type'] . "</option>";
     }
 
+    //SELECT QUERY FOR SEX TYPE
+    $execQuery2 = mysqli_query($con, "SELECT * FROM tbl_sex");
+    $sexT = "";
+    //FETCHING DATA FOR SEX TYPE
+    while ($row2 = mysqli_fetch_assoc($execQuery2)) {
+        $sexT .= "<option value='" . $row2["id"] . "'>" . $row2['sex_type'] . "</option>";
+    }
+
     ?>
     <!--END OF PROCESS-->
 
@@ -78,7 +86,7 @@
                             <!-- <span class="notifReq1" id="r2">*</span> -->
                         </div>
                         <div class="col-75">
-                            <input type="password" id="password1" name="password" placeholder="Enter your password">
+                            <input type="password" id="password1" name="password" min="8" placeholder="Enter your password">
                         </div>
                     </div>
                     <div class="row">
@@ -153,7 +161,28 @@
                                     <!-- <span class="notifReq1" id="r8">*</span> -->
                                 </div>
                                 <div class="col-75">
-                                    <input type="number" id="mobile_no" name="mobile_no" placeholder="Enter your Mobile Number">
+                                    <input type="number" id="mobile_no" name="mobile_no" min="11" placeholder="Enter your Mobile Number">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="mobile_no">Birthday</label>
+                                    <!-- <span class="notifReq1" id="r8">*</span> -->
+                                </div>
+                                <div class="col-75">
+                                    <input type="date" id="bday" name="bday">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="mobile_no">Sex</label>
+                                    <!-- <span class="notifReq1" id="r8">*</span> -->
+                                </div>
+                                <div class="col-75">
+                                    <select name="inputSex">
+                                        <option value="" disabled selected hidden>Choose a Sex</option>
+                                        <?php echo $sexT; ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row">

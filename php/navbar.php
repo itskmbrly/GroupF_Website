@@ -6,7 +6,7 @@
         //REMOVE WHEN DONE: you can insert here the profile picture
         //NAME
         echo"
-          <a href='profile_page.php?id=$id' class='w3-bar-item w3-button ca1'> $fname $lname</a>
+          <a href='profile_page.php?id=$id' class='w3-bar-item w3-button ca1'><i class='fa fa-user-circle'></i> $fname $lname</a>
         ";
         //HOME
         echo'

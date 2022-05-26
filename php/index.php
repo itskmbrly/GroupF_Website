@@ -106,27 +106,27 @@
 
                         // PLEASE REMOVE WHEN DONE: i already provided the data, pa-design nalang ajyl
                         //services container
-                        // echo"
-                        //     <div id='hairServ' class='wrapper'>
-                        //         <table id='hair-services'>
-                        //             $hair_serv
-                        //         </table>
-                        //     </div>
-                        // ";
-                        // echo"
-                        //     <div id='nailServ' class='wrapper'>
-                        //         <table id='nail-services'>
-                        //             $nail_serv
-                        //         </table>
-                        //     </div>
-                        // ";
-                        // echo"
-                        //     <div id='spaServ' class='wrapper'>
-                        //         <table id='spa-services'>
-                        //             $spa_serv
-                        //         </table>
-                        //     </div>
-                        // ";
+                        echo"
+                            <div id='hairServ' class='wrapper'>
+                                <table id='hair-services'>
+                                    $hair_serv
+                                </table>
+                            </div>
+                        ";
+                        echo"
+                            <div id='nailServ' class='wrapper'>
+                                <table id='nail-services'>
+                                    $nail_serv
+                                </table>
+                            </div>
+                        ";
+                        echo"
+                            <div id='spaServ' class='wrapper'>
+                                <table id='spa-services'>
+                                    $spa_serv
+                                </table>
+                            </div>
+                        ";
                         echo'
                             <div class="about-our-team">
                                 <div class="zg-left">

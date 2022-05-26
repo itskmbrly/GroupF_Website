@@ -35,6 +35,8 @@
     $password1  = trim($_POST["password1"]);
     $password2  = trim($_POST["password2"]);
     $mobile_no  = trim($_POST["mobile_no"]);
+    $bday       = trim($_POST["bday"]);
+    $sex        = trim($_POST["inputSex"]);
     $address    = trim($_POST["address"]);
     $barangay   = trim($_POST["barangay"]);
     $city       = trim($_POST["city"]);
@@ -46,7 +48,7 @@
     //CONNECTION TO THE DATABASE
     include_once("connection.php");
 
-    //CHECKING IF THERE'S A DUPLICATION
+    //CHECKING IF THERE'S A DUPLICATION - email
     $execQuery = mysqli_query($con, "SELECT * FROM tbl_users WHERE email = '$email'");
     $numOfRows = mysqli_num_rows($execQuery);
 
@@ -54,6 +56,14 @@
         header("Location: welcome_page.php?msg=20"); exit;
     } 
 
+    //CHECKING IF THERE'S A DUPLICATION - password
+    $execQuery7 = mysqli_query($con, "SELECT * FROM tbl_users WHERE mobile_no = '$mobile_no'");
+    $numOfRows2 = mysqli_num_rows($execQuery7);
+
+    if($numOfRows2 > 0){
+        header("Location: welcome_page.php?msg=20"); exit;
+    }
+    
     //CHECKING IF THE PASSWORD IS THE SAME WITH THE CONFIRM PASSWORD
     if($password1 == $password2){
         //PASSWORD HASH, FOR DATA PRIVACY
@@ -62,15 +72,13 @@
         //IF THERE'S NO DUPLICATION ON THE DATABASE AND PASSWORD IS THE SAME WITH CONFIRM PASSWORD, NEXT WILL BE INSERT QUERY
 
         //INSERTION IN TBL_USERS
-        $execQuery2 = mysqli_query($con, "INSERT INTO tbl_users(first_name, last_name, email, password, mobile_no, role_id, created_at) values('$fname', '$lname', '$email', '$encPassword', '$mobile_no', '$role', now())");
+        $execQuery2 = mysqli_query($con, "INSERT INTO tbl_users(first_name, last_name, email, password, mobile_no, birthdate, sex, role_id, created_at) values('$fname', '$lname', '$email', '$encPassword', '$mobile_no', '$bday', '$sex', '$role', now())");
 
         //FETCHING THE USER_ID SO WE CAN INPUT IT IN THE TBL_ADDRESS
         $execQuery3 = mysqli_query($con, "SELECT * FROM tbl_users WHERE email = '$email'");
         $row = mysqli_fetch_assoc($execQuery3);
         $userId = $row["id"];
 
-        print_r($userId);
-        exit;
         //INSERTION IN TBL_ADDRESS
         $execQuery4 = mysqli_query($con, "INSERT INTO tbl_address(user_id, address, barangay, city, province, zip, country) values('$userId', '$address', '$barangay', '$city', '$province', '$zipcode', '$country')");
 

@@ -128,6 +128,18 @@
                         <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                         <strong>Success!</strong> Profile Information was updated.
                     </div>";
+            } else if($_GET["msg"] == 22){
+                echo"
+                    <div class='alert alert-danger alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Error!</strong> Birthday is null.
+                    </div>";
+            } else if($_GET["msg"] == 23){
+                echo"
+                    <div class='alert alert-danger alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Error!</strong> Sex is null.
+                    </div>";
             } 
         } 
     echo"</div>";
