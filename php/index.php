@@ -103,7 +103,9 @@
                                 </div>
                             </div><br><br><br><br><br><br><br><br><br><br>
                         ';
-                        //PLEASE REMOVE WHEN DONE: i already provided the data, pa-design nalang ajyl
+
+                        // PLEASE REMOVE WHEN DONE: i already provided the data, pa-design nalang ajyl
+                        //services container
                         // echo"
                         //     <div id='hairServ' class='wrapper'>
                         //         <table id='hair-services'>
