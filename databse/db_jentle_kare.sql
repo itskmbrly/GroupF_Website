@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2022 at 05:59 AM
+-- Generation Time: May 26, 2022 at 05:12 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -43,8 +43,9 @@ CREATE TABLE `tbl_address` (
 --
 
 INSERT INTO `tbl_address` (`id`, `user_id`, `address`, `barangay`, `city`, `province`, `zip`, `country`) VALUES
-(1, 0, 'Ad', 'Ba', 'Ci', 'Pr', 1870, 'Philippines'),
-(2, 0, 'Ad', 'Ba', 'Ci', 'Pr', 1870, 'Philippines');
+(1, 1, 'a', 'a', 'a', 'a', 1870, 'Philippines'),
+(2, 2, 'a', 'a', 'a', 'a', 1111, 'Philippines'),
+(3, 3, 't', 't', 't', 't', 1111, 'Philippines');
 
 -- --------------------------------------------------------
 
@@ -59,6 +60,15 @@ CREATE TABLE `tbl_category` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_category`
+--
+
+INSERT INTO `tbl_category` (`id`, `name`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'Hair Services', 1, '2022-05-10 07:32:55', '2022-05-10 07:32:55'),
+(2, 'Nail Services', 1, '2022-05-10 07:32:55', '2022-05-10 07:32:55'),
+(3, 'Spa Services', 1, '2022-05-10 07:32:55', '2022-05-10 07:32:55');
 
 -- --------------------------------------------------------
 
@@ -124,6 +134,25 @@ INSERT INTO `tbl_services` (`id`, `service_name`, `category`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_sex`
+--
+
+CREATE TABLE `tbl_sex` (
+  `id` int(11) NOT NULL,
+  `sex_type` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_sex`
+--
+
+INSERT INTO `tbl_sex` (`id`, `sex_type`) VALUES
+(1, 'Female'),
+(2, 'Male');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_transactions`
 --
 
@@ -148,19 +177,24 @@ CREATE TABLE `tbl_users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `mobile_no` int(11) NOT NULL,
+  `birthdate` date NOT NULL,
+  `sex` varchar(50) NOT NULL,
   `address_id` int(10) NOT NULL,
   `role_id` int(3) NOT NULL,
   `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL
+  `updated_at` datetime DEFAULT NULL,
+  `verified` tinyint(1) NOT NULL,
+  `credentials` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`id`, `first_name`, `last_name`, `email`, `password`, `mobile_no`, `address_id`, `role_id`, `created_at`, `updated_at`) VALUES
-(1, 'Kimberly Edge', 'de Guzman', 'guzmankimberlyedgede@yahoo.com', '$2y$10$QKwiJA4Tl99VnHEFxp2zm.9fLDZ8uHyP.Dqg4IDDeI033ahbqL6kW', 2147483647, 2, 2, '2022-05-10 11:49:40', NULL),
-(2, 'Erica Edge', 'de Guzman', 'guzmanericaedgede@yahoo.com', '$2y$10$8YzzsYtsfSvFoN0WoluPs.wbMHZLr3A5PU2E7iV0bT5wVqqhvnIyq', 2147483647, 2, 1, '2022-05-10 11:51:47', NULL);
+INSERT INTO `tbl_users` (`id`, `first_name`, `last_name`, `email`, `password`, `mobile_no`, `birthdate`, `sex`, `address_id`, `role_id`, `created_at`, `updated_at`, `verified`, `credentials`) VALUES
+(1, 'Kimberly Edge', 'de Guzman', 'guzmankimberlyedgede@yahoo.com', '$2y$10$k2LFygrg57xRELXocHd5.OduNtBVPWr2tPzMJ9eU8II1wYorOqhrC', 2147483647, '2002-06-06', '1', 1, 2, '2022-05-26 14:13:23', '2022-05-26 17:10:45', 0, 'PIC_1_20220526_171045_283044012_1914882838703988_3624424842070107209_n.png'),
+(2, 'a', 'a', 'a@gmail.com', '$2y$10$IUl0/8msyIn.5YopjzTAoOgYD7yQIz9mE7XpBwbN3qPJu1B9vVk3O', 2147483647, '2022-05-26', '1', 2, 1, '2022-05-26 14:17:43', NULL, 0, ''),
+(3, 'Erica Edge', 'de Guzman', 'guzmanericaedgede@yahoo.com', '$2y$10$Z2JEjJZJAvS1DAP8VdtFcOC5qxehU.QBB/5itTXIddzRkHPNIBI8u', 2147483647, '1992-12-02', '1', 3, 1, '2022-05-26 14:25:05', NULL, 0, '');
 
 --
 -- Indexes for dumped tables
@@ -197,6 +231,12 @@ ALTER TABLE `tbl_services`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_sex`
+--
+ALTER TABLE `tbl_sex`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_transactions`
 --
 ALTER TABLE `tbl_transactions`
@@ -216,13 +256,13 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_address`
 --
 ALTER TABLE `tbl_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_documents`
@@ -243,6 +283,12 @@ ALTER TABLE `tbl_services`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `tbl_sex`
+--
+ALTER TABLE `tbl_sex`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tbl_transactions`
 --
 ALTER TABLE `tbl_transactions`
@@ -252,7 +298,7 @@ ALTER TABLE `tbl_transactions`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
