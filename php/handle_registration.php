@@ -65,7 +65,7 @@
         $execQuery2 = mysqli_query($con, "INSERT INTO tbl_users(first_name, last_name, email, password, mobile_no, role_id, created_at) values('$fname', '$lname', '$email', '$encPassword', '$mobile_no', '$role', now())");
 
         //FETCHING THE USER_ID SO WE CAN INPUT IT IN THE TBL_ADDRESS
-        $execQuery3 = mysqli_query($con, "SELECT * FROM tbl_users WHERE mobile_no = '$mobile_no'");
+        $execQuery3 = mysqli_query($con, "SELECT * FROM tbl_users WHERE email = '$email'");
         $row = mysqli_fetch_assoc($execQuery3);
         $userId = $row["id"];
 
@@ -81,7 +81,6 @@
 
         //INSERTION IN TBL_USERS (ADDDRESS_ID)
         $execQuery6 = mysqli_query($con, "UPDATE tbl_users SET address_id = '$address_id' WHERE id = '$userId'");
-
         //EXECUTE QUERY CONDITIONS
         if($execQuery2){
             header("Location: welcome_page.php?msg=18"); exit;
