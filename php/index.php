@@ -81,27 +81,36 @@
                                 <h5>Welcome to JentleKare.</h5>
                             </div>";
                         echo"<h6>Book your appointments now! <input type='date'></form></h6>";
-                        echo"<h1>SERVICES</h1>";
+
+                        
+                        echo'
+                        <div class="services-container">
+                        <h1>SERVICES</h1>';
                         //CATEGORIES OF OFFERED SERVICES
                         echo'
+                        
                             <div class="column">
                                 <div class="card">
+                                <a href = "service.php#hairServ">
                                 <h3>Hair Care Services</h3>
-                                <a href = "#hairServ"><img src="../images/hair.jpeg" alt="Hair Services" style="width:100%"></a>
+                                <img src="../images/hair.jpeg" alt="Hair Services" style="width:100%"></a>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="card">
+                                <a href = "service.php#nailServ">
                                 <h3>Nail Care Services</h3>
-                                <a href = "#nailServ"><img src="../images/manicure.jpg" alt="Nail Services" style="width:100%"></a>
+                                <img src="../images/manicure.jpg" alt="Nail Services" style="width:100%"></a>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="card">
+                                <a href = "service.php#spaServ">
                                 <h3>Spa Services</h3>
-                                <a href = "#spaServ"><img src="../images/spa.jpg" alt="Spa Services" style="width:100%; height: 165px;"></a>
+                                <img src="../images/spa.jpg" alt="Spa Services" style="width:100%; height: 165px;"></a>
                                 </div>
                             </div><br><br><br><br><br><br><br><br><br><br>
+                        </div>
                         ';
 
                         // PLEASE REMOVE WHEN DONE: i already provided the data, pa-design nalang ajyl
@@ -167,27 +176,33 @@
                     echo'
                         <div class="column">
                             <div class="card">
+                            <a href="service.php">
                             <h3>Hair Care Services</h3>
                             <img src="../images/hair.jpeg" alt="Hair Services" style="width:100%">
+                            </a>
                             </div>
                         </div>
                         <div class="column">
                             <div class="card">
+                            <a href="service.php">
                             <h3>Nail Care Services</h3>
                             <img src="../images/manicure.jpg" alt="Nail Services" style="width:100%">
+                            </a>
                             </div>
                         </div>
                         <div class="column">
                             <div class="card">
+                            <a href="service.php">
                             <h3>Spa Services</h3>
                             <img src="../images/spa.jpg" alt="Spa Services" style="width:100%">
+                            </a>
                             </div>
                         </div><br><br><br><br><br><br><br><br><br><br>
                     ';
                     echo'
                             <div class="about-our-team">
                                 <div class="zg-left">
-                                    <img width="250px" src="../images/aboutus.jpg">
+                                    <img width="300px" src="../images/aboutus.jpg">
                                 </div>
                                 <div class="zg-right content">
                                     <h1>About Our Team</h1>

@@ -41,11 +41,7 @@ input[type=submit]:hover {
 .body{
     margin: 0 20px;
 }
-/* .opaque{
-    background-color: #000;
-    color: #fff;
-    opacity: .5;
-} */
+
 .container-form {
     box-shadow: 0 0 10px 2px #888888;
     width: 30%;
@@ -92,13 +88,6 @@ input[type=submit]:hover {
     margin-bottom: 20px;
 }
 .container-form-reg{
-    /* border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 0 10px 2px #888888;
-    padding: 30px;
-    width: 50%;
-    margin-top: 100px;
-    text-align: center; */
     border-radius: 5px;
     background-color: #EED0CF;
     box-shadow: 0 0 10px 2px #888888;
@@ -185,9 +174,15 @@ input[type=submit]:hover {
     width: 25%;
     padding: 0 10px;
   }
+.services-container{
+    margin: 0 20%;
+    background-color: #a17d7b;
+}
   
   /* Remove extra left and right margins, due to padding */
-  .row {margin: 0 -5px;}
+.row {
+    margin: 0 -5px;
+}
   
   /* Clear floats after the columns */
   .row:after {
@@ -207,9 +202,7 @@ input[type=submit]:hover {
     background: #eed0cf;
   } */
   .ca1:focus, .ca1:active{background-color: #CB8F8D;}
-  /* .userName{
-    background-color: #8c615f;
-  } */
+
   
   /* Responsive columns */
   /* @media screen and (max-width: 600px) {
