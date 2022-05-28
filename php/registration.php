@@ -1,4 +1,4 @@
-<form action="handle_registration.php" method="POST">
+<form action="handle_create_user.php" method="POST">
     <div class="row">
         <div class="col-25">
             <label for="fname">First Name</label>

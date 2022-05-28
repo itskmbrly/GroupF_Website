@@ -164,6 +164,12 @@
                         <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                         <strong>Error!</strong> Sorry, your file is too large.
                     </div>";
+            } else if($_GET["msg"] == 28){
+                echo"
+                    <div class='alert alert-success alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Success!</strong> New user has been created.
+                    </div>";
             }
         } 
     echo"</div>";

@@ -34,6 +34,23 @@
         while ($row3 = mysqli_fetch_assoc($listOfSpaServices)) {
             $spa_serv .= "<tr value='" . $row3["id"] . "'>" . $row3['service_name'] . " </tr>";
         }
+
+        //SELECT QUERY FOR SEX TYPE
+        $execQuery2 = mysqli_query($con, "SELECT * FROM tbl_sex");
+        $sexT = "";
+        //FETCHING DATA FOR SEX TYPE
+        while ($row2 = mysqli_fetch_assoc($execQuery2)) {
+            $sexT .= "<option value='" . $row2["id"] . "'>" . $row2['sex_type'] . "</option>";
+        }
+
+        //SELECT QUERY FOR ROLE TYPES
+        $execQuery = mysqli_query($con, "SELECT * FROM tbl_role_types WHERE id NOT IN(3, 4)");
+        $roles = "";
+
+        //FETCHING DATA FOR ROLE TYPES
+        while ($row = mysqli_fetch_assoc($execQuery)) {
+            $roles .= "<option value='" . $row["id"] . "'>" . $row['role_type'] . "</option>";
+        }
     } 
 
 ?>
