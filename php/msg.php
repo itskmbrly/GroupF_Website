@@ -200,6 +200,12 @@
                         <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                         <strong>Successfully</strong> deleted.
                     </div>";
+            } else if($_GET["msg"] == 34){
+                echo"
+                    <div class='alert alert-success alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Successfully</strong> updated.
+                    </div>";
             }
         } 
     echo"</div>";

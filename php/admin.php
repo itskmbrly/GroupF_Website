@@ -56,7 +56,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title edit-service-modal-header">?></h4>
+        <h4 class="modal-title edit-service-modal-header"></h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -72,7 +72,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <input type="submit" value="Edit Service" class='btn btn-success edit-service-modal-link'>
+        <input type="submit" value="Update" class="edit-service-modal-link">
         </form>
       </div>
 
