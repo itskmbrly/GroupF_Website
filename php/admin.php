@@ -54,7 +54,7 @@
   <div class="col-sm-4 bg1">
     <h1>Create New Category</h1>
     <form action="handle_add_category.php" method="POST">
-        <input type="text" id="fname" name="fname" placeholder="Enter a Category">
+        <input type="text" id="fname" name="category" placeholder="Enter a Category">
         <input type="submit" value="Add Category">
     </form>
   </div>

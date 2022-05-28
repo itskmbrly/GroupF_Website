@@ -170,7 +170,19 @@
                         <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                         <strong>Success!</strong> New user has been created.
                     </div>";
-            }
+            } else if($_GET["msg"] == 29){
+                echo"
+                    <div class='alert alert-success alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Success!</strong> New category has been created.
+                    </div>";
+            } else if($_GET["msg"] == 30){
+                echo"
+                    <div class='alert alert-danger alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Error!</strong> Category is null.
+                    </div>";
+            } 
         } 
     echo"</div>";
 ?>
