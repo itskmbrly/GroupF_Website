@@ -56,7 +56,7 @@
         header("Location: welcome_page.php?msg=20"); exit;
     } 
 
-    //CHECKING IF THERE'S A DUPLICATION - password
+    //CHECKING IF THERE'S A DUPLICATION - mobile number
     $execQuery7 = mysqli_query($con, "SELECT * FROM tbl_users WHERE mobile_no = '$mobile_no'");
     $numOfRows2 = mysqli_num_rows($execQuery7);
 
@@ -72,7 +72,7 @@
         //IF THERE'S NO DUPLICATION ON THE DATABASE AND PASSWORD IS THE SAME WITH CONFIRM PASSWORD, NEXT WILL BE INSERT QUERY
 
         //INSERTION IN TBL_USERS
-        $execQuery2 = mysqli_query($con, "INSERT INTO tbl_users(first_name, last_name, email, password, mobile_no, birthdate, sex, role_id, created_at) values('$fname', '$lname', '$email', '$encPassword', '$mobile_no', '$bday', '$sex', '$role', now())");
+        $execQuery2 = mysqli_query($con, "INSERT INTO tbl_users(first_name, last_name, email, password, mobile_no, birthdate, sex, role_id, created_at) VALUES('$fname', '$lname', '$email', '$encPassword', '$mobile_no', '$bday', '$sex', '$role', now())");
 
         //FETCHING THE USER_ID SO WE CAN INPUT IT IN THE TBL_ADDRESS
         $execQuery3 = mysqli_query($con, "SELECT * FROM tbl_users WHERE email = '$email'");
@@ -80,7 +80,7 @@
         $userId = $row["id"];
 
         //INSERTION IN TBL_ADDRESS
-        $execQuery4 = mysqli_query($con, "INSERT INTO tbl_address(user_id, address, barangay, city, province, zip, country) values('$userId', '$address', '$barangay', '$city', '$province', '$zipcode', '$country')");
+        $execQuery4 = mysqli_query($con, "INSERT INTO tbl_address(user_id, address, barangay, city, province, zip, country) VALUES('$userId', '$address', '$barangay', '$city', '$province', '$zipcode', '$country')");
 
         //FETCHING THE ADDRESS_ID SO WE CAN INPUT IT IN THE TBL_USERS
         $execQuery5 = mysqli_query($con, "SELECT * FROM tbl_address WHERE user_id = '$userId'");
@@ -89,6 +89,31 @@
 
         //INSERTION IN TBL_USERS (ADDDRESS_ID)
         $execQuery6 = mysqli_query($con, "UPDATE tbl_users SET address_id = '$address_id' WHERE id = '$userId'");
+        $filename = "PIC_" . $id . "_" . date("Ymd_His") . "_" . $_FILES["inputFile"]["name"][0];
+        $targetfile = "uploads/credentials/" . $filename;
+        $filetype = $_FILES["inputFile"]["type"][0];
+
+        // CHECK FILE SIZE
+        // if ($_FILES["inputFile"]["size"] > 500000) {
+        //     header("Location: index.php?msg=27"); exit;
+        // }
+        // ALLOW CERTAIN FORMATS
+        if($filetype != ""){
+            if($filetype != "image/jpg" && $filetype != "image/png" && $filetype != "image/jpeg") {
+                header("Location: index.php?msg=24"); exit;
+            }
+            
+            //UPLOAD
+            if(move_uploaded_file($_FILES["inputFile"]["tmp_name"][0], $targetfile)){
+                $updateCredentials = mysqli_query($con, "UPDATE tbl_users SET credentials = '$filename' WHERE id = '$id'");
+                if($updateCredentials){
+                    header("Location: index.php?msg=25"); exit;
+                }
+            } else{
+                header("Location: index.php?msg=26"); exit;
+            }
+        }
+
         //EXECUTE QUERY CONDITIONS
         if($execQuery2){
             header("Location: welcome_page.php?msg=18"); exit;

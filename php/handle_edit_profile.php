@@ -82,19 +82,22 @@
         //     header("Location: index.php?msg=27"); exit;
         // }
         // ALLOW CERTAIN FORMATS
-        if($filetype != "image/jpg" && $filetype != "image/png" && $filetype != "image/jpeg") {
-            header("Location: index.php?msg=24"); exit;
+        if($filetype != ""){
+            if($filetype != "image/jpg" && $filetype != "image/png" && $filetype != "image/jpeg") {
+                header("Location: index.php?msg=24"); exit;
+            }
+            
+            //UPLOAD
+            if(move_uploaded_file($_FILES["inputFile"]["tmp_name"][0], $targetfile)){
+                $updateCredentials = mysqli_query($con, "UPDATE tbl_users SET credentials = '$filename' WHERE id = '$id'");
+                if($updateCredentials){
+                    header("Location: index.php?msg=25"); exit;
+                }
+            } else{
+                header("Location: index.php?msg=26"); exit;
+            }
         }
         
-        //UPLOAD
-        if(move_uploaded_file($_FILES["inputFile"]["tmp_name"][0], $targetfile)){
-            $updateCredentials = mysqli_query($con, "UPDATE tbl_users SET credentials = '$filename' WHERE id = '$id'");
-            if($updateCredentials){
-                header("Location: index.php?msg=25"); exit;
-            }
-        } else{
-            header("Location: index.php?msg=26"); exit;
-        }
         //EXECUTE QUERY CONDITIONS
         if($execQuery2){
             header("Location: index.php?msg=21"); exit;

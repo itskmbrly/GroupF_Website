@@ -329,3 +329,16 @@ input[type=submit]:hover {
     overflow: auto;
     text-align: justify;
 }
+
+/*ADMIN CSS (INDEX.PHP)*/
+button a{
+    text-decoration: none;
+    color: #fff;
+}
+
+button a:hover{
+    color: #EED0CF;
+}
+.btn-Admin{
+    background-color: #8c615f ;
+}
