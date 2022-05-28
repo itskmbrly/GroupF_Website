@@ -4,6 +4,9 @@
     $hair_serv = '';
     $nail_serv = '';
     $spa_serv  = '';
+    $sexT      = '';
+    $categories= '';
+    $roles     = '';
 
     if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
         $sessId = $_SESSION["sess-id"];
@@ -15,6 +18,12 @@
             $fname = $fetchInfo["first_name"];
             $lname = $fetchInfo["last_name"];
             $id   = $fetchInfo["id"];
+        }
+
+        //FETCHING THE LIST OF ROLES
+        $execQuery = mysqli_query($con, "SELECT * FROM tbl_role_types WHERE id NOT IN(3, 4)");
+        while ($row = mysqli_fetch_assoc($execQuery)) {
+            $roles .= "<option value='" . $row["id"] . "'>" . $row['role_type'] . "</option>";
         }
 
         //FETCHING THE LIST OF HAIR SERVICES
@@ -35,21 +44,16 @@
             $spa_serv .= "<tr value='" . $row3["id"] . "'>" . $row3['service_name'] . " </tr>";
         }
 
-        //SELECT QUERY FOR SEX TYPE
-        $execQuery2 = mysqli_query($con, "SELECT * FROM tbl_sex");
-        $sexT = "";
-        //FETCHING DATA FOR SEX TYPE
-        while ($row2 = mysqli_fetch_assoc($execQuery2)) {
-            $sexT .= "<option value='" . $row2["id"] . "'>" . $row2['sex_type'] . "</option>";
+        //FETCHING THE LIST OF SEX TYPE
+        $execQuery4 = mysqli_query($con, "SELECT * FROM tbl_sex");
+        while ($row4 = mysqli_fetch_assoc($execQuery4)) {
+            $sexT .= "<option value='" . $row4["id"] . "'>" . $row4['sex_type'] . "</option>";
         }
 
-        //SELECT QUERY FOR ROLE TYPES
-        $execQuery = mysqli_query($con, "SELECT * FROM tbl_role_types WHERE id NOT IN(3, 4)");
-        $roles = "";
-
-        //FETCHING DATA FOR ROLE TYPES
-        while ($row = mysqli_fetch_assoc($execQuery)) {
-            $roles .= "<option value='" . $row["id"] . "'>" . $row['role_type'] . "</option>";
+        //FETCHING THE LIST OF CATEGORIES
+        $listOfCategories = mysqli_query($con, "SELECT * FROM tbl_category");
+        while($row5 = mysqli_fetch_assoc($listOfCategories)){
+            $categories .= "<option value='" . $row5["id"] . "'>" . $row5['name'] . "</option>";
         }
     } 
 
