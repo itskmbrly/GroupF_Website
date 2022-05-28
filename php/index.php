@@ -13,12 +13,10 @@
 
         //FETCHING THE USER'S NAME AND ROLE
         $userInfo = mysqli_query($con,  "SELECT * FROM tbl_users WHERE id = '$sessId'");
-        
-        while($fetchInfo = mysqli_fetch_assoc($userInfo)){
-            $fname = $fetchInfo["first_name"];
-            $lname = $fetchInfo["last_name"];
-            $id   = $fetchInfo["id"];
-        }
+        $fetchInfo = mysqli_fetch_assoc($userInfo);
+        $fname = $fetchInfo["first_name"];
+        $lname = $fetchInfo["last_name"];
+        $id   = $fetchInfo["id"];
 
         //FETCHING THE LIST OF ROLES
         $execQuery = mysqli_query($con, "SELECT * FROM tbl_role_types WHERE id NOT IN(3, 4)");
@@ -55,6 +53,12 @@
         while($row5 = mysqli_fetch_assoc($listOfCategories)){
             $categories .= "<option value='" . $row5["id"] . "'>" . $row5['name'] . "</option>";
         }
+
+        //SELECT QUERY - TBL_SERVICES
+        $selectQuery  = mysqli_query($con, "SELECT * FROM tbl_services");
+        $fetchQuery   = mysqli_fetch_assoc($selectQuery);
+        $service_id   = $fetchQuery["id"];
+        $service_name = $fetchQuery["service_name"]; 
     } 
 
 ?>
@@ -101,6 +105,5 @@
             ?>
         </div>
     </div>
-    
 </body>
 </html>

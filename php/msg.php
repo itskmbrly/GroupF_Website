@@ -194,7 +194,13 @@
                         <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                         <strong>Success!</strong> New service has been created.
                     </div>";
-            } 
+            } else if($_GET["msg"] == 33){
+                echo"
+                    <div class='alert alert-success alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Successfully</strong> deleted.
+                    </div>";
+            }
         } 
     echo"</div>";
 ?>
