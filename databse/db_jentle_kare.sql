@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2022 at 05:12 PM
+-- Generation Time: May 28, 2022 at 10:29 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -43,9 +43,7 @@ CREATE TABLE `tbl_address` (
 --
 
 INSERT INTO `tbl_address` (`id`, `user_id`, `address`, `barangay`, `city`, `province`, `zip`, `country`) VALUES
-(1, 1, 'a', 'a', 'a', 'a', 1870, 'Philippines'),
-(2, 2, 'a', 'a', 'a', 'a', 1111, 'Philippines'),
-(3, 3, 't', 't', 't', 't', 1111, 'Philippines');
+(1, 1, 'a', 'a', 'a', 'a', 1212, 'Philippines');
 
 -- --------------------------------------------------------
 
@@ -113,7 +111,7 @@ INSERT INTO `tbl_role_types` (`id`, `role_type`) VALUES
 CREATE TABLE `tbl_services` (
   `id` int(11) NOT NULL,
   `service_name` varchar(255) NOT NULL,
-  `category` enum('Hair Care Services','Nail Services','Spa Services') NOT NULL
+  `category` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -121,15 +119,15 @@ CREATE TABLE `tbl_services` (
 --
 
 INSERT INTO `tbl_services` (`id`, `service_name`, `category`) VALUES
-(1, 'Hair Cut', 'Hair Care Services'),
-(2, 'Hair Color', 'Hair Care Services'),
-(3, 'Rebond', 'Hair Care Services'),
-(4, 'Manicure ', 'Nail Services'),
-(5, 'Pedicure', 'Nail Services'),
-(6, 'Manicure and Pedicure', 'Nail Services'),
-(7, 'Foot Spa with Massage', 'Spa Services'),
-(8, 'Body Scrub with Massage', 'Spa Services'),
-(9, 'Coconut Scrub', 'Spa Services');
+(1, 'Hair Cut', '1'),
+(2, 'Hair Rebond', '1'),
+(3, 'Hair Color', '1'),
+(4, 'Manicure', '2'),
+(5, 'Pedicure', '2'),
+(6, 'Manicure and Pedicure', '3'),
+(7, 'Foot Spa with Massage', '3'),
+(8, 'Body Scrub with Massage', '3'),
+(9, 'Coconut Scrub', '3');
 
 -- --------------------------------------------------------
 
@@ -176,7 +174,7 @@ CREATE TABLE `tbl_users` (
   `last_name` varchar(200) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `mobile_no` int(11) NOT NULL,
+  `mobile_no` varchar(11) NOT NULL,
   `birthdate` date NOT NULL,
   `sex` varchar(50) NOT NULL,
   `address_id` int(10) NOT NULL,
@@ -192,9 +190,7 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `first_name`, `last_name`, `email`, `password`, `mobile_no`, `birthdate`, `sex`, `address_id`, `role_id`, `created_at`, `updated_at`, `verified`, `credentials`) VALUES
-(1, 'Kimberly Edge', 'de Guzman', 'guzmankimberlyedgede@yahoo.com', '$2y$10$k2LFygrg57xRELXocHd5.OduNtBVPWr2tPzMJ9eU8II1wYorOqhrC', 2147483647, '2002-06-06', '1', 1, 2, '2022-05-26 14:13:23', '2022-05-26 17:10:45', 0, 'PIC_1_20220526_171045_283044012_1914882838703988_3624424842070107209_n.png'),
-(2, 'a', 'a', 'a@gmail.com', '$2y$10$IUl0/8msyIn.5YopjzTAoOgYD7yQIz9mE7XpBwbN3qPJu1B9vVk3O', 2147483647, '2022-05-26', '1', 2, 1, '2022-05-26 14:17:43', NULL, 0, ''),
-(3, 'Erica Edge', 'de Guzman', 'guzmanericaedgede@yahoo.com', '$2y$10$Z2JEjJZJAvS1DAP8VdtFcOC5qxehU.QBB/5itTXIddzRkHPNIBI8u', 2147483647, '1992-12-02', '1', 3, 1, '2022-05-26 14:25:05', NULL, 0, '');
+(1, 'Kimberly Edge', 'de Guzman', 'guzmankimberlyedgede@yahoo.com', '$2y$10$wSUyyyFrLqovwkp6StcZpO3Tm3mH.Im4QrNF.tuJM5zZMPWBbtrGG', '12345678910', '1992-05-28', '2', 1, 3, '2022-05-28 22:28:53', NULL, 0, '');
 
 --
 -- Indexes for dumped tables
@@ -256,7 +252,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_address`
 --
 ALTER TABLE `tbl_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
@@ -298,7 +294,7 @@ ALTER TABLE `tbl_transactions`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
