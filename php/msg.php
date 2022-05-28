@@ -182,6 +182,18 @@
                         <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                         <strong>Error!</strong> Category is null.
                     </div>";
+            } else if($_GET["msg"] == 31){
+                echo"
+                    <div class='alert alert-danger alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Error!</strong> There's a null.
+                    </div>";
+            } else if($_GET["msg"] == 32){
+                echo"
+                    <div class='alert alert-success alert-dismissible'>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+                        <strong>Success!</strong> New service has been created.
+                    </div>";
             } 
         } 
     echo"</div>";
