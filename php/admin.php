@@ -40,7 +40,7 @@
                         <tr>
                             <td>".str_replace('`', '', $servName)."</td>
                             <td>$category</td>
-                            <td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#myModal1'>Edit</button></td>
+                            <td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#myModal1' onclick='javascript: editService(".$service_id2.", ".$servName.")'>Edit</button></td>
                             <td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#myModal2' onclick='javascript: deleteService(".$service_id2.", ".$servName.")'>Delete</button></td>
                         </tr>        
                     </tbody>
@@ -56,7 +56,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Edit - <?php echo $service_name; ?></h4>
+        <h4 class="modal-title edit-service-modal-header">?></h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -68,14 +68,12 @@
                 <option value="" disabled selected hidden>Choose a Category</option>
                 <?php echo $categories; ?>
             </select>
-            <input type="submit" value="Edit Service">
-        </form>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button class='btn btn-success'><a href='handle_user_delete.php?id=$user_id'>Yes</a></button>
-        <button class='btn btn-danger'><a href='index.php'>No</a></button>
+        <input type="submit" value="Edit Service" class='btn btn-success edit-service-modal-link'>
+        </form>
       </div>
 
     </div>
@@ -148,8 +146,8 @@
 
             while($listOfUsers = mysqli_fetch_assoc($execGetUsers)){
                 $user_id  = $listOfUsers["id"];
-                $fname    = $listOfUsers["first_name"];
-                $lname    = $listOfUsers["last_name"];
+                $fname    = "`".$listOfUsers["first_name"]."`";
+                $lname    = "`".$listOfUsers["last_name"]."`";
                 $email    = $listOfUsers["email"];
                 $mobile_no= $listOfUsers["mobile_no"];
                 $role_id  = $listOfUsers["role_id"];
@@ -175,13 +173,13 @@
                 echo"
                     <tbody>
                         <tr>
-                            <td>$lname, $fname</td>
+                            <td>".str_replace('`', '', $lname).", ".str_replace('`', '', $fname)."</td>
                             <td>$email</td>
                             <td>$mobile_no</td>
                             <td>$role_id</td>
                             <td>$verified</td>
                             <td><button type='button' class='btn btn-primary'><a  href='profile_page.php?id=$user_id'>Edit</a></button></td>
-                            <td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#myModal3'>Delete</button></td>
+                            <td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#myModal3' onclick='javascript: deleteUser(".$user_id.", ".$lname.", ".$fname.")'>Delete</button></td>
                         </tr>        
                     </tbody>
                 ";
@@ -196,7 +194,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Delete - <?php echo $lname, $fname; ?></h4>
+        <h4 class="modal-title delete-user-modal-header"></h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -207,7 +205,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button class='btn btn-success'><a href='handle_user_delete.php?id=$user_id'>Yes</a></button>
+        <button class='btn btn-success'><a class="delete-user-modal-link" href=''>Yes</a></button>
         <button class='btn btn-danger'><a href='index.php'>No</a></button>
       </div>
 
@@ -229,5 +227,19 @@
         p[0].innerHTML = "Delete - "+name;
         var c = document.getElementsByClassName("delete-service-modal-link");
         c[0].setAttribute('href', 'handle_service_delete.php?id='+id);
+    }
+    function editService(id, name)
+    {
+        var p = document.getElementsByClassName("edit-service-modal-header");
+        p[0].innerHTML = "Edit - "+name;
+        var c = document.getElementsByClassName("edit-service-modal-link");
+        c[0].setAttribute('href', 'handle_service_edit.php?id='+id);
+    }
+    function deleteUser(id, lname, fname)
+    {
+        var p = document.getElementsByClassName("delete-user-modal-header");
+        p[0].innerHTML = "Edit - "+ lname + ", " + fname;
+        var c = document.getElementsByClassName("delete-user-modal-link");
+        c[0].setAttribute('href', 'handle_user_delete.php?id='+id);
     }
 </script>

@@ -3,8 +3,7 @@
     include_once("connection.php");
 
     //VAR DUMP
-    $id = $_POST["user_id"];
-    
+    $id = $_GET["id"];
     $execQuery = mysqli_query($con, "DELETE FROM tbl_users WHERE id = '$id'");
 
     if($execQuery){
