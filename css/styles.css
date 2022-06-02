@@ -1,27 +1,31 @@
-@font-face{
-    font-family: 'Chihaya';
+@font-face {
+    font-family: "Chihaya";
     src: url(../font/chijun/chijun.ttf);
 }
-*{
-    font-family: 'Chihaya';
+
+* {
+    font-family: "Chihaya" !important;
     font-size: 20px;
     color: #000; /*dw, temporary lang, para makita ko HAHAHA*/
 }
+
 input[type=text], select, [type=password], [type=email], [type=number], [type=date] {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-    background-color: #FAF8E8;
+    background-color: #faf8e8;
 }
+
 label {
     padding: 12px 12px 12px 0;
     display: inline-block;
 }
-input[type=submit] {
-    background-color: #CB8F8D;
-    color: #FAF8E8;
+
+input[type="submit"] {
+    background-color: #cb8f8d;
+    color: #faf8e8;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -30,15 +34,31 @@ input[type=submit] {
     margin-top: 20px;
     margin: 20px auto;
 }
-input[type=submit]:hover {
-    background-color: #8C615F;
+
+input[type="submit"]:hover {
+    background-color: #8c615f;
     color: #3c3c3c;
 }
-.main-container{
-    background-color: #EED0CF;
+
+.main-container {
+    background-color: #eed0cf;
 }
-.body{
+
+.body {
     margin: 0 20px;
+}
+
+.column-ctn {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+    margin-bottom: 90px;
+}
+
+.column-ctn-2 {
+      justify-content: center;
+      display: flex;
 }
 
 .container-form {
@@ -53,16 +73,18 @@ input[type=submit]:hover {
     border-radius: 20px;
     flex-direction: column;
 }
-.create-acct{
-    background-color: #8C615F;
+
+.create-acct {
+    background-color: #8c615f;
     order: 2;
     padding: 10px;
     text-align: center;
     border-radius: 10px;
 }
-.create-acct-btn{
-    background-color: #CB8F8D;
-    color: #FAF8E8;
+
+.create-acct-btn {
+    background-color: #cb8f8d;
+    color: #faf8e8;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -71,49 +93,58 @@ input[type=submit]:hover {
     width: 50%;
     margin: 20px auto;
 }
-.create-acct-btn:hover{
-    background-color: #EED0CF;
+
+.create-acct-btn:hover {
+    background-color: #eed0cf;
     color: #3c3c3c;
     margin-left: auto;
     margin-right: auto;
 }
-.sign-up{
-    background-color: #EED0CF;
+
+.sign-up {
+    background-color: #eed0cf;
     flex: 1;
     order: 1;
     padding: 25px;
 }
-.forgot-pass{
+
+.forgot-pass {
     margin-bottom: 20px;
 }
-.container-form-reg{
+
+.container-form-reg {
     border-radius: 5px;
-    background-color: #EED0CF;
+    background-color: #eed0cf;
     box-shadow: 0 0 10px 2px #888888;
     padding: 20px;
     width: 100%;
 }
-.center{
+
+.center {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .col-25 {
     float: left;
     width: 20%;
     margin-top: 6px;
 }
+
 .col-75 {
     float: left;
     width: 75%;
     margin-top: 6px;
 }
+
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
-.sidenavbar{
+
+.sidenavbar {
     height: 100%;
     width: 20%;
     position: fixed;
@@ -125,46 +156,56 @@ input[type=submit]:hover {
     padding-top: 16px;
     background-color: #eed0cf;
 }
-.sidenavbar img{
+
+.sidenavbar img {
     width: 100px;
     background-color: #eed0cf;
 }
+
 .sidenavbar a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     color: #000;
     display: block;
 }
+
 .sidenavbar a:hover {
     color: #f1f1f1;
 }
+
 .main-body {
     margin-left: 18%;
     padding: 0 4%;
     color: #ffffff;
-    font-family: 'Mulish', sans-serif;
+    font-family: "Mulish", sans-serif;
     display: block;
     position: relative;
     background: #faf8e8;
 }
+
 ::-webkit-scrollbar {
     width: 12px;
 }
+
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
+    box-shadow: inset 0 0 5px grey;
     border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb {
-    background: #8c615f; 
+    background: #8c615f;
     border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: #a17d7b;
 }
-.bg-white{
+
+.bg-white {
     background-color: #ffffff;
 }
-.wrapserv{
+
+.wrapserv {
     display: inline-block;
 }
 /* Float four columns side by side */
@@ -172,110 +213,140 @@ input[type=submit]:hover {
     float: left;
     width: 25%;
     padding: 0 10px;
-  }
+}
+
 .services-container{
     margin: 0 20%;
     background-color: #a17d7b;
 }
-  
-  /* Remove extra left and right margins, due to padding */
+/* Remove extra left and right margins, due to padding */
 .row {
     margin: 0 -5px 10px;
 }
-  
-  .logout-btn{
+
+.logout-btn {
     position: absolute;
     bottom: 0;
-  }
-  .navbarr{
-    width:20%; 
-    background-color: #CB8F8D;
-  }
-  /* .c1:focus, .c2:focus, .c3:focus, .c4:focus, .c5:focus, .c6:focus, .c7:focus{
-    background: #eed0cf;
-  } */
-  .ca1:focus, .ca1:active{background-color: #CB8F8D;}
+}
+  /* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
+.navbarr {
+    width: 20%;
+    background-color: #cb8f8d;
+}
+
+.ca1:focus,
+.ca1:active {
+    background-color: #cb8f8d;
+}
   
   /* Responsive columns */
   /* @media screen and (max-width: 600px) {
-    .column {
-      width: 100%;
-      display: block;
-      margin-bottom: 20px;
-    }
-    .about-our-team{
-        margin: auto;
-    }
-    .aboutus-boxcontainer{
-        margin: 0;
-    }
-    .img-team{
-        float: none;
-        margin-left: 15px;
-    }
-    .img-team > img{
-        width: 400px;
-    }
-    .aboutus-word{
-        text-align: justify;
-        float: none;
-    }
-  } */
+      .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+      }
+      .about-our-team{
+          margin: auto;
+      }
+      .aboutus-boxcontainer{
+          margin: 0;
+      }
+      .img-team{
+          float: none;
+          margin-left: 15px;
+      }
+      .img-team > img{
+          width: 400px;
+      }
+      .aboutus-word{
+          text-align: justify;
+          float: none;
+      }
+    } */
   
   /* Style the counter cards */
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
+    padding: 20px 45px;
     text-align: center;
     background-color: #f1f1f1;
 }
-
-.about-our-team{
+.gmorning {
+    font-family: "Chihaya";
+}
+  
+.about-our-team {      
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
     background-color: #eed0cf;
-    height: 350px;
     padding: 25px 35px;
-    margin: 20px 0 21px 200px;
-    width: 65%;
+    margin: 0px auto;
+    margin-bottom: 5em;
     border-radius: 10px;
+    width: 90%;
 }
-.zg-right{
-    width: 49%;
-    float: right;
-}
-.zg-left{
-    float: left;
-    width: 49%;
-}
-.content{
-    padding-top: 20px;
-}
-/*
-.aboutus-title{
-    text-align: left;
-}
-.aboutus-boxcontainer{    
-    margin: 0 200px 0 200px;
-    height: 400px;
+  
+.about-team-ctn{
+    align-items: center;
+    margin: 0px 90px;
+    margin-top: 20px;
     display: flex;
 }
-.img-team{
-    float: left;
-    margin-top: 100px;
+
+.lblAbt{
+    font-size: 2.3em;
+}
+
+.zg-right {
+    flex: 2;
+    order: 2;
+    text-align: justify;
+    margin: 0px 50px;
+}
+
+.zg-left {
     order: 1;
 }
-.aboutus-word{
-    text-align: justify;
-    width: 450px;
-    float: right;
-    text-justify: auto;
-    margin-top: 20px;
-    order: 2;
-} */
-.edit-profile-container{
-    width: 50%;
-    background-color: #EED0CF;
+
+.content {
+    padding-top: 20px;
 }
+
+.lblServices{
+    margin-left: 65px;
+    font-size: 2.3em;
+}
+
+.lblTitle{
+    font-size: 2.5em
+}
+
+.lblGM{
+    font-size: 1.8em;
+}
+
+.lblWelc{
+    font-size: 1.3em;
+}
+
+.bkAppoint{
+    margin-left: 65px;
+    font-size: 1.5em;
+}
+
+.edit-profile-container {
+    width: 50%;
+    background-color: #eed0cf;
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -287,12 +358,12 @@ input[type=submit]:hover {
     visibility: hidden;
     opacity: 0;
 }
-
+  
 .overlay:target {
     visibility: visible;
     opacity: 1;
 }
-
+  
 .popup {
     margin: 70px auto;
     padding: 20px;
@@ -302,7 +373,7 @@ input[type=submit]:hover {
     position: relative;
     transition: all 5s ease-in-out;
 }
-
+  
 .popup .close {
     position: absolute;
     top: 20px;
@@ -313,16 +384,16 @@ input[type=submit]:hover {
     text-decoration: none;
     color: #333;
 }
-
+  
 .popup .close:hover {
     color: #000000;
 }
-
+  
 .popup .content {
     overflow: auto;
     text-align: justify;
 }
-
+  
 /*ADMIN CSS (INDEX.PHP)*/
 button a{
     text-decoration: none;
@@ -332,12 +403,15 @@ button a{
 button a:hover{
     color: #EED0CF;
 }
+
 .btn-Admin{
     background-color: #8c615f ;
 }
+
 .bg1{
     background-color: #8c615f;
 }
+
 .bg2{
     background-color: #eed0cf;
 }
