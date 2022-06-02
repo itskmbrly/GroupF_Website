@@ -4,7 +4,7 @@
 
     //VAR DUMP
     $id = $_GET["id"];
-    echo"DELETE FROM tbl_services WHERE id = '$id'"; exit;
+    
     $execQuery = mysqli_query($con, "DELETE FROM tbl_services WHERE id = '$id'");
 
     if($execQuery){

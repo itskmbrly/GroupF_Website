@@ -80,7 +80,7 @@
         
         <!-- The Modal -->
         <div class="modal" id="myModal">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="container-form-reg">
                         <!--SIGN UP FORM STARTS HERE-->

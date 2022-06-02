@@ -10,12 +10,12 @@
     <div class='row'>
         <div class='col-sm-3 p-3'><button type='button'class='btn btn-Admin'><a href='#listOfServ'>List of Services</a></button></div>
         <div class='col-sm-3 p-3'><button type='button' class='btn btn-Admin'><a href='#listOfUsers'>List of Users</a></button></div>
-        <div class='col-sm-3 p-3'><button type='button' class='btn btn-Admin'><a href='#createServ'>Create Service</a></button></div>
-        <div class='col-sm-3 p-3'><button type='button' class='btn btn-Admin'><a href='#createUser'>Create User</a></button></div>
+        <div class='col-sm-3 p-3'><button type='button' class='btn btn-Admin' data-bs-toggle='modal' data-bs-target='#myModal4'><a href="#">Create Service</a></button></div>
+        <div class='col-sm-3 p-3'><button type='button' class='btn btn-Admin' data-bs-toggle='modal' data-bs-target='#myModal5'><a href="#">Create User</a></button></div>
     </div>
 </div>
 <!-- TABLE - LIST OF SERVICES -->      
-<div class='container mt-3 bg2'>
+<div class='container mt-3'>
     <h2>List of Services Offered</h2>           
     <table class='table' id='listOfServ'>
         <thead>
@@ -62,7 +62,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <form action="handle_service_edit.php" method="POST">
+        <form action="handle_service_edit.php" method="POST" class="service-edit-modal">
             <input type="text" name="serviceName" placeholder="Enter service name">
             <select name="inputCategory">
                 <option value="" disabled selected hidden>Choose a Category</option>
@@ -104,29 +104,55 @@
     </div>
   </div>
 </div>
-<!--CREATE NEW CATEGORY & SERVICE-->
-<div class="row" id="createServ">
-  <div class="col-sm-4 bg1">
-    <h1>Create New Category</h1>
-    <form action="handle_add_category.php" method="POST">
-        <input type="text" id="fname" name="category" placeholder="Enter a Category">
-        <input type="submit" value="Add Service">
-    </form>
-  </div>
-  <div class="col-sm-8 bg2">
-    <h1>Create New Service</h1>
-    <form action="handle_add_service.php" method="POST">
-        <input type="text" name="serviceName" placeholder="Enter service name">
-        <select name="inputCategory">
-            <option value="" disabled selected hidden>Choose a Category</option>
-            <?php echo $categories; ?>
-        </select>
-        <input type="submit" value="Add Service">
-    </form>
+<!-- The Modal - Create Category and Service -->
+<div class="modal fade" id="myModal4">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create New Category & Service</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form action="handle_add_category.php" method="POST">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 50%;"><input type="text" id="fname" name="category" placeholder="Create A New Category"></td>
+              <td style="width: 50%;"><input type="submit" value="Add"></td>
+            </tr>
+          </table>
+        </form>
+        <br>
+        <form action="handle_add_service.php" method="POST">
+          <table style="width: 100%;">
+            <tr>
+              <td>
+                <input type="text" name="serviceName" placeholder="Create A New Service">
+              </td>
+              <td>
+                <select name="inputCategory">
+                  <option value="" disabled selected hidden>Choose a Category</option>
+                  <?php echo $categories; ?>
+                </select>
+              </td>
+            </tr>
+          </table>
+          <input type="submit" value="Add">
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>
 <!-- TABLE - LIST OF USERS -->
-<div class='container mt-3 bg2'>
+<div class='container mt-3'>
     <h2>List of Users</h2>           
     <table class='table' id='listOfUsers'>
         <thead>
@@ -189,7 +215,7 @@
 </div>
 <!-- The Modal - Delete User -->
 <div class="modal fade" id="myModal3">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
       <!-- Modal Header -->
@@ -212,14 +238,30 @@
     </div>
   </div>
 </div>
-<!-- FORM FOR CREATING A USER -->
-<div id="createUser" class="bg2">
-    <h1>Create a User</h1>
-    <?php 
-        include_once("registration.php");
-    ?>
-</div>
-                
+<!-- The Modal - Create A User -->
+<div class="modal" id="myModal5">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create a User</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <?php include_once("registration.php");?>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>                
 <script>
     function deleteService(id, name)
     {
@@ -232,8 +274,8 @@
     {
         var p = document.getElementsByClassName("edit-service-modal-header");
         p[0].innerHTML = "Edit - "+name;
-        var c = document.getElementsByClassName("edit-service-modal-link");
-        c[0].setAttribute('href', 'handle_service_edit.php?id='+id);
+        var c = document.getElementsByClassName("service-edit-modal");
+        c[0].setAttribute('action', 'handle_service_edit.php?id='+id);
     }
     function deleteUser(id, lname, fname)
     {

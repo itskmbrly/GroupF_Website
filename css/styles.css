@@ -8,7 +8,7 @@
     color: #000; /*dw, temporary lang, para makita ko HAHAHA*/
 }
 input[type=text], select, [type=password], [type=email], [type=number], [type=date] {
-    /* width: 100%; */
+    width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -28,7 +28,6 @@ input[type=submit] {
     cursor: pointer;
     float: right;
     margin-top: 20px;
-    width: 50%;
     margin: 20px auto;
 }
 input[type=submit]:hover {
@@ -181,15 +180,9 @@ input[type=submit]:hover {
   
   /* Remove extra left and right margins, due to padding */
 .row {
-    margin: 0 -5px;
+    margin: 0 -5px 10px;
 }
   
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
   .logout-btn{
     position: absolute;
     bottom: 0;

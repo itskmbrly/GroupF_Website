@@ -7,7 +7,6 @@
     $serviceName = trim($_POST["serviceName"]);
     $serviceCate = trim($_POST["inputCategory"]);
     
-    echo"UPDATE tbl_services SET service_name = '$serviceName', category = '$serviceCate' WHERE id = '$id'";exit;
     //VALIDATION
     if($serviceName == "" && $serviceCate == ""){
         header("Location: index.php?msg=26"); exit;
