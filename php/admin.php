@@ -118,29 +118,37 @@
       <!-- Modal body -->
       <div class="modal-body">
         <form action="handle_add_category.php" method="POST">
-          <table style="width: 100%;">
-            <tr>
-              <td style="width: 50%;"><input type="text" id="fname" name="category" placeholder="Create A New Category"></td>
-              <td style="width: 50%;"><input type="submit" value="Add"></td>
-            </tr>
-          </table>
+          <div class="row">
+            <div class="col">
+              <input type="text" id="fname" name="category" placeholder="Create A New Category">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <input type="submit" value="Add Category">
+            </div>
+          </div>
         </form>
         <br>
         <form action="handle_add_service.php" method="POST">
-          <table style="width: 100%;">
-            <tr>
-              <td>
-                <input type="text" name="serviceName" placeholder="Create A New Service">
-              </td>
-              <td>
-                <select name="inputCategory">
-                  <option value="" disabled selected hidden>Choose a Category</option>
-                  <?php echo $categories; ?>
-                </select>
-              </td>
-            </tr>
-          </table>
-          <input type="submit" value="Add">
+          <div class="row">
+            <div class="col">
+              <input type="text" name="serviceName" placeholder="Create A New Service">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <select name="inputCategory">
+                <option value="" disabled selected hidden>Choose a Category</option>
+                <?php echo $categories; ?>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <input type="submit" value="Add Service">
+            </div>
+          </div>
         </form>
       </div>
 

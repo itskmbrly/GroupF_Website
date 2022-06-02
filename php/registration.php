@@ -8,7 +8,9 @@
       </div>
     </div>
     <div class="row">
-        <input type="email" id="email" name="email" placeholder="Email">
+        <div class="col">
+            <input type="email" id="email" name="email" placeholder="Email">
+        </div>
     </div>
     <div class="row">
         <div class="col">
