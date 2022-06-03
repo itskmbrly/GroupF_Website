@@ -9,13 +9,22 @@
     color: #000; /*dw, temporary lang, para makita ko HAHAHA*/
 }
 
-input[type=text], select, [type=password], [type=email], [type=number], [type=date] {
+input[type=text], select, [type=password], [type=email], [type=number] {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
     background-color: #faf8e8;
+}
+input[type=date]{
+    width: 95%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: #faf8e8;
+
 }
 
 label {
@@ -33,6 +42,7 @@ input[type="submit"] {
     float: right;
     margin-top: 20px;
     margin: 20px auto;
+    width: 55%;
 }
 
 input[type="submit"]:hover {
@@ -57,8 +67,8 @@ input[type="submit"]:hover {
 }
 
 .column-ctn-2 {
-      justify-content: center;
-      display: flex;
+    justify-content: space-between;
+    display: flex;
 }
 
 .container-form {
@@ -79,7 +89,8 @@ input[type="submit"]:hover {
     order: 2;
     padding: 10px;
     text-align: center;
-    border-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .create-acct-btn {
@@ -106,6 +117,8 @@ input[type="submit"]:hover {
     flex: 1;
     order: 1;
     padding: 25px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .forgot-pass {
@@ -119,6 +132,10 @@ input[type="submit"]:hover {
     padding: 20px;
     width: 100%;
 }
+
+/* .modalA{
+
+} */
 
 .center {
     display: flex;
@@ -274,10 +291,15 @@ input[type="submit"]:hover {
   /* Style the counter cards */
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 20px 45px;
+    padding: 30px 40px;
     text-align: center;
     background-color: #f1f1f1;
 }
+
+.column{
+    margin: 0px 55px;
+}
+
 .gmorning {
     font-family: "Chihaya";
 }
