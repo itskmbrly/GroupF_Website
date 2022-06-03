@@ -2,11 +2,11 @@
     <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
     <h2>Good Morning, <?php echo $fname; ?>!</h2>
     <h5>Welcome to JentleKare.</h5>
-</div>";
+</div>
 <h6>Book your appointments now! <input type='date'></form></h6>
 
 <div class="services-container">
-    <h1>SERVICES</h1>';
+    <h1>SERVICES</h1>
     <!-- CATEGORIES OF OFFERED SERVICES -->
     <div class="column">
         <div class="card">

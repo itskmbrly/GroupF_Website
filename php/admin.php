@@ -34,6 +34,14 @@
                 $service_id2 = $listOfServices["id"];
                 $servName    = "`".$listOfServices["service_name"]."`";
                 $category    = $listOfServices["category"];
+                
+                if($category == 1){
+                  $category = "Hair Services";
+                } else if($category == 2){
+                  $category = "Nail Services";
+                } else if($category == 3){
+                  $category = "Spa Services";
+                }
 
                 echo"
                     <tbody>
