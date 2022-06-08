@@ -13,7 +13,7 @@
           <a href="index.php" class="w3-bar-item w3-button c2"><i class="fa fa-home"></i> Home</a>
         ';
 
-        // MY APPOINTMENTS
+        //MY APPOINTMENTS
         if($_SESSION["sess-role"] == 1 || $_SESSION["sess-role"] == 2){
           echo"<a href='appointments.php' class='w3-bar-item w3-button c3'><i class='fa fa-calendar'></i> My Appointments</a>";
         }
@@ -27,12 +27,12 @@
           <a href="logout.php" class="w3-bar-item w3-button logout-btn c5"><i class="fa fa-sign-out"></i> Logout</a>
         ';
       } else{
-          echo'
-            <a href="index.php" class="w3-bar-item w3-button c6"><i class="fa fa-home"></i> Home</a>
-          ';
-          echo'
-            <a href="welcome_page.php" class="w3-bar-item w3-button c7"><i class="fa fa-sign-in"></i> Sign In | Sign Up</a>
-          ';
+          echo"
+            <a href='index.php' class='w3-bar-item w3-button c6'><i class='fa fa-home'></i> Home</a>
+          ";
+          echo"
+            <a href='welcome_page.php' class='w3-bar-item w3-button c7'><i class='fa fa-sign-in'></i> Sign In | Sign Up</a>
+          ";
       }
     ?>
 </div>
