@@ -101,6 +101,7 @@
                 } else{
                     include_once("non_user_perspective.php");
                 }
+                
             ?>
         </div>
     </div>

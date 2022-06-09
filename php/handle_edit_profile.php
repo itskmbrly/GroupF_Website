@@ -73,24 +73,46 @@
         
         $execQuery4 = mysqli_query($con, "UPDATE tbl_address SET user_id = '$id', address = '$address', barangay = '$barangay', city = '$city', province = '$province', zip = '$zipcode') WHERE user_id = '$id'");
 
-        $filename = "PIC_" . $id . "_" . date("Ymd_His") . "_" . $_FILES["inputFile"]["name"][0];
-        $targetfile = "uploads/credentials/" . $filename;
-        $filetype = $_FILES["inputFile"]["type"][0];
+        //FOR UPLOAD DP
+        $filename1 = "PIC_" . $id . "_" . date("Ymd_His") . "_" . $_FILES["inputDP"]["name"][0];
+        $targetfile1 = "uploads/credentials/" . $filename1;
+        $filetype1 = $_FILES["inputDP"]["type"][0];
+
+        if($filetype1 != ""){
+            if($filetype1 != "image/jpg" && $filetype1 != "image/png" && $filetype1 != "image/jpeg") {
+                header("Location: index.php?msg=24"); exit;
+            }
+            
+            //UPLOAD
+            if(move_uploaded_file($_FILES["inputDP"]["tmp_name"][0], $targetfile1)){
+                $updateCredentials1 = mysqli_query($con, "UPDATE tbl_users SET profile_picture = '$filename1' WHERE id = '$id'");
+                if($updateCredentials1){
+                    header("Location: index.php?msg=25"); exit;
+                }
+            } else{
+                header("Location: index.php?msg=26"); exit;
+            }
+        }
+
+        //FOR UPLOAD CREDENTIALS
+        $filename2 = "PIC_" . $id . "_" . date("Ymd_His") . "_" . $_FILES["inputFile"]["name"][0];
+        $targetfile2 = "uploads/credentials/" . $filename2;
+        $filetype2 = $_FILES["inputFile"]["type"][0];
 
         // CHECK FILE SIZE
         // if ($_FILES["inputFile"]["size"] > 500000) {
         //     header("Location: index.php?msg=27"); exit;
         // }
         // ALLOW CERTAIN FORMATS
-        if($filetype != ""){
-            if($filetype != "image/jpg" && $filetype != "image/png" && $filetype != "image/jpeg") {
+        if($filetype2 != ""){
+            if($filetype2 != "image/jpg" && $filetype2 != "image/png" && $filetype2 != "image/jpeg") {
                 header("Location: index.php?msg=24"); exit;
             }
             
             //UPLOAD
-            if(move_uploaded_file($_FILES["inputFile"]["tmp_name"][0], $targetfile)){
-                $updateCredentials = mysqli_query($con, "UPDATE tbl_users SET credentials = '$filename' WHERE id = '$id'");
-                if($updateCredentials){
+            if(move_uploaded_file($_FILES["inputFile"]["tmp_name"][0], $targetfile2)){
+                $updateCredentials2 = mysqli_query($con, "UPDATE tbl_users SET credentials = '$filename2' WHERE id = '$id'");
+                if($updateCredentials2){
                     header("Location: index.php?msg=25"); exit;
                 }
             } else{
