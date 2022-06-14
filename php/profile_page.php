@@ -1,7 +1,33 @@
+<?php
+    //CONNECTION TO THE DATABASE
+    include_once("connection.php");
+
+    if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
+        $sessId = $_SESSION["sess-id"];
+    }
+
+    //GET ID
+    $id = $_GET["id"];
+
+    //FETCHING ALL THE INFORMATION OF THE USER TO DISPLAY
+    $execQuery = mysqli_query($con, "SELECT * FROM tbl_users WHERE id = '$id'");
+
+    $fetchInfo = mysqli_fetch_assoc($execQuery);
+    $fname     = $fetchInfo["first_name"];
+    $lname     = $fetchInfo["last_name"];
+    $email     = $fetchInfo["email"];
+    $password  = $fetchInfo["password"];
+    $mobile_no = $fetchInfo["mobile_no"];
+    $sex_id    = $fetchInfo["sex"];
+    $birthdate = $fetchInfo["birthdate"];
+    $address_id= $fetchInfo["address_id"];
+    $role_id   = $fetchInfo["role_id"]; 
+    $joined    = $fetchInfo["created_at"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap 5-->
@@ -14,110 +40,22 @@
     <link rel="shortcut icon" href="../images/JK.png">
     <!--CSS File-->
     <link rel="stylesheet" href="../css/styles.css">
-    <title>Jentle Kare</title>
+    <title>Jentle Kare | Profile</title>
 </head>
 <body>
-    
-    <?php 
-        //CONNECTION TO THE DATABASE
-        include_once("connection.php");
-
-        //GET ID
-        $id = $_GET["id"];
-
-        //FETCHING ALL THE INFORMATION OF THE USER TO DISPLAY
-        $execQuery = mysqli_query($con, "SELECT * FROM tbl_users WHERE id = '$id'");
-
-        $fetchInfo = mysqli_fetch_assoc($execQuery);
-        $fname     = $fetchInfo["first_name"];
-        $lname     = $fetchInfo["last_name"];
-        $email     = $fetchInfo["email"];
-        $password  = $fetchInfo["password"];
-        $mobile_no = $fetchInfo["mobile_no"];
-        $sex_id    = $fetchInfo["sex"];
-        $birthdate = $fetchInfo["birthdate"];
-        $address_id= $fetchInfo["address_id"];
-        $role_id   = $fetchInfo["role_id"]; 
-        //FETCHING ALL THE INFORMATION UNDER THE ADDRESS ID OF THE USER
-        $execQuery2 = mysqli_query($con, "SELECT * FROM tbl_address WHERE id = '$address_id'");
-
-        $fetchInfo2 = mysqli_fetch_assoc($execQuery2);
-        $address    = $fetchInfo2["address"];
-        $barangay   = $fetchInfo2["barangay"];
-        $city       = $fetchInfo2["city"];
-        $province   = $fetchInfo2["province"];
-        $zip        = $fetchInfo2["zip"];
-        //FETTCHING SEX_TYPE
-        $execQuery3 = mysqli_query($con, "SELECT * FROM tbl_sex WHERE id = '$sex_id'");
-
-        $fetchInfo3 = mysqli_fetch_assoc($execQuery3);
-        $sex        = $fetchInfo3["sex_type"];
-        include_once("navbar.php"); //SIDE NAVIGATION BAR
-    ?>
-    
+    <!--SIDE NAVIGATION BAR-->
+    <?php include_once("navbar.php"); ?>
     <div style="margin-left:20%; background-color: #faf8e8;">
-        <?php include_once("msg.php"); //ALERT MESSAGES ?>
-        <div class="w3-container body ">
-            <form action="handle_edit_profile.php" method="POST" enctype="multipart/form-data">
-                <div class="mb-3 mt-3">
-                    <label for="fname" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="fname" value="<?php echo $fname; ?>" name="fname">
-                </div>
-                <div class="mb-3">
-                    <label for="lname" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lname" value="<?php echo $lname; ?>" name="lname">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" value="<?php echo $email; ?>" name="email">
-                </div>
-                <div class="mb-3">
-                    <label for="pwd" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="pwd1" value="<?php echo $password; ?>" name="password1">
-                </div>
-                <div class="mb-3">
-                    <label for="pwd" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="pwd2" value="<?php echo $password; ?>" name="password2">
-                </div>
-                <div class="mb-3">
-                    <label for="m_no" class="form-label">Mobile Number</label>
-                    <input type="number" class="form-control" id="m_no" value="<?php echo $mobile_no; ?>" name="mobile_no">
-                </div>
-                <div class="mb-3">
-                    <label for="bday" class="form-label">Birthdate</label>
-                    <input type="date" class="form-control" id="bday" value="<?php echo $birthdate; ?>" name="birthdate">
-                </div>
-                <div class="mb-3">
-                    <label for="sex" class="form-label">Sex</label>
-                    <input type="text" class="form-control" id="sex" value="<?php echo $sex; ?>" name="sex">
-                </div>
-                <div class="mb-3">
-                    <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="address" value="<?php echo $address; ?>" name="address">
-                </div>
-                <div class="mb-3">
-                    <label for="pwd" class="form-label">Barangay</label>
-                    <input type="text" class="form-control" id="pwd" value="<?php echo $barangay; ?>" name="barangay">
-                </div>
-                <div class="mb-3">
-                    <label for="city" class="form-label">City</label>
-                    <input type="text" class="form-control" id="city" value="<?php echo $city; ?>" name="city">
-                </div>
-                <div class="mb-3">
-                    <label for="province" class="form-label">Province</label>
-                    <input type="text" class="form-control" id="province" value="<?php echo $province; ?>" name="province">
-                </div>
-                <div class="mb-3">
-                    <label for="zipcode" class="form-label">Zip Code</label>
-                    <input type="number" class="form-control" id="zipcode" value="<?php echo $zip; ?>" name="zipcode">
-                </div>
-                <div class="mb-3">
-                    <label for="file" class="form-label">File Upload</label>
-                    <input type="file" class="form-control" id="fileupload" name="inputFile[]"multiple="multiple">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
-            </form>
+        <!--ALERT MESSAGE-->
+        <?php include_once("msg.php"); ?>
+        <div class="w3-container body">
+            <?php
+                if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
+                    if($_SESSION["sess-role"] == 2 || $_SESSION["sess-role"] == 3){
+                        include_once("edit_profile.php");
+                    }
+                }
+            ?>
         </div>
     </div>
 </body>

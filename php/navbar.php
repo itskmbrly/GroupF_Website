@@ -5,20 +5,25 @@
       if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
         //REMOVE WHEN DONE: you can insert here the profile picture
         //NAME
-        echo"
-          <a href='profile_page.php?id=$id' class='w3-bar-item w3-button ca1'><i class='fa fa-user-circle'></i> $fname $lname</a>
-        ";
+        if($_SESSION["sess-role"] == 1){
+          echo"
+            <a href='profile_page_laborer.php?id=$id' class='w3-bar-item w3-button ca1'><i class='fa fa-user-circle'></i> $fname $lname</a>
+          ";
+        } else{
+          echo"
+            <a href='profile_page.php?id=$id' class='w3-bar-item w3-button ca1'><i class='fa fa-user-circle'></i> $fname $lname</a>
+          ";
+        }
+        
         //HOME
         echo'
           <a href="index.php" class="w3-bar-item w3-button c2"><i class="fa fa-home"></i> Home</a>
         ';
 
-        // MY APPOINTMENTS
-        if($_SESSION["sess-role"] == 1 || $_SESSION["sess-role"] == 2){
-          echo"<a href='appointments.php' class='w3-bar-item w3-button c3'><i class='fa fa-calendar'></i> My Appointments</a>";
-        }
-        //MY FAVORITES
+        //MY APPOINTMENTS && MY FAVORITES
         if($_SESSION["sess-role"] == 2){
+          echo"<a href='appointments.php' class='w3-bar-item w3-button c3'><i class='fa fa-calendar'></i> My Appointments</a>";
+
           echo"<a href='favorites.php' class='w3-bar-item w3-button c4'><i class='fa fa-heart'></i> My Favorites</a>";
         }
         //LOG OUT
@@ -27,12 +32,12 @@
           <a href="logout.php" class="w3-bar-item w3-button logout-btn c5"><i class="fa fa-sign-out"></i> Logout</a>
         ';
       } else{
-          echo'
-            <a href="index.php" class="w3-bar-item w3-button c6"><i class="fa fa-home"></i> Home</a>
-          ';
-          echo'
-            <a href="welcome_page.php" class="w3-bar-item w3-button c7"><i class="fa fa-sign-in"></i> Sign In | Sign Up</a>
-          ';
+          echo"
+            <a href='index.php' class='w3-bar-item w3-button c6'><i class='fa fa-home'></i> Home</a>
+          ";
+          echo"
+            <a href='welcome_page.php' class='w3-bar-item w3-button c7'><i class='fa fa-sign-in'></i> Sign In | Sign Up</a>
+          ";
       }
     ?>
 </div>

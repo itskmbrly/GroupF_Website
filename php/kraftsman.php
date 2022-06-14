@@ -1,3 +1,16 @@
+<?php
+    include_once("connection.php");
+    if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
+        $sessId = $_SESSION["sess-id"];
+
+        //FETCHING THE USER'S NAME AND ROLE
+        $userInfo = mysqli_query($con,  "SELECT * FROM tbl_users WHERE id = '$sessId'");
+        $fetchInfo = mysqli_fetch_assoc($userInfo);
+        $fname = $fetchInfo["first_name"];
+        $lname = $fetchInfo["last_name"];
+        $id   = $fetchInfo["id"];
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +30,7 @@
     <title>Jentle Kare</title>
 </head>
 <body>
+<<<<<<< HEAD
 
 
 <!-- KIM DI KO PO ALAM PANO LAGYAN NG NAVBAR HEHHEE PALAGYAN TAPOS ILL WORK WITH THIS NA HUHU ;-; ONEGAIII AND ARIGATHANKS!! -->
@@ -71,5 +85,104 @@
                 </div>
             </div>
         </div>
+    <div class='container p-5 my-5 border bg-white'>
+        <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
+        <h2>Good Morning, <?php echo $fname; ?>!</h2>
+        <h5>Welcome to JentleKare.</h5>
+    </div>
+    <!-- TABLE - LIST OF APPOINTMENTS -->      
+    <div class='container mt-3'>
+        <h2>List of Appointments</h2>           
+        <table class='table' id='listOfAppointments'>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Contact Number</th>
+                    <th>Email</th>
+                    <th>Service</th>
+                    <th>Date & Time</th>
+                    <th>Decline</th>
+                </tr>
+            </thead>
+            <?php
+                //FETCHING ALL THE DATA INSIDE THE TABLE SERVICES
+                $execGetAppointments = mysqli_query($con, "SELECT * FROM tbl_transactions WHERE kraftsman_id = '$id' ORDER BY date");
+
+                while($listOfAppointments = mysqli_fetch_assoc($execGetAppointments)){
+                    $appointmentID = $listOfAppointments["id"];
+                    $klientID      = $listOfAppointments["klient_id"];
+                    $servName      = "`".$listOfAppointments["service"]."`";
+                    $date          = $listOfAppointments["date"];
+                    $time          = $listOfAppointments["time"];
+                    
+                    $selectKlient = mysqli_query($con, "SELECT * FROM tbl_users WHERE id = '$klientID'");
+                    $fetchKlient  = mysqli_fetch_assoc($selectKlient);
+                    $fname        = $fetchKlient["first_name"];
+                    $lname        = $fetchKlient["last_name"];
+                    $address      = $fetchKlient["address"];
+                    $email        = $fetchKlient["email"];
+
+                    $selectAddress = mysqli_query($con, "SELECT * FROM tbl_address WHERE id = '$address'");
+                    $fetchAddress  = mysqli_fetch_assoc($selectAddress);
+                    $address       = $fetchAddress["address"];
+                    $barangay      = $fetchAddress["barangay"];
+                    $city          = $fetchAddress["city"];
+                    $province      = $fetchAddress["province"];
+                    $zip           = $fetchAddress["zip"];
+                    
+                    echo"
+                        <tbody>
+                            <tr>
+                                <td>$lname, $fname</td>
+                                <td>$address $barangay $city $province $zip</td>
+                                <td>$email</td>
+                                <td>".str_replace('`', '', $servName)."</td>
+                                <td>$date $time</td>
+                                <td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#myModal2' onclick='javascript: declineService(".$appointmentID.", ".$fname.", ".$lname.")'>Delete</button></td>
+                            </tr>        
+                        </tbody>
+                    ";
+                }
+            ?>     
+        </table>
+    </div>
+    <!-- The Modal - Decline Appointment -->
+    <div class="modal fade" id="myModal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title delete-service-modal-header"></h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+            <h4>Are you sure you want to decline this service?</h4>
+            <form action="handle_decline_appointment.php" method="POST">
+                <textarea name="inputReason" id="inpReason" cols="30" rows="10"></textarea>
+            </form>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="submit" class='btn btn-success'><a class="delete-service-modal-link" href="">Yes</a></button>
+            <button class='btn btn-danger'><a href='index.php'>No</a></button>
+        </div>
+
+        </div>
+    </div>
+    </div>
 </body>
+<!-- <script>
+    function declineService(id, fname, lname)
+    {
+        var p = document.getElementsByClassName("delete-service-modal-header");
+        p[0].innerHTML = "Decline - "+ fname + lname;
+        var c = document.getElementsByClassName("delete-service-modal-link");
+        c[0].setAttribute('href', 'handle_service_decline.php?id='+id);
+    }
+</script> -->
 </html>
