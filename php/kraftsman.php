@@ -30,61 +30,8 @@
     <title>Jentle Kare</title>
 </head>
 <body>
-<<<<<<< HEAD
 
-
-<!-- KIM DI KO PO ALAM PANO LAGYAN NG NAVBAR HEHHEE PALAGYAN TAPOS ILL WORK WITH THIS NA HUHU ;-; ONEGAIII AND ARIGATHANKS!! -->
-    <div class="container p-5 my-5 border bg-white">
-        <h4 style="text-align:center" class="lblTitle">A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
-        <h2 class="gmorning lblGM">Good Morning, Guest!</h2>
-        <h5 class="lblWelc">Welcome to JentleKare.</h5>
-    </div>
-        <h6 class="bkAppoint">Book your appointments now! <input type="date"></h6>
-        <!-- CATEGORIES OF OFFERED SERVICES -->
-        <div class="column-ctn">
-            <h1 class="lblServices">SERVICES</h1>
-            <div class="column-ctn-2">
-                <div class="column">
-                    <div class="card">
-                        <a href = "service.php#hairServ">
-                        <h3>Hair Care Services</h3>
-                        <img src="../images/hair.jpeg" alt="Hair Services" style="width:250px"></a>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="card">
-                        <a href = "service.php#nailServ">
-                        <h3>Nail Care Services</h3>
-                        <img src="../images/manicure.jpg" alt="Nail Services" style="width:250px"></a>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="card">
-                        <a href = "service.php#spaServ">
-                        <h3>Spa Services</h3>
-                        <img src="../images/spa.jpg" alt="Spa Services" style="width:250px; height:175px"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- about our team  -->
-        <div class="about-our-team">
-            <h3 class="lblAbt">ABOUT OUR TEAM</h3>
-            <div class="about-team-ctn">
-                <div class="zg-left">
-                    <img width="400px" src="../images/aboutus.jpg">
-                </div>
-                <div class="zg-right content">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora id aliquam magnam quam dignissimos, corrupti ex distinctio debitis aut tenetur reiciendis veniam repudiandae qui expedita facilis, vel assumenda pariatur doloribus!
-                    <br>
-                    <br>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora id aliquam magnam quam dignissimos, corrupti ex distinctio debitis aut tenetur reiciendis veniam repudiandae qui expedita facilis, vel assumenda pariatur doloribus!</p>
-                </div>
-            </div>
-        </div>
+    <?php include_once("navbar.php"); ?>
     <div class='container p-5 my-5 border bg-white'>
         <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
         <h2>Good Morning, <?php echo $fname; ?>!</h2>
