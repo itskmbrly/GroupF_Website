@@ -249,32 +249,6 @@ input[type="submit"]:hover {
     background-color: #cb8f8d;
 }
   
-  /* Responsive columns */
-  /* @media screen and (max-width: 600px) {
-      .column {
-        width: 100%;
-        display: block;
-        margin-bottom: 20px;
-      }
-      .about-our-team{
-          margin: auto;
-      }
-      .aboutus-boxcontainer{
-          margin: 0;
-      }
-      .img-team{
-          float: none;
-          margin-left: 15px;
-      }
-      .img-team > img{
-          width: 400px;
-      }
-      .aboutus-word{
-          text-align: justify;
-          float: none;
-      }
-    } */
-  
   /* Style the counter cards */
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -424,7 +398,31 @@ button a:hover{
 .bg2{
     background-color: #eed0cf;
 }
-
+  /* Responsive columns */
+@media screen and (max-width: 600px) {
+    .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    }
+    .about-our-team{
+        margin: auto;
+    }
+    .aboutus-boxcontainer{
+        margin: 0;
+    }
+    .img-team{
+        float: none;
+        margin-left: 15px;
+    }
+    .img-team > img{
+        width: 400px;
+    }
+    .aboutus-word{
+        text-align: justify;
+        float: none;
+    }
+}
 /*PROFILE PAGE CSS*/
 /* Style the tab */
 .tab {
