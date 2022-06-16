@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2022 at 10:29 PM
+-- Generation Time: Jun 16, 2022 at 10:13 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -43,7 +43,9 @@ CREATE TABLE `tbl_address` (
 --
 
 INSERT INTO `tbl_address` (`id`, `user_id`, `address`, `barangay`, `city`, `province`, `zip`, `country`) VALUES
-(1, 1, 'a', 'a', 'a', 'a', 1212, 'Philippines');
+(1, 1, 'a', 'a', 'a', 'a', 1212, 'Philippines'),
+(2, 2, '1', '1', '1', '1', 1111, 'Philippines'),
+(3, 3, 'Lot 2 Block 7 Road 1 Upehco', 'Brgy San Luis', 'Antipolo City', 'Rizal', 1870, 'Philippines');
 
 -- --------------------------------------------------------
 
@@ -80,6 +82,28 @@ CREATE TABLE `tbl_documents` (
   `id_type` enum('Passport','Driver''s License','PhilHealth ID','SSS UMID Card','Postal ID','TIN ID','Voter''s ID','PRC ID','Senior Citizen ID','PWD ID','OFW ID','National ID','Student ID') NOT NULL,
   `filename` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_kraftsman`
+--
+
+CREATE TABLE `tbl_kraftsman` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `service_name` int(11) NOT NULL,
+  `price` double(10,2) NOT NULL,
+  `service_picture` varchar(255) NOT NULL DEFAULT 'blank.png'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_kraftsman`
+--
+
+INSERT INTO `tbl_kraftsman` (`id`, `user_id`, `service_name`, `price`, `service_picture`) VALUES
+(1, 3, 1, 150.00, 'blank.png'),
+(2, 3, 2, 200.00, 'blank.png');
 
 -- --------------------------------------------------------
 
@@ -158,8 +182,10 @@ CREATE TABLE `tbl_transactions` (
   `id` int(11) NOT NULL,
   `kraftsman_id` int(10) NOT NULL,
   `klient_id` int(10) NOT NULL,
+  `service` varchar(200) NOT NULL,
   `date` date DEFAULT NULL,
-  `time` time DEFAULT NULL
+  `time` time DEFAULT NULL,
+  `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -182,15 +208,18 @@ CREATE TABLE `tbl_users` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `verified` tinyint(1) NOT NULL,
-  `credentials` varchar(255) NOT NULL
+  `credentials` varchar(255) NOT NULL,
+  `profile_picture` varchar(255) NOT NULL DEFAULT 'user.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`id`, `first_name`, `last_name`, `email`, `password`, `mobile_no`, `birthdate`, `sex`, `address_id`, `role_id`, `created_at`, `updated_at`, `verified`, `credentials`) VALUES
-(1, 'Kimberly Edge', 'de Guzman', 'guzmankimberlyedgede@yahoo.com', '$2y$10$wSUyyyFrLqovwkp6StcZpO3Tm3mH.Im4QrNF.tuJM5zZMPWBbtrGG', '12345678910', '1992-05-28', '2', 1, 3, '2022-05-28 22:28:53', NULL, 0, '');
+INSERT INTO `tbl_users` (`id`, `first_name`, `last_name`, `email`, `password`, `mobile_no`, `birthdate`, `sex`, `address_id`, `role_id`, `created_at`, `updated_at`, `verified`, `credentials`, `profile_picture`) VALUES
+(1, 'Kimberly Edge', 'de Guzman', 'guzmankimberlyedgede@yahoo.com', '$2y$10$wSUyyyFrLqovwkp6StcZpO3Tm3mH.Im4QrNF.tuJM5zZMPWBbtrGG', '12345678910', '1992-05-28', '2', 1, 3, '2022-05-28 22:28:53', NULL, 0, '', 'user.png'),
+(2, 'Erica Edge', 'de Guzman', 'guzmanericaedgede@yahoo.com', '$2y$10$MBuEDzyYkLO/emOc27EPNeKJ85mILPqQeS8L6BHuLV8wPA/jEWTTW', '09195198723', '1992-02-12', '1', 2, 2, '2022-06-02 15:13:40', NULL, 0, '', 'user.png'),
+(3, 'Kimberly Edge', 'de Guzman', 'itskmbrly@yahoo.com', '$2y$10$MBuEDzyYkLO/emOc27EPNeKJ85mILPqQeS8L6BHuLV8wPA/jEWTTW', '01010101010', '2002-06-06', '1', 3, 1, '2022-06-08 13:50:44', NULL, 0, '', 'user.png');
 
 --
 -- Indexes for dumped tables
@@ -212,6 +241,12 @@ ALTER TABLE `tbl_category`
 -- Indexes for table `tbl_documents`
 --
 ALTER TABLE `tbl_documents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_kraftsman`
+--
+ALTER TABLE `tbl_kraftsman`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -252,7 +287,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_address`
 --
 ALTER TABLE `tbl_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
@@ -265,6 +300,12 @@ ALTER TABLE `tbl_category`
 --
 ALTER TABLE `tbl_documents`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_kraftsman`
+--
+ALTER TABLE `tbl_kraftsman`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_role_types`
@@ -294,7 +335,7 @@ ALTER TABLE `tbl_transactions`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
