@@ -325,6 +325,26 @@ input[type="submit"]:hover {
     font-size: 1.5em;
 }
 
+.lblServ{
+    text-decoration: none;
+}
+
+.sample{
+    border-bottom: 3px solid rgba(0, 0, 0, 0);
+}
+.sample:hover{
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #3c3c3c;
+}
+
+.columnBox{
+    /* background-color: rgb(127, 182, 227); */
+    /* width: 300px; */
+    /* height: 400px; */
+
+}
+
 .edit-profile-container {
     width: 50%;
     background-color: #eed0cf;

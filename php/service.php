@@ -20,7 +20,12 @@
     <div style="margin-left:20%; background-color: #faf8e8;">
         <!--ALERT MESSAGE-->
         <?php include_once("msg.php"); ?>
-
     </div>
+    <!-- <div class="container p-5 my-5 border bg-white">
+        <h4 style="text-align:center" class="lblTitle">A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
+        <h2 class="gmorning lblGM">Good Morning, Guest!</h2>
+        <h5 class="lblWelc">Welcome to JentleKare.</h5>
+    </div>
+        <h6 class="bkAppoint">Book your appointments now! <input type="date"></h6> -->
 </body>
 </html>
