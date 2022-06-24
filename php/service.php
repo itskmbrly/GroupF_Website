@@ -1,4 +1,6 @@
-<?php include_once("connection.php"); ?>
+<?php
+error_reporting(0);
+include_once("connection.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,16 +22,19 @@
 <body>
     <!--SIDE NAVIGATION BAR-->
     <?php include_once("navbar.php"); ?>
-    <div style="margin-left:20%; ">
+
     <!--ALERT MESSAGE-->
-    <?php include_once("msg.php"); ?>
-    
+    <div style="margin-left:20%; ">
+        <?php include_once("msg.php"); ?>
     </div>
-    <div class="container p-5 my-5 border bg-white">
-        <h4 style="text-align:center" class="lblTitle">A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
-        <h2 class="gmorning lblGM">Good Morning, <?php echo $fname; ?>!</h2>
-        <h5 class="lblWelc">Welcome to JentleKare.</h5>
+
+    <div>
+        <div class="container p-5 my-5 border bg-white">
+            <h4 style="text-align:center" class="lblTitle">A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
+            <h2 class="gmorning lblGM">Good Morning, <?php echo $fname; ?>!</h2>
+            <h5 class="lblWelc">Welcome to JentleKare.</h5>
+        </div>
+            <h6 class="bkAppoint">Book your appointments now! <input type="date"></h6>
     </div>
-        <h6 class="bkAppoint">Book your appointments now! <input type="date"></h6>
 </body>
 </html>
