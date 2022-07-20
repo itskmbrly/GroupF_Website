@@ -33,13 +33,13 @@
 
     <?php include_once("navbar.php"); ?>
     <div class='container p-5 my-5 border bg-white'>
-        <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
-        <h2>Good Morning, <?php echo $fname; ?>!</h2>
-        <h5>Welcome to JentleKare.</h5>
+        <h4 style='text-align:center' class="lblTitle">A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
+        <h2 class="gmorning lblGM">Good Morning, <?php echo $fname; ?>!</h2>
+        <h5 class="lblWelc">Welcome to JentleKare.</h5>
     </div>
     <!-- TABLE - LIST OF APPOINTMENTS -->      
     <div class='container mt-3'>
-        <h2>List of Appointments</h2>           
+        <h2 class="lbllistofAppt">List of Appointments</h2>           
         <table class='table' id='listOfAppointments'>
             <thead>
                 <tr>

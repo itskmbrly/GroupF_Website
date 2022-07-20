@@ -14,10 +14,10 @@
     </div>
     <div class="row">
         <div class="col">
-            <input type="password" id="password1" name="password1" min="8" placeholder="Password">
+            <input type="password" id="password1" name="password1" min="8" placeholder="Password" require>
         </div>
         <div class="col">
-            <input type="password" id="password2" name="password2" min="8" placeholder="Confirm Password">
+            <input type="password" id="password2" name="password2" min="8" placeholder="Confirm Password" require>
         </div>
     </div>
     <div class="row">

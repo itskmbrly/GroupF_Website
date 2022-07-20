@@ -46,7 +46,7 @@
         ?>
         <div class="w3-container body">
             <div class="container mt-3">
-                <h2>My Appointments</h2>          
+                <h2 class="lblmyAppt">My Appointments</h2>          
                 <table class="table table-hover">
                     <thead>
                     <tr>

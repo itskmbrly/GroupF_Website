@@ -1,12 +1,12 @@
 <div class='container p-5 my-5 border bg-white'>
-    <h4 style='text-align:center'>A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
-    <h2>Good Morning, <?php echo $fname; ?>!</h2>
-    <h5>Welcome to JentleKare.</h5>
+    <h4 style='text-align:center' class="lblTitle">A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
+    <h2 class="gmorning lblGM">Good Morning, <?php echo $fname; ?>!</h2>
+    <h5 class="lblWelc">Welcome to JentleKare.</h5>
 </div>
 <!--BUTTONS-->
 <div class='container-fluid mt-3'>
-    <h1>View As Administrator</h1>
-    <p>Administrator has all the access regarding on creating, retrieving, updating, and deleting of services and users.</p>
+    <h1 class="lblviewAdmin">View As Administrator</h1>
+    <p class="lblviewAdminP">Administrator has all the access regarding on creating, retrieving, updating, and deleting of services and users.</p>
     <div class='row'>
         <div class='col-sm-3 p-3'><button type='button'class='btn btn-Admin'><a href='#listOfServ'>List of Services</a></button></div>
         <div class='col-sm-3 p-3'><button type='button' class='btn btn-Admin'><a href='#listOfUsers'>List of Users</a></button></div>
@@ -16,19 +16,19 @@
 </div>
 <!-- TABLE - LIST OF SERVICES -->      
 <div class='container mt-3'>
-      <h2>List of Services Offered</h2>           
-      <table class='table' id='listOfServ'>
-          <thead>
-              <tr>
-                  <th>Service Name</th>
-                  <th>Category</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-              </tr>
-          </thead>
-          <?php
-              //FETCHING ALL THE DATA INSIDE THE TABLE SERVICES
-              $execGetServices = mysqli_query($con, "SELECT * FROM tbl_services ORDER BY service_name");
+    <h2 class="lblLSOffered">List of Services Offered</h2>           
+    <table class='table' id='listOfServ'>
+        <thead>
+            <tr>
+                <th>Service Name</th>
+                <th>Category</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <?php
+            //FETCHING ALL THE DATA INSIDE THE TABLE SERVICES
+            $execGetServices = mysqli_query($con, "SELECT * FROM tbl_services ORDER BY service_name");
 
               while($listOfServices = mysqli_fetch_assoc($execGetServices)){
                   $service_id2 = $listOfServices["id"];
@@ -167,24 +167,25 @@
     </div>
   </div>
 </div>
-  <!-- TABLE - LIST OF USERS -->
-  <div class='container mt-3'>
-      <h2>List of Users</h2>           
-      <table class='table' id='listOfUsers'>
-          <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Mobile Number</th>
-                  <th>Role</th>
-                  <th>Verified</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-              </tr>
-          </thead>
-          <?php
-              //FETCHING ALL THE DATA INSIDE THE TABLE USERS
-              $execGetUsers = mysqli_query($con, "SELECT * FROM tbl_users ORDER BY last_name");
+
+<!-- TABLE - LIST OF USERS -->
+<div class='container mt-3'>
+    <h2 class="lblLOUsers">List of Users</h2>           
+    <table class='table' id='listOfUsers'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Role</th>
+                <th>Verified</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <?php
+            //FETCHING ALL THE DATA INSIDE THE TABLE USERS
+            $execGetUsers = mysqli_query($con, "SELECT * FROM tbl_users ORDER BY last_name");
 
               while($listOfUsers = mysqli_fetch_assoc($execGetUsers)){
                   $user_id  = $listOfUsers["id"];

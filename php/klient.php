@@ -28,25 +28,25 @@
             <h1 class="lblServices">SERVICES</h1>
             <div class="column-ctn-2">
                 <div class="column">
-                    <div class="card">
-                        <a href = "service.php#hairServ">
-                        <h3>Hair Care Services</h3>
+                    <div class="card columnBox">
+                        <a class="lblServ" href = "service.php#hairServ">
+                        <h3 class="sample">Hair Care Services</h3>
                         <img src="../images/hair.jpeg" alt="Hair Services" style="width:250px"></a>
                     </div>
                 </div>
 
                 <div class="column">
-                    <div class="card">
-                        <a href = "service.php#nailServ">
-                        <h3>Nail Care Services</h3>
+                    <div class="card columnBox">
+                        <a class="lblServ" href = "service.php#nailServ">
+                        <h3 class="sample">Nail Care Services</h3>
                         <img src="../images/manicure.jpg" alt="Nail Services" style="width:250px"></a>
                     </div>
                 </div>
 
                 <div class="column">
-                    <div class="card">
-                        <a href = "service.php#spaServ">
-                        <h3>Spa Services</h3>
+                    <div class="card columnBox">
+                        <a class="lblServ" href = "service.php#spaServ">
+                        <h3 class="sample">Spa Services</h3>
                         <img src="../images/spa.jpg" alt="Spa Services" style="width:250px; height:175px"></a>
                     </div>
                 </div>
