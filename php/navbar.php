@@ -1,42 +1,38 @@
-<div class="w3-sidebar w3-bar-block w3-card navbarr">
-  <!--LOGO-->
-  <center><img src="../images/JentleKare.png" alt="Logo" style="width: 55%"></center>
+<div class="w3-sidebar w3-bar-block w3-card left">
+    <center><img src="../images/icon/JentleKare.png" alt="Logo" style="width: 55%"></center>
     <?php
       if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
+        $sfname = $_SESSION["fname"];
+        $slname = $_SESSION["lname"];
         //REMOVE WHEN DONE: you can insert here the profile picture
         //NAME
-        if($_SESSION["sess-role"] == 1){
-          echo"
-            <a href='profile_page_laborer.php?id=$id' class='w3-bar-item w3-button ca1'><i class='fa fa-user-circle'></i> $fname $lname</a>
-          ";
-        } else{
-          echo"
-            <a href='profile_page.php?id=$id' class='w3-bar-item w3-button ca1'><i class='fa fa-user-circle'></i> $fname $lname</a>
-          ";
-        }
-        
+        echo"
+          <a href='profile-page.php?id=$sessId' class='w3-bar-item w3-button'><i class='fa fa-user-circle'></i> $sfname $slname</a>
+        ";
+
         //HOME
         echo'
-          <a href="index.php" class="w3-bar-item w3-button c2"><i class="fa fa-home"></i> Home</a>
+            <a href="index.php" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a>
         ';
 
-        //MY APPOINTMENTS && MY FAVORITES
-        if($_SESSION["sess-role"] == 2){
-          echo"<a href='appointments.php' class='w3-bar-item w3-button c3'><i class='fa fa-calendar'></i> My Appointments</a>";
-
-          echo"<a href='favorites.php' class='w3-bar-item w3-button c4'><i class='fa fa-heart'></i> My Favorites</a>";
+        //ADMINISTRATOR
+        if($_SESSION["sess-role"] == 3){
+            echo"<a href='list-users.php' class='w3-bar-item w3-button'><i class='fa fa-group'></i> List of Users</a>";
+            echo"<a href='index.php' class='w3-bar-item w3-button'><i class='fa fa-cogs'></i> List of Services</a>";
+            echo"<a href='create-user.php' class='w3-bar-item w3-button'><i class='fa fa-user-plus'></i> Create User</a>";
+            echo"<a href='create-services.php' class='w3-bar-item w3-button'><i class='fa fa-plus-square'></i> Create Services</a>";
         }
+
         //LOG OUT
-        //PLEASE REMOVE WHEN DONE: pakibaba nalang ajyl katulad ng nasa wireframe natin
         echo'
-          <a href="logout.php" class="w3-bar-item w3-button logout-btn c5"><i class="fa fa-sign-out"></i> Logout</a>
+          <a href="logout.php" class="w3-bar-item w3-button logout-btn"><i class="fa fa-sign-out"></i> Logout</a>
         ';
       } else{
           echo"
-            <a href='index.php' class='w3-bar-item w3-button c6'><i class='fa fa-home'></i> Home</a>
+            <a href='index.php' class='w3-bar-item w3-button'><i class='fa fa-home'></i> Home</a>
           ";
           echo"
-            <a href='welcome_page.php' class='w3-bar-item w3-button c7'><i class='fa fa-sign-in'></i> Sign In | Sign Up</a>
+            <a href='sign-up-sign-in.php' class='w3-bar-item w3-button'><i class='fa fa-sign-in'></i> Sign In | Sign Up</a>
           ";
       }
     ?>

@@ -1,0 +1,503 @@
+/*INDEX.PHP*/
+::selection {
+    background-color: #cb8f8d;
+}
+
+/*SCROLLBAR*/
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8c615f;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a17d7b;
+} */
+
+p,
+a,
+i,
+b,
+h2,
+h3 {
+    font-family: 'Baloo 2', cursive;
+    letter-spacing: 1px;
+}
+
+.right {
+    background-color: #faf8e8;
+    margin-left: 20%;
+}
+
+/*NAVBAR*/
+.left {
+    background-color: #8c615f;
+    width: 20%;
+}
+
+/* Sidebar links */
+.left a {
+    display: block;
+    color: #fff;
+    padding: 16px;
+    text-decoration: none;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+/* Active/current link */
+.left a.active {
+    background-color: #eed0cf;
+}
+
+.logout-btn {
+    position: absolute;
+    bottom: 0;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*admin.php*/
+.banner {
+    background-color: #8c615f;
+    text-align: center;
+    box-shadow: 1px 1px 5px black;
+}
+
+.modal {
+    padding-right: 0px !important;
+}
+
+.picture-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.picture-box img {
+    width: 50%;
+    display: none;
+}
+
+input[type=text],
+[type=password],
+[type=email],
+[type=number],
+[type=date],
+select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: #faf8e8;
+    padding: 15px;
+    width: 100%;
+}
+
+input[type=submit] {
+    background-color: #cb8f8d;
+    color: #faf8e8;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin-top: 20px;
+    margin: 20px auto;
+    width: 30%;
+}
+
+input[type=submit]:hover {
+    background-color: #8c615f;
+    color: #3c3c3c;
+}
+
+/*create-user.php*/
+.cu-container {
+    height: 100vh;
+    padding: 30px;
+}
+
+.form-group {
+    width: 50%;
+}
+
+.fg {
+    width: 100%;
+}
+
+.cu-container h3 {
+    text-align: center;
+}
+
+.cu-container input[type=text],
+.cu-container [type=password],
+.cu-container [type=email],
+.cu-container [type=number],
+.cu-container [type=date],
+.cu-container select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: #fff;
+    padding: 20px;
+}
+
+/*list-users.php*/
+.lu-container {
+    height: 100vh;
+    /*please remove when users are already 20 (?)*/
+}
+
+
+/*create-service.php*/
+.cs-container {
+    height: 100vh;
+    padding: 200px;
+}
+
+.cs-container input[type=text],
+.cs-container select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: #fff;
+    padding: 20px;
+}
+
+/*profile-page.php*/
+.pp-container {
+    padding: 35px 30px;
+    height: 100%;
+}
+
+.pp-container input[type=text],
+.pp-container input[type=number],
+.pp-container input[type=email],
+.pp-container input[type=date],
+.pp-container select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: #fff;
+    font-size: 16px;
+}
+
+.pp-container h3 {
+    text-align: center;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.dp div {
+    padding: 10px;
+}
+
+.profile-grid>.dp>b {
+    font-size: 20px;
+}
+
+.pp-container img {
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+/*navigation bar inside the profile page*/
+.nav-tabs {
+    margin-top: 20px;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #cb8f8d;
+}
+
+.btnChangePass {
+    width: 250px;
+    float: right;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #cb8f8d;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #3c3c3c;
+}
+
+.btnChangePass:hover {
+    background-color: #efbdbb;
+    box-shadow: 0 0 10px pink;
+}
+
+.hvh {
+    height: 100vh;
+}
+
+/*edit-profile.php*/
+.form-edit input[type=file] {
+    border: none;
+    padding: 4px;
+    background-color: #faf8e8;
+    width: 20%;
+}
+
+/*change-password.php*/
+.cp-container {
+    height: 100vh;
+    padding: 200px;
+}
+
+.cp-container h3 {
+    text-align: center;
+}
+
+/*kraftsman.php*/
+.btn-add-serv {
+    background-color: #cb8f8d;
+    color: #faf8e8;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin-top: 20px;
+    margin: 20px 30px;
+    width: 20%;
+}
+
+.btn-add-serv:hover {
+    background-color: #cb8f8db1;
+}
+
+.k-container select,
+.k-container input[type=number] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: #faf8e8;
+    padding: 5px;
+}
+
+/*klient.php*/
+.card-title {
+    color: #fff;
+}
+
+.klient-container {
+    margin: 20px 20px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    margin-top: 50px;
+}
+
+.categories>.card {
+    height: 250px;
+    width: 250px;
+    left: 1px;
+    margin-left: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #cb8f8d;
+    box-shadow: inset 0 0 10px;
+    cursor: pointer;
+}
+
+.card-img-top {
+    width: 80%;
+}
+
+.card a {
+    text-align: center;
+}
+
+.categories>.card:hover,
+.services-container:hover {
+    box-shadow: 0px 0px 10px #ff6699;
+}
+
+/*non-user-perspective.php*/
+.nup-container {
+    margin: 20px 20px;
+}
+
+/*list_services.php*/
+.services-container {
+    width: 250px;
+    margin: 0px 0px 10px 5px;
+    height: 300px;
+    display: inline-block;
+    background: #eed0cf;
+    box-shadow: inset 0 0 5px white;
+}
+
+.services-container img {
+    margin-top: 15px;
+    width: 70%;
+}
+
+.card-title {
+    color: #cb8f8d;
+    font-weight: 500;
+}
+
+#spa,
+#nail,
+#hair {
+    margin-top: 50px;
+}
+
+/*services.php*/
+.selected-card {
+    margin: 70px 50px 50px 50px;
+}
+
+.service-template {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    background: #cb8f8d;
+}
+
+.service-left-section {
+    padding: 50px;
+    box-shadow: inset 0 0 10px;
+}
+
+.service-left-section img {
+    width: 110%;
+}
+
+.service-right-section {
+    padding: 30px;
+}
+
+.service-right-section>.price {
+    font-weight: 500;
+    color: #fff;
+}
+
+.service-right-section a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.two-buttons {
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin-top: 30px;
+}
+
+.btnFavorite {
+    width: 220px;
+    background-color: #fff;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    color: #3c3c3c;
+    cursor: pointer;
+}
+
+.btnFavorite:hover,
+#fave:hover {
+    background-color: #3c3c3c;
+    color: white;
+}
+
+#fave {
+    border: none;
+    background-color: #fff;
+    color: #3c3c3c;
+}
+
+.btnBook {
+    width: 220px;
+    background-color: #8c615f;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btnBook:hover {
+    background-color: #3c3c3c;
+    color: white;
+}
+
+.profile-laborer {
+    background-color: #cb8f8d;
+    margin-top: 50px;
+    border-radius: 5px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    grid-template-columns: 20% 1fr 2fr;
+    grid-gap: 20px;
+}
+
+.profile-laborer img {
+    border-radius: 50%;
+    width: 80px;
+    border: 2px solid white;
+}
+
+.profile-laborer-sidedish {
+    display: grid;
+    grid-template-columns: 20% 42% 50%;
+    grid-gap: 10px;
+    margin-left: 25px;
+}
+
+.profile-laborer .btn1 {
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.profile-laborer .btn2 {
+    background: #8c615f;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.profile-laborer a:hover {
+    color: #fff;
+}
+
+.btn1:hover,
+.btn2:hover {
+    background-color: #3c3c3c;
+    color: white;
+}
+
+.profile-laborer a {
+    text-decoration: none;
+}
+
+.chosen-service-container select {
+    padding: 7px;
+}

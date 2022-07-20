@@ -4,5 +4,5 @@
 
   session_destroy(); // this destroys all initialized / declared session variables
 
-  header("Location: welcome_page.php");
+  header("Location: sign-up-sign-in.php");
 ?>

@@ -1,5 +1,9 @@
-<?php
-    include_once("connection.php");
+<?php 
+    include_once("connection.php"); 
+    $services = '';
+    $categories = '';
+    $pictures = '';
+
     if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
         $sessId = $_SESSION["sess-id"];
 
@@ -9,127 +13,164 @@
         $fname = $fetchInfo["first_name"];
         $lname = $fetchInfo["last_name"];
         $id   = $fetchInfo["id"];
-    }
+
+        //SELECT QUERY - TBL_CATEGORIES
+        $selectQuery1  = mysqli_query($con, "SELECT * FROM tbl_category");
+        while($row1 = mysqli_fetch_assoc($selectQuery1)){
+            $categories .= "<option value='" . $row1["id"] . "'>" . $row1["category"] . "</option>";
+        }
+
+        //once the user chose a category, a drop down list of services will appear from the specific category id  
+        $servQuery = mysqli_query($con, "SELECT * FROM tbl_services");
+        while($row2 = mysqli_fetch_assoc($servQuery)){
+            $services .= "<option value='". $row2["id"] ."' class='services-options cat-" . $row2["category_id"] . "' id='" . $row2["id"] . "'>" . $row2["service_name"] . "</option>";
+        }
+
+        $fetchPictures = mysqli_query($con, "SELECT * FROM tbl_pictures");
+        while($row3 = mysqli_fetch_assoc($fetchPictures)){
+            $pictures .= "<option class='picture-options cat-" . $row3["category_id"] . "' id='" . $row3["id"] . "'>" . $row3["picture"] . "</option>";
+        }
+  } 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap 5-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <!--W3 School-->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--Shortcut Icon of Jentle Kare-->
-    <link rel="shortcut icon" href="../images/JK.png">
-    <!--CSS File-->
-    <link rel="stylesheet" href="../css/styles.css">
-    <title>Jentle Kare</title>
-</head>
-<body>
-
-    <?php include_once("navbar.php"); ?>
-    <div class='container p-5 my-5 border bg-white'>
-        <h4 style='text-align:center' class="lblTitle">A PLATFORM FOR ALL YOUR BEAUTY NEEDS</h4>
-        <h2 class="gmorning lblGM">Good Morning, <?php echo $fname; ?>!</h2>
-        <h5 class="lblWelc">Welcome to JentleKare.</h5>
+<div class="k-container">
+    <!--Banner-->
+    <div class="container p-3 my-3 banner text-white">
+        <h2>Good Day, <?php echo $fname; ?>!</h2>
+        <h3>Welcome to JentleKare.</h3>
+        <i>A platform for all your beauty needs.</i>
     </div>
-    <!-- TABLE - LIST OF APPOINTMENTS -->      
-    <div class='container mt-3'>
-        <h2 class="lbllistofAppt">List of Appointments</h2>           
-        <table class='table' id='listOfAppointments'>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Contact Number</th>
-                    <th>Email</th>
-                    <th>Service</th>
-                    <th>Date & Time</th>
-                    <th>Decline</th>
-                </tr>
-            </thead>
-            <?php
-                //FETCHING ALL THE DATA INSIDE THE TABLE SERVICES
-                $execGetAppointments = mysqli_query($con, "SELECT * FROM tbl_transactions WHERE kraftsman_id = '$id' ORDER BY created_at");
-
-                while($listOfAppointments = mysqli_fetch_assoc($execGetAppointments)){
-                    $appointmentID = $listOfAppointments["id"];
-                    $klientID      = $listOfAppointments["klient_id"];
-                    $servName      = "`".$listOfAppointments["service"]."`";
-                    $date          = $listOfAppointments["date"];
-                    $time          = $listOfAppointments["time"];
-                    
-                    $selectKlient = mysqli_query($con, "SELECT * FROM tbl_users WHERE id = '$klientID'");
-                    $fetchKlient  = mysqli_fetch_assoc($selectKlient);
-                    $fname        = $fetchKlient["first_name"];
-                    $lname        = $fetchKlient["last_name"];
-                    $address      = $fetchKlient["address"];
-                    $email        = $fetchKlient["email"];
-
-                    $selectAddress = mysqli_query($con, "SELECT * FROM tbl_address WHERE id = '$address'");
-                    $fetchAddress  = mysqli_fetch_assoc($selectAddress);
-                    $address       = $fetchAddress["address"];
-                    $barangay      = $fetchAddress["barangay"];
-                    $city          = $fetchAddress["city"];
-                    $province      = $fetchAddress["province"];
-                    $zip           = $fetchAddress["zip"];
-                    
-                    echo"
-                        <tbody>
-                            <tr>
-                                <td>$lname, $fname</td>
-                                <td>$address $barangay $city $province $zip</td>
-                                <td>$email</td>
-                                <td>".str_replace('`', '', $servName)."</td>
-                                <td>$date $time</td>
-                                <td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#myModal2' onclick='javascript: declineService(".$appointmentID.", ".$fname.", ".$lname.")'>Delete</button></td>
-                            </tr>        
-                        </tbody>
-                    ";
-                }
-            ?>     
-        </table>
-    </div>
-    <!-- The Modal - Decline Appointment -->
-    <div class="modal fade" id="myModal2">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-            <h4 class="modal-title delete-service-modal-header"></h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-            <h4>Are you sure you want to decline this service?</h4>
-            <form action="handle_decline_appointment.php" method="POST">
-                <textarea name="inputReason" id="inpReason" cols="30" rows="10"></textarea>
-            </form>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-            <button type="submit" class='btn btn-success'><a class="delete-service-modal-link" href="">Yes</a></button>
-            <button class='btn btn-danger'><a href='index.php'>No</a></button>
-        </div>
-
+    <button type="button" class="btn btn-add-serv" data-toggle="modal" data-target="#myModal">
+        Add Service
+    </button>
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <!-- Modal Header -->
+                <div class="modal-header">
+                <h4 class="modal-title">Add Service</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form action="handle-kraft-add-service.php" method="POST" class="needs-validation" novalidate>
+                        <div class="form-group fg">
+                            <select name="inputCategory" id="cat-slct" class="form-control" required onchange="catShow(value)">
+                                <option value="" disabled selected hidden>Choose a Category</option>
+                                <?php echo $categories; ?>
+                            </select>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group fg" style="display:none;" id="select-services">
+                            <select name="inputService" id="serv-slct" class="form-control" required >
+                                <option value="" disabled selected hidden>Choose a Service</option>
+                                <?php echo $services; ?>
+                            </select>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group fg" style="display:none;" id="select-picture">
+                            <select name="inputServPic" id="serv-pic" class="form-control" required onchange="picShow(value)">
+                                <option value="" disabled selected hidden>Choose a Picture</option>
+                                <?php echo $pictures; ?>
+                            </select>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group fg">
+                            <div class="picture-box">
+                                <img src="../images/open-box.png" alt="Default Image" id="img">
+                            </div>
+                        </div>
+                        <div class="form-group fg">
+                            <input type="number" name="inputPrice" id="inputPrice" required placeholder="Enter Price">
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-</body>
-<!-- <script>
-    function declineService(id, fname, lname)
-    {
-        var p = document.getElementsByClassName("delete-service-modal-header");
-        p[0].innerHTML = "Decline - "+ fname + lname;
-        var c = document.getElementsByClassName("delete-service-modal-link");
-        c[0].setAttribute('href', 'handle_service_decline.php?id='+id);
+</div>
+<script>
+    // Disable form submissions if there are invalid fields
+    (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Get the forms we want to add validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+        });
+    }, false);
+    })();
+
+    holder = 0;
+    function catShow(value){
+        if(value != ""){
+            let selected_category = document.getElementById("cat-slct");
+            let service_blank = document.getElementById("serv-slct");
+            let serv_pic_blank = document.getElementById("serv-pic");
+            let services = document.getElementById("select-services");
+            let picture = document.getElementById("select-picture");
+            let serv_pic_img = document.getElementById("img");
+            services.style.display = "block";
+            picture.style.display = "block";
+            
+            // hide all services
+            var services2 = document.getElementsByClassName('services-options');
+            for(var i = 0; i < services2.length; i++){
+                services2[i].style.display = "none";
+            }
+
+            var services3 = document.getElementsByClassName('cat-'+ value);
+            for(var i = 0; i < services3.length; i++){
+                services3[i].style.display = "block";
+            }
+
+            var serv_pic2 = document.getElementsByClassName('picture-options');
+            for(var i = 0; i < serv_pic2.length; i++){
+                serv_pic2[i].style.display = "none";
+            }
+
+            var serv_pic3 = document.getElementsByClassName('cat-'+ value);
+            for(var i = 0; i < serv_pic3.length; i++){
+                serv_pic3[i].style.display = "block";
+            }
+
+            service_blank.value = "";
+            serv_pic_blank.value = "";
+            holder = value;
+            serv_pic_img.style.display = "flex";
+            serv_pic_img.src = "../images/open-box.png";
+        }
     }
-</script> -->
-</html>
+    function picShow(value){
+        if(value != ""){
+            let serv_pic = document.getElementById("serv-pic");
+            let serv_pic_img = document.getElementById("img");
+            if(holder == 1){
+                dir = "hair";
+            } else if(holder == 2){
+                dir = "nail";
+            } else if(holder == 3){
+                dir = "spa";
+            } serv_pic_img.src = "../images/"+dir+"/"+value+".png";
+        }
+    }
+</script>

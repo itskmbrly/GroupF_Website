@@ -1,71 +1,108 @@
-<form action="handle_create_user.php" method="POST">
-    <div class="row">
-      <div class="col">
-        <input type="text" id="fname" name="fname" placeholder="First Name">
-      </div>
-      <div class="col">
-        <input type="text" id="lname" name="lname" placeholder="Last Name">
-      </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <input type="email" id="email" name="email" placeholder="Email">
+<form action="handle-registration.php" method="POST" class="needs-validation" novalidate>
+    <div class="input-group mb-3">
+        <div class="form-group">
+            <input type="text" id="fname" name="fname" placeholder="First Name" class="form-control" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <input type="text" id="lname" name="lname" placeholder="Last Name" class="form-control" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+    </div>  
+    <div class="input-group mb-3">
+        <div class="form-group fg">
+            <input type="email" class="form-control" name="email" placeholder="Email" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+    </div> 
+    <div class="input-group mb-3">
+        <div class="form-group">
+            <input type="password" name="password1" min="8" placeholder="Password" class="form-control" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <input type="password" name="password2" min="8" placeholder="Confirm Password" class="form-control" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <input type="password" id="password1" name="password1" min="8" placeholder="Password" require>
+    <div class="input-group mb-3">
+        <div class="form-group">
+            <input type="number" name="mobile_no" minlength="11" maxlength="11" placeholder="Mobile Number" class="form-control" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
         </div>
-        <div class="col">
-            <input type="password" id="password2" name="password2" min="8" placeholder="Confirm Password" require>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <input type="number" id="mobile_no" name="mobile_no" minlength="11" maxlength="11" placeholder="Mobile Number">
-        </div>
-        <div class="col">
-            <input type="date" id="bday" name="bday" placeholder="Birthdate">
+        <div class="form-group">
+            <input type="date" name="bday" class="form-control" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
         </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <input type="text" id="address" name="address" placeholder="Address">
-      </div>
-      <div class="col">
-        <input type="text" id="barangay" name="barangay" placeholder="Barangay">
-      </div>
-      <div class="col">
-        <input type="text" id="city" name="city" placeholder="City">
-      </div>
+    <div class="input-group mb-3">
+        <div class="form-group">
+            <input type="text" name="address" placeholder="Address" class="form-control" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="barangay" placeholder="Barangay" class="form-control" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <input type="text" id="province" name="province" placeholder="Province">
-      </div>
-      <div class="col">
-        <input type="number" id="zipcode" name="zipcode" placeholder="Zip Code">
-      </div>
-      <div class="col">
-        <input type="text" id="country" name="country" value="Philippines">
-      </div>
+    <div class="input-group mb-3">
+        <div class="form-group">
+            <input type="text" name="city" placeholder="City" class="form-control" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="province" placeholder="Province" class="form-control" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <select name="inputSex">
+    <div class="input-group mb-3">
+        <div class="form-group">
+            <input type="number" name="zipcode" placeholder="Zip Code" class="form-control" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="country" value="Philippines" class="form-control" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <div class="form-group">
+            <select name="inputSex" class="form-control" required >
                 <option value="" disabled selected hidden>Choose a Sex</option>
-                <?php echo $sexT; ?>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
             </select>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
         </div>
-        <div class="col">
-            <select name="inputRole">
+        <div class="form-group">
+            <select name="inputRole"  class="form-control" required >
                 <option value="" disabled selected hidden>Choose a Role</option>
                 <?php echo $roles; ?>
             </select>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
         </div>
     </div>
-    <!-- <span class="notifReq1" id="r15">*</span> -->
-    <div class="row">
-        <input type="submit" name="btnSubmit" value="Submit" onclick="Register()">
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember" required><p style="font-size: 12px;">I accept the terms and conditions and I have read the <a href="#">privacy policy</a></p>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Check this checkbox to continue.</div>
+      </label>
     </div>
+    <input type="submit" value="Submit">
 </form>
