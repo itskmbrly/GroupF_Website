@@ -80,14 +80,25 @@
         <div class="w3-container pp-container">
             <?php
                 if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
-                    echo"
+                    if($dp == 'user.png'){
+                        echo"
                         <div class='profile-grid'>
                             <div class='dp'>
-                                <img src='../uploads/display_picture/$id/$dp' alt='Display Profile'><br>
+                                <img src='../uploads/display_picture/$dp' alt='Display Profile'><br>
                                 <b>$fname $lname</b>
                             </div>
                         </div>
                     ";
+                    } else{
+                        echo"
+                            <div class='profile-grid'>
+                                <div class='dp'>
+                                    <img src='../uploads/display_picture/$id/$dp' alt='Display Profile'><br>
+                                    <b>$fname $lname</b>
+                                </div>
+                            </div>
+                        ";
+                    }
                 }
             ?>
 
@@ -132,7 +143,7 @@
                         if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
                             if($_SESSION["sess-role"] == 1){
                                 echo"
-                                    <a class='nav-link' data-toggle='tab' href='#menu3'>Edit Profile<</a>
+                                    <a class='nav-link' data-toggle='tab' href='#menu3'>Edit Profile</a>
                                 ";
                             } else if($_SESSION["sess-role"] == 2 && $sessId == $id){
                                 echo"
@@ -183,7 +194,7 @@
                                 echo"
                                     <h2>Favorites</h2>
                                 ";
-                                include_once('favorites.php');
+                                include_once('list-favorites.php');
                             } 
                         }
                     ?>

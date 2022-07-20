@@ -1,8 +1,10 @@
 <div class="feedback-section">
     <center>
-        <form action="handleFeedback.php" method="POST">
+        <form action="handle-feedback.php" method="POST" class="needs-validation" novalidate>
             <div class="form-group">
-            <textarea class="form-control" rows="5" cols="15" id="comment" name="text" placeholder="Write your feedback here"></textarea>
+            <textarea class="form-control" rows="5" cols="15" id="comment" name="text" placeholder="Write your feedback here" required></textarea>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <input type="submit" class="btnFeedback" value="Submit">
         </form>
@@ -11,28 +13,48 @@
     <div class="shown-feedbacks">
         <?php
             //FETCH ALL COMMENTS FROM A CERTAIN SERVICE
-            $selectQuery = mysqli_query($con, "SELECT * FROM tbl_feedbacks WHERE kraftsman_id = '$service_id'");
-            $serviceInformation = mysqli_fetch_assoc($selectQuery);
-            $userFeedbackId = $serviceInformation["klient_id"];
-            $feedback = $serviceInformation["feedback"];
-            $created_at = $serviceInformation["created_at"];
+            // $selectQuery2 = mysqli_query($con, "SELECT * FROM tbl_feedbacks WHERE kraftsman_id = '$service_id'");
+            // $serviceInformation = mysqli_fetch_assoc($selectQuery2);
+            // $userFeedbackId = $serviceInformation["klient_id"];
+            // $feedback = $serviceInformation["feedback"];
+            // $feedback_created_at = $serviceInformation["created_at"];
 
-            //FETCH KLIENT INFORMATION
-            $selectQuery2 = mysqli_query($con, "SELECT * FROM tbl_users WHERE id = '$userFeedbackId'");
-            $userInformation - mysqli_fetch_assoc($selectQuery2);
-            $fname = $userInformation["first_name"];
-            $lname = $userInformation["last_name"];
-            $dp = $userInformation["profile_picture"];
+            // //FETCH KLIENT INFORMATION
+            // $selectQuery3 = mysqli_query($con, "SELECT * FROM tbl_users WHERE id = '$userFeedbackId'");
+            // $userInformation - mysqli_fetch_assoc($selectQuery3);
+            // $feedback_fname = $userInformation["first_name"];
+            // $feedback_lname = $userInformation["last_name"];
+            // $feedback_dp = $userInformation["profile_picture"];
 
-            echo'
-                <div class="media border p-3">
-                    <img src="img_avatar3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                    <div class="media-body">
-                        <h4>'; echo $fname . " " . $lname; echo'<small><i>Posted on'; echo $created_at; echo'</i></small></h4>
-                        <p>'; echo $feedback; echo'</p>      
-                    </div>
-                </div>
-            ';
+            // echo'
+            //     <div class="media border p-3">
+            //         <img src="../uploads/display_picture/'; echo $userFeedbackId . "/" . $feedback_dp; echo'" alt="Display Picture" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+            //         <div class="media-body">
+            //             <h4>'; echo $feedback_fname . " " . $feedback_lname; echo'<small><i>Posted on'; echo $feedback_created_at; echo'</i></small></h4>
+            //             <p>'; echo $feedback; echo'</p>      
+            //         </div>
+            //     </div>
+            // ';
         ?>
     </div>
 </div>
+<script>
+    // Disable form submissions if there are invalid fields
+    (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Get the forms we want to add validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+        });
+    }, false);
+    })();
+</script>   
