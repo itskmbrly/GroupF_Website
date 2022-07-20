@@ -410,7 +410,7 @@ input[type=submit]:hover {
     margin-top: 30px;
 }
 
-.btnFavorite {
+#fave {
     width: 220px;
     background-color: #fff;
     padding: 15px;
@@ -418,18 +418,12 @@ input[type=submit]:hover {
     border-radius: 10px;
     color: #3c3c3c;
     cursor: pointer;
+    border: none;
 }
 
-.btnFavorite:hover,
 #fave:hover {
     background-color: #3c3c3c;
     color: white;
-}
-
-#fave {
-    border: none;
-    background-color: #fff;
-    color: #3c3c3c;
 }
 
 .btnBook {

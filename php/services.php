@@ -108,8 +108,7 @@
                                     <h1 class="price">'; echo $price; echo'</h1>
                                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit dolor consequuntur beatae commodi omnis quia aperiam magni odit incidunt culpa!</p>
                                     <div class="two-buttons">
-                                        <div class="btnFavorite">
-                                        <form method="POST" action="favorites.php?serveid='; echo $service_id; echo'"><button type="submit" name="fave" id="fave">'; echo $addedFave; echo'</button></form></div>
+                                        <form method="POST" action="favorites.php?serveid='; echo $service_id; echo'"><button type="submit" name="fave" id="fave">'; echo $addedFave; echo'</button></form>
                                         <div class="btnBook" data-toggle="modal" data-target="#myModal"><i class="fa fa-calendar"></i> Book an Appointment</div>
                                     </div>
                                 </div>
@@ -173,7 +172,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
   </div>
 </body>
