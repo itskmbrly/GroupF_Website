@@ -54,7 +54,7 @@
             </thead>
             <?php
                 //FETCHING ALL THE DATA INSIDE THE TABLE SERVICES
-                $execGetAppointments = mysqli_query($con, "SELECT * FROM tbl_transactions WHERE kraftsman_id = '$id' ORDER BY date");
+                $execGetAppointments = mysqli_query($con, "SELECT * FROM tbl_transactions WHERE kraftsman_id = '$id' ORDER BY created_at");
 
                 while($listOfAppointments = mysqli_fetch_assoc($execGetAppointments)){
                     $appointmentID = $listOfAppointments["id"];

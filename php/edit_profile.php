@@ -90,8 +90,7 @@
     <div class="row">
         <div class="col">
             <select name="sex">
-                <option value="<?php echo $sex_id; ?>" disabled selected hidden>Choose a Sex</option>
-                <?php echo $sexT; ?>
+                <option value="<?php echo $sex; ?>" disabled selected hidden>Choose a Sex</option>
             </select>
         </div>
         <div class="col">

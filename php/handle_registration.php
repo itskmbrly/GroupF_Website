@@ -89,6 +89,7 @@
 
         //INSERTION IN TBL_USERS (ADDDRESS_ID)
         $execQuery6 = mysqli_query($con, "UPDATE tbl_users SET address_id = '$address_id' WHERE id = '$userId'");
+        
         $filename = "PIC_" . $id . "_" . date("Ymd_His") . "_" . $_FILES["inputFile"]["name"][0];
         $targetfile = "uploads/credentials/" . $filename;
         $filetype = $_FILES["inputFile"]["type"][0];

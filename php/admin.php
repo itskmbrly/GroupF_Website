@@ -16,46 +16,46 @@
 </div>
 <!-- TABLE - LIST OF SERVICES -->      
 <div class='container mt-3'>
-    <h2>List of Services Offered</h2>           
-    <table class='table' id='listOfServ'>
-        <thead>
-            <tr>
-                <th>Service Name</th>
-                <th>Category</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <?php
-            //FETCHING ALL THE DATA INSIDE THE TABLE SERVICES
-            $execGetServices = mysqli_query($con, "SELECT * FROM tbl_services ORDER BY service_name");
+      <h2>List of Services Offered</h2>           
+      <table class='table' id='listOfServ'>
+          <thead>
+              <tr>
+                  <th>Service Name</th>
+                  <th>Category</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+              </tr>
+          </thead>
+          <?php
+              //FETCHING ALL THE DATA INSIDE THE TABLE SERVICES
+              $execGetServices = mysqli_query($con, "SELECT * FROM tbl_services ORDER BY service_name");
 
-            while($listOfServices = mysqli_fetch_assoc($execGetServices)){
-                $service_id2 = $listOfServices["id"];
-                $servName    = "`".$listOfServices["service_name"]."`";
-                $category    = $listOfServices["category"];
-                
-                if($category == 1){
-                  $category = "Hair Services";
-                } else if($category == 2){
-                  $category = "Nail Services";
-                } else if($category == 3){
-                  $category = "Spa Services";
-                }
+              while($listOfServices = mysqli_fetch_assoc($execGetServices)){
+                  $service_id2 = $listOfServices["id"];
+                  $servName    = "`".$listOfServices["service_name"]."`";
+                  $category    = $listOfServices["category"];
+                  
+                  if($category == 1){
+                    $category = "Hair Services";
+                  } else if($category == 2){
+                    $category = "Nail Services";
+                  } else if($category == 3){
+                    $category = "Spa Services";
+                  }
 
-                echo"
-                    <tbody>
-                        <tr>
-                            <td>".str_replace('`', '', $servName)."</td>
-                            <td>$category</td>
-                            <td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#myModal1' onclick='javascript: editService(".$service_id2.", ".$servName.")'>Edit</button></td>
-                            <td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#myModal2' onclick='javascript: deleteService(".$service_id2.", ".$servName.")'>Delete</button></td>
-                        </tr>        
-                    </tbody>
-                ";
-            }
-        ?>     
-    </table>
+                  echo"
+                      <tbody>
+                          <tr>
+                              <td>".str_replace('`', '', $servName)."</td>
+                              <td>$category</td>
+                              <td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#myModal1' onclick='javascript: editService(".$service_id2.", ".$servName.")'>Edit</button></td>
+                              <td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#myModal2' onclick='javascript: deleteService(".$service_id2.", ".$servName.")'>Delete</button></td>
+                          </tr>        
+                      </tbody>
+                  ";
+              }
+          ?>     
+      </table>
 </div>
 <!-- The Modal - Edit Service -->
 <div class="modal fade" id="myModal1">
@@ -167,117 +167,117 @@
     </div>
   </div>
 </div>
-<!-- TABLE - LIST OF USERS -->
-<div class='container mt-3'>
-    <h2>List of Users</h2>           
-    <table class='table' id='listOfUsers'>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Mobile Number</th>
-                <th>Role</th>
-                <th>Verified</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <?php
-            //FETCHING ALL THE DATA INSIDE THE TABLE USERS
-            $execGetUsers = mysqli_query($con, "SELECT * FROM tbl_users ORDER BY last_name");
+  <!-- TABLE - LIST OF USERS -->
+  <div class='container mt-3'>
+      <h2>List of Users</h2>           
+      <table class='table' id='listOfUsers'>
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Mobile Number</th>
+                  <th>Role</th>
+                  <th>Verified</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+              </tr>
+          </thead>
+          <?php
+              //FETCHING ALL THE DATA INSIDE THE TABLE USERS
+              $execGetUsers = mysqli_query($con, "SELECT * FROM tbl_users ORDER BY last_name");
 
-            while($listOfUsers = mysqli_fetch_assoc($execGetUsers)){
-                $user_id  = $listOfUsers["id"];
-                $fname    = "`".$listOfUsers["first_name"]."`";
-                $lname    = "`".$listOfUsers["last_name"]."`";
-                $email    = $listOfUsers["email"];
-                $mobile_no= $listOfUsers["mobile_no"];
-                $role_id  = $listOfUsers["role_id"];
-                $verified = $listOfUsers["verified"];
+              while($listOfUsers = mysqli_fetch_assoc($execGetUsers)){
+                  $user_id  = $listOfUsers["id"];
+                  $fname    = "`".$listOfUsers["first_name"]."`";
+                  $lname    = "`".$listOfUsers["last_name"]."`";
+                  $email    = $listOfUsers["email"];
+                  $mobile_no= $listOfUsers["mobile_no"];
+                  $role_id  = $listOfUsers["role_id"];
+                  $verified = $listOfUsers["verified"];
 
-                if($role_id == 1){
-                    $role_id = "Kraftsman";
-                } else if($role_id == 2){
-                    $role_id = "Klient";
-                } else if($role_id == 3){
-                    $role_id = "Admin";
-                } else if($role_id == 4){
-                    $role_id = "Moderator";
-                }
+                  if($role_id == 1){
+                      $role_id = "Kraftsman";
+                  } else if($role_id == 2){
+                      $role_id = "Klient";
+                  } else if($role_id == 3){
+                      $role_id = "Admin";
+                  } else if($role_id == 4){
+                      $role_id = "Moderator";
+                  }
 
 
-                if($verified == 0){
-                    $verified = "No";
-                } else{
-                    $verified = "Yes";
-                }
+                  if($verified == 0){
+                      $verified = "No";
+                  } else{
+                      $verified = "Yes";
+                  }
 
-                echo"
-                    <tbody>
-                        <tr>
-                            <td>".str_replace('`', '', $lname).", ".str_replace('`', '', $fname)."</td>
-                            <td>$email</td>
-                            <td>$mobile_no</td>
-                            <td>$role_id</td>
-                            <td>$verified</td>
-                            <td><button type='button' class='btn btn-primary'><a  href='profile_page.php?id=$user_id'>Edit</a></button></td>
-                            <td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#myModal3' onclick='javascript: deleteUser(".$user_id.", ".$lname.", ".$fname.")'>Delete</button></td>
-                        </tr>        
-                    </tbody>
-                ";
-            }
-        ?>
-    </table>
-</div>
-<!-- The Modal - Delete User -->
-<div class="modal fade" id="myModal3">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+                  echo"
+                      <tbody>
+                          <tr>
+                              <td>".str_replace('`', '', $lname).", ".str_replace('`', '', $fname)."</td>
+                              <td>$email</td>
+                              <td>$mobile_no</td>
+                              <td>$role_id</td>
+                              <td>$verified</td>
+                              <td><button type='button' class='btn btn-primary'><a  href='profile_page.php?id=$user_id'>Edit</a></button></td>
+                              <td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#myModal3' onclick='javascript: deleteUser(".$user_id.", ".$lname.", ".$fname.")'>Delete</button></td>
+                          </tr>        
+                      </tbody>
+                  ";
+              }
+          ?>
+      </table>
+  </div>
+  <!-- The Modal - Delete User -->
+  <div class="modal fade" id="myModal3">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title delete-user-modal-header"></h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title delete-user-modal-header"></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <h4>Are you sure you want to delete this user?</h4>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button class='btn btn-success'><a class="delete-user-modal-link" href=''>Yes</a></button>
+          <button class='btn btn-danger'><a href='index.php'>No</a></button>
+        </div>
+
       </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <h4>Are you sure you want to delete this user?</h4>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button class='btn btn-success'><a class="delete-user-modal-link" href=''>Yes</a></button>
-        <button class='btn btn-danger'><a href='index.php'>No</a></button>
-      </div>
-
     </div>
   </div>
-</div>
-<!-- The Modal - Create A User -->
-<div class="modal" id="myModal5">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
+  <!-- The Modal - Create A User -->
+  <div class="modal" id="myModal5">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Create a User</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Create a User</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <?php include_once("registration.php");?>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+
       </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <?php include_once("registration.php");?>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-
     </div>
-  </div>
-</div>                
+  </div>                
 <script>
     function deleteService(id, name)
     {

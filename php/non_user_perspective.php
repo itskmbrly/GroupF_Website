@@ -31,7 +31,7 @@
                     <div class="card">
                         <a href = "service.php#hairServ">
                         <h3>Hair Care Services</h3>
-                        <img src="../images/hair.jpeg" alt="Hair Services" style="width:250px"></a>
+                        <img src="../images/hair.jpeg" alt="Hair Services" style="width:100%"></a>
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@
                     <div class="card">
                         <a href = "service.php#nailServ">
                         <h3>Nail Care Services</h3>
-                        <img src="../images/manicure.jpg" alt="Nail Services" style="width:250px"></a>
+                        <img src="../images/manicure.jpg" alt="Nail Services" style="width:100%"></a>
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@
                     <div class="card">
                         <a href = "service.php#spaServ">
                         <h3>Spa Services</h3>
-                        <img src="../images/spa.jpg" alt="Spa Services" style="width:250px; height:175px"></a>
+                        <img src="../images/spa.jpg" alt="Spa Services" style="width:100%; height:175px"></a>
                     </div>
                 </div>
             </div>
