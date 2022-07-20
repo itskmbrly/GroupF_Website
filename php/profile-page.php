@@ -83,7 +83,7 @@
                     echo"
                         <div class='profile-grid'>
                             <div class='dp'>
-                                <img src='../uploads/display_picture/$dp' alt='Display Profile'><br>
+                                <img src='../uploads/display_picture/$id/$dp' alt='Display Profile'><br>
                                 <b>$fname $lname</b>
                             </div>
                         </div>
