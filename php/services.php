@@ -52,12 +52,14 @@
         while($row = mysqli_fetch_assoc($listOfTimes)){
             $time .= "<option value='" . $row["id"] . "'>" . $row['time'] . "</option>";
         }
+
+        //FOR BUTTON FAVORITE
         $selectQuery1 = mysqli_query($con, "SELECT * FROM tbl_favorites WHERE kraftsman_id = '$selected_id' AND klient_id = '$sessId'");
         $numOfRows = mysqli_num_rows($selectQuery1);
         if($numOfRows > 0){
-            $addedFave = "<i class='fa fa-heart'></i> Added to Favorites";
+            $addedFave = "<i class='fa fa-heart'></i> Added";
         } else {
-            $addedFave = "<i class='fa fa-heart'></i> Add to Favorites";
+            $addedFave = "<i class='fa fa-heart-o'></i> Add to Favorites";
         }
     }
 ?>
