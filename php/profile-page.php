@@ -143,7 +143,7 @@
                         if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
                             if($_SESSION["sess-role"] == 1){
                                 echo"
-                                    <a class='nav-link' data-toggle='tab' href='#menu3'>Edit Profile</a>
+                                    <a class='nav-link' data-toggle='tab' href='#menu2'>Edit Profile</a>
                                 ";
                             } else if($_SESSION["sess-role"] == 2 && $sessId == $id){
                                 echo"
