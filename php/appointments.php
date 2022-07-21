@@ -86,10 +86,11 @@
                         ";
                     } echo'
                 </tr>
-                </tbody>
-            </table>
         ';
     }
+    echo'
+        </tbody>
+    </table>';
 ?>
 
 <!-- The Modal - Decline Appointment -->

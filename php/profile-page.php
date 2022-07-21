@@ -181,7 +181,7 @@
                         if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
                             if($_SESSION["sess-role"] == 1){
                                 include_once('appointments.php');
-                            } else if($_SESSION["sess-role"] == 2){
+                            } else if($_SESSION["sess-role"] == 2 && $sessId == $id){
                                 include_once('list-favorites.php');
                             } 
                         }
