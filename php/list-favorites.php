@@ -4,7 +4,7 @@
             <th>Kraftsman Name</th> 
             <th>Service</th>
             <th>Price</th>
-            <th><i class='fa fa-heart'></i></th>
+            <th style='text-align:center;'><i class='fa fa-heart'></i></th>
         </tr>
 </thead>
 <tbody>
@@ -46,7 +46,7 @@
                     <td>'; echo $row_k_fname . " " . $row_k_lname; echo'</td>
                     <td>'; echo $row_service_name;  echo'</td>
                     <td>'; echo $favorie_price; echo'</td>
-                    <td><form method="POST" action="favorites.php?serveid='; echo $service_favorite; echo'"><button type="submit" name="fave" id="fave">'; echo $addedFave; echo'</button></form></td>
+                    <td style="text-align:center;"><form method="POST" action="favorites.php?serveid='; echo $service_favorite; echo'"><button type="submit" name="fave" id="fave">'; echo $addedFave; echo'</button></form></td>
                 </tr>
             ';
         }
