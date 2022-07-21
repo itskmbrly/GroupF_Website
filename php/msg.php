@@ -121,6 +121,12 @@
                     <button type='button' class='close' data-dismiss='alert'>&times;</button>
                     <strong>Success!</strong> The appointment was already declined.
                     </div>";
+            } else if($_SESSION["msg"] == 21){
+                echo"
+                    <div class='alert alert-success alert-dismissible fade show'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Success!</strong> Feedback created.
+                    </div>";
             } 
         }
     echo"</div>";

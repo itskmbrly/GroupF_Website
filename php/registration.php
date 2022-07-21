@@ -80,7 +80,7 @@
     </div>
     <div class="input-group mb-3">
         <div class="form-group">
-            <select name="inputSex" class="form-control" required >
+            <select name="inputSex" class="custom-select" required >
                 <option value="" disabled selected hidden>Choose a Sex</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -89,7 +89,7 @@
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
         <div class="form-group">
-            <select name="inputRole"  class="form-control" required >
+            <select name="inputRole"  class="custom-select" required >
                 <option value="" disabled selected hidden>Choose a Role</option>
                 <?php echo $roles; ?>
             </select>

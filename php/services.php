@@ -168,7 +168,7 @@
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
                                 <div class="form-group fg">
-                                    <select name="time" id="time" required>
+                                    <select name="time" id="time" class="custom-select" required>
                                         <?php echo $time; ?>
                                     </select>
                                     <div class="valid-feedback">Valid.</div>

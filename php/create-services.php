@@ -54,15 +54,44 @@
         <?php include_once("msg.php"); ?>
         <div class="w3-container cs-container">
             <h4 >Create New Service</h4>
-            <form action="handle-add-service.php" method="POST">
-                <input type="text" name="serviceName" placeholder="Create A New Service">
-                <select name="inputCategory">
-                    <option value="" disabled selected hidden>Choose a Category</option>
-                    <?php echo $categories; ?>
-                </select>
+            <form action="handle-add-service.php" method="POST" class="needs-validation" novalidate>
+                <div class="form-group fg">
+                    <input type="text" name="serviceName" placeholder="Create A New Service" class="form-control" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="form-group fg">
+                    <select name="inputCategory" required class="custom-select">
+                        <option value="" disabled selected hidden>Choose a Category</option>
+                        <?php echo $categories; ?>
+                    </select>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                
                 <input type="submit" value="Add Service">
             </form>
         </div>
   </div>
 </body>
+<script>
+    // Disable form submissions if there are invalid fields
+    (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Get the forms we want to add validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+        });
+    }, false);
+    })();
+</script>
 </html>

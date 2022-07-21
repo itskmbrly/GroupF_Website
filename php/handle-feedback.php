@@ -3,14 +3,18 @@
     include_once("connection.php");
 
     //VARDUMP
-    $reason = $_POST["feedback"];
+    $feedback = $_POST["feedback"];
     $service_id = $_POST["service_id"];
 
-    $declineAppointment = mysqli_query($con, "INSERT INTO tbl_declinedappointments VALUES('', '$service_id', '$reason')");
+    $queryService = mysqli_query($con, "SELECT * FROM tbl_kraftsman WHERE id = '$service_id'");
+    $fetchQueryService = mysqli_fetch_assoc($queryService);
+    $fetchKraftsmanId = $fetchQueryService["user_id"];
 
-    if($declineAppointment){
-        $_SESSION["msg"] = 20;
-        header("Location: index.php"); exit;
+    $addFeedback = mysqli_query($con, "INSERT INTO tbl_feedbacks VALUES('', '$fetchKraftsmanId', '$sessId', '$feedback', now())");
+
+    if($addFeedback){
+        $_SESSION["msg"] = 21;
+        header("Location: service.php?id=$service_id"); exit;
     } else{
         $_SESSION["msg"] = 7;
         echo "<script> function returnToPreviousPage() { window.history.back(); } returnToPreviousPage(); </script>";
