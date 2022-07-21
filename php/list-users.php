@@ -135,8 +135,7 @@
   </div>
 </body>
 <script>
-    function deleteUser(id, lname, fname)
-    {
+    function deleteUser(id, lname, fname){
         var p = document.getElementsByClassName("delete-user-modal-header");
         p[0].innerHTML = "Edit - "+ lname + ", " + fname;
         var c = document.getElementsByClassName("delete-user-modal-link");

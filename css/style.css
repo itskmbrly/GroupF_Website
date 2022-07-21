@@ -453,7 +453,8 @@ input[type=submit]:hover {
 
 .profile-laborer img {
     border-radius: 50%;
-    width: 80px;
+    width: 70px;
+    height: 70px;
     border: 2px solid white;
 }
 
@@ -469,6 +470,7 @@ input[type=submit]:hover {
     border: none;
     border-radius: 5px;
     padding: 10px;
+    margin-right: 12px;
 }
 
 .profile-laborer .btn2 {

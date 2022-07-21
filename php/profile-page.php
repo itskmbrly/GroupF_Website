@@ -28,8 +28,8 @@
         //If accessing a different account
 
         //FETCHING THE LIST OF ROLES 
-        $execQuery = mysqli_query($con, "SELECT * FROM tbl_role_types WHERE id NOT IN(3, 4)");
-        while ($row = mysqli_fetch_assoc($execQuery)) {
+        $execQuery2 = mysqli_query($con, "SELECT * FROM tbl_role_types WHERE id NOT IN(3, 4)");
+        while ($row = mysqli_fetch_assoc($execQuery2)) {
             $roles .= "<option value='" . $row["id"] . "'>" . $row['role_type'] . "</option>";
         }
 
@@ -161,14 +161,8 @@
                     <?php
                         if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
                             if($_SESSION["sess-role"] == 1 || $sessId != $id){
-                                echo"
-                                    <h2>Services</h2>
-                                ";
                                 include_once("list_services.php");
                             } else if($_SESSION["sess-role"] == 2 && $sessId == $id){
-                                echo"
-                                    <h2>Appointments</h2>
-                                ";
                                 include_once('appointments.php');
                             } else if($_SESSION["sess-role"] == 3 || $_SESSION["sess-role"] == 4){
                                 echo"
@@ -186,14 +180,8 @@
                     <?php
                         if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
                             if($_SESSION["sess-role"] == 1){
-                                echo"
-                                    <h2>Appointments</h2>
-                                ";
                                 include_once('appointments.php');
                             } else if($_SESSION["sess-role"] == 2){
-                                echo"
-                                    <h2>Favorites</h2>
-                                ";
                                 include_once('list-favorites.php');
                             } 
                         }

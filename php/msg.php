@@ -97,6 +97,30 @@
                     <button type='button' class='close' data-dismiss='alert'>&times;</button>
                     <strong>Success!</strong> Service has been added.
                     </div>";
+            } else if($_SESSION["msg"] == 17){
+                echo"
+                    <div class='alert alert-warning alert-dismissible fade show'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    Make sure to submit your credentials. If so, wait five days for the approval. If the approval takes longer than expected, submit your credentials again.
+                    </div>";
+            } else if($_SESSION["msg"] == 18){
+                echo"
+                    <div class='alert alert-success alert-dismissible fade show'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Success!</strong> User has been verified.
+                    </div>";
+            } else if($_SESSION["msg"] == 19){
+                echo"
+                    <div class='alert alert-success alert-dismissible fade show'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Success!</strong> Declined Appointment was deleted.
+                    </div>";
+            } else if($_SESSION["msg"] == 20){
+                echo"
+                    <div class='alert alert-success alert-dismissible fade show'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Success!</strong> The appointment was already declined.
+                    </div>";
             } 
         }
     echo"</div>";

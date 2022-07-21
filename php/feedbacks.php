@@ -2,9 +2,9 @@
     <center>
         <form action="handle-feedback.php" method="POST" class="needs-validation" novalidate>
             <div class="form-group">
-            <textarea class="form-control" rows="5" cols="15" id="comment" name="text" placeholder="Write your feedback here" required></textarea>
-            <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+                <textarea class="form-control" rows="5" cols="15" id="comment" name="feeedback" placeholder="Write your feedback here" required></textarea>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <input type="submit" class="btnFeedback" value="Submit">
         </form>

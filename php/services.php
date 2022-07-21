@@ -117,7 +117,17 @@
                             </div>
 
                             <div class="profile-laborer">
-                                <div><img src="../uploads/display_picture/'; echo $dp; echo'" alt="Display Picture - Kraftsman"></div>
+                                <div>';
+                                    if($dp == 'user.png'){
+                                        echo"
+                                            <img src='../uploads/display_picture/$dp' alt='Display Profile'>
+                                        ";
+                                    } else{
+                                        echo"
+                                            <img src='../uploads/display_picture/$kraftsman_id/$dp' alt='Display Profile'>
+                                        ";
+                                    } echo'
+                                </div>
                                 <div>
                                     <p>Kraftsman:'; echo $kfname . " " . $klname; echo'</p>
                                     <button class="btn1"><i class="fa fa-comments"></i> Chat Now</button>

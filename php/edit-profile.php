@@ -131,7 +131,7 @@
         </div>
     </div>
     <?php
-        if ($_SESSION["sess-role"] == 2){
+        if (isset($_SESSION["sess-role"])){
             echo"
                 <div class='custom-file mb-3'>
                     <input type='file' class='custom-file-input' id='fileupload1' name='inputPD' accept='.png, .jpeg, .jpg'><label class='custom-file-label' for='customFile'>Choose file to upload for your display picture</label>
