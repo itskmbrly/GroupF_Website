@@ -36,7 +36,6 @@
     }
     //FETCHING ALL THE INFORMATION UNDER THE ADDRESS ID OF THE USER
     $execQuery2 = mysqli_query($con, "SELECT * FROM tbl_address WHERE id = '$address_id'");
-
     $fetchInfo2 = mysqli_fetch_assoc($execQuery2);
     $address    = $fetchInfo2["address"];
     $barangay   = $fetchInfo2["barangay"];

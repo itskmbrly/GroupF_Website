@@ -43,10 +43,14 @@
 
             echo'
                 <tr>
-                    <td>'; echo $row_k_fname . " " . $row_k_lname; echo'</td>
-                    <td>'; echo $row_service_name;  echo'</td>
+                    <td><a href="profile-page.php?id='.$favorite_kraftsman_id.'">'; echo $row_k_fname . " " . $row_k_lname; echo'</a></td>
+                    <td><a href="services.php?serveid='.$favorite_service_id.'">'; echo $row_service_name;  echo'</a></td>
                     <td>'; echo $favorie_price; echo'</td>
-                    <td style="text-align:center;"><form method="POST" action="favorites.php?serveid='; echo $service_favorite; echo'"><button type="submit" name="fave" id="fave">'; echo $addedFave; echo'</button></form></td>
+                    <td style="text-align:center;">
+                        <form method="POST" action="favorites.php?serveid='; echo $service_favorite; echo'">
+                            <button type="submit" name="fave" id="fave">'; echo $addedFave; echo'</button>
+                        </form>
+                    </td>
                 </tr>
             ';
         }

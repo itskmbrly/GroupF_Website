@@ -521,6 +521,7 @@ input[type=submit]:hover {
     border: none;
     border-radius: 5px;
     padding: 10px;
+    width: 215px;
 }
 
 /*feedbacks.php*/
@@ -557,6 +558,8 @@ input[type=submit]:hover {
 .moderator-container {
     height: 100vh;
 }
+
+
 
 #home,
 #menu1 {

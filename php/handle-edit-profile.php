@@ -30,7 +30,7 @@
         }
     } 
         //UPDATE IN TBL_USERS
-        $execQuery2 = mysqli_query($con, "UPDATE tbl_users SET first_name = '$fname', last_name = '$lname', email = '$email', mobile_no = '$mobile_no', updated_at = now() WHERE id = '$id'");
+        $execQuery2 = mysqli_query($con, "UPDATE tbl_users SET first_name = '$fname', last_name = '$lname', email = '$email', mobile_no = '$mobile_no', birthdate = '$bday', sex = '$sex', updated_at = now() WHERE id = '$id'");
 
         $_SESSION["fname"] = $fname;
         $_SESSION["lname"] = $lname;

@@ -82,11 +82,11 @@
         echo'
                 <tr>';
                     if($_SESSION["sess-role"] == 1){
-                        echo"<td>" . $klient_fname . " " . $klient_lname; "</td>";
+                        echo"<td><a href='profile-page.php?id=".$klient_id."'>" . $klient_fname . " " . $klient_lname; "</a></td>";
                     } else if($_SESSION["sess-role"] == 2){
-                        echo"<td>" . $kraftsman_fname . " " . $kraftsman_lname; "</td>";
+                        echo"<td><a href='profile-page.php?id=".$kraftsman_id."'>" . $kraftsman_fname . " " . $kraftsman_lname; "</a></td>";
                     } 
-                    echo'<td>'; echo $service_name; echo'</td>
+                    echo'<td><a href="services.php?serveid='.$s_id2.'">'; echo $service_name; echo'</a></td>
                     <td>'; echo $s_date . " @" . $time; echo'</td>';
 
                     if($_SESSION["sess-role"] == 1){
