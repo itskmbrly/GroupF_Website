@@ -1,6 +1,7 @@
 <?php 
     include_once("connection.php"); 
     $time = '';
+    $verified = 0;
 
     if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
         $sessId = $_SESSION["sess-id"];
@@ -11,48 +12,51 @@
         $fname = $fetchInfo["first_name"];
         $lname = $fetchInfo["last_name"];
         $id   = $fetchInfo["id"];
+        $verified   = $fetchInfo["verified"];
 
-        //FETCHING THE SELECTED SERVICE
-        $service_id = $_GET["serveid"];
-        
-        //SELECT QUERY FOR THE SELECTED SERVICE
-        $execQuery = mysqli_query($con, "SELECT * FROM tbl_kraftsman WHERE id = '$service_id'");
-        $fetchService = mysqli_fetch_assoc($execQuery);
-        $selected_id = $fetchService["id"];
-        $kraftsman_id = $fetchService["user_id"];
-        $category_id = $fetchService["category_id"];
-        $price = $fetchService["price"];
-        $picture = $fetchService["service_picture"];
+    }
+    //FETCHING THE SELECTED SERVICE
+    $service_id = $_GET["serveid"];
+    
+    //SELECT QUERY FOR THE SELECTED SERVICE
+    $execQuery = mysqli_query($con, "SELECT * FROM tbl_kraftsman WHERE id = '$service_id'");
+    $fetchService = mysqli_fetch_assoc($execQuery);
+    $selected_id = $fetchService["id"];
+    $kraftsman_id = $fetchService["user_id"];
+    $category_id = $fetchService["category_id"];
+    $price = $fetchService["price"];
+    $picture = $fetchService["service_picture"];
 
-        $execQuery2 = mysqli_query($con, "SELECT * FROM tbl_services WHERE id = '$service_id'");
-        $fetchServiceName = mysqli_fetch_assoc($execQuery2);
-        $service_name = $fetchServiceName["service_name"];
+    $execQuery2 = mysqli_query($con, "SELECT * FROM tbl_services WHERE id = '$service_id'");
+    $fetchServiceName = mysqli_fetch_assoc($execQuery2);
+    $service_name = $fetchServiceName["service_name"];
 
-        if($category_id == 1){
-            $cat = "../images/hair/";
-        } else if($category_id == 2){
-            $cat = "../images/nail/";
-        } else if($category_id == 3){
-            $cat = "../images/spa/";
-        }
+    if($category_id == 1){
+        $cat = "../images/hair/";
+    } else if($category_id == 2){
+        $cat = "../images/nail/";
+    } else if($category_id == 3){
+        $cat = "../images/spa/";
+    }
 
-        $execQuery3 = mysqli_query($con, "SELECT * FROM tbl_users WHERE id = '$kraftsman_id'");
-        $fetchKraftsman = mysqli_fetch_assoc($execQuery3);
-        $kfname = $fetchKraftsman["first_name"];
-        $klname = $fetchKraftsman["last_name"];
-        $dp = $fetchKraftsman["profile_picture"];
-        $joined = $fetchKraftsman["created_at"];
+    $execQuery3 = mysqli_query($con, "SELECT * FROM tbl_users WHERE id = '$kraftsman_id'");
+    $fetchKraftsman = mysqli_fetch_assoc($execQuery3);
+    $kfname = $fetchKraftsman["first_name"];
+    $klname = $fetchKraftsman["last_name"];
+    $dp = $fetchKraftsman["profile_picture"];
+    $joined = $fetchKraftsman["created_at"];
 
-        //COUNT ALL SERVICES OFFERED BY THE KRAFTSMAN
-        $execQuery4 = mysqli_query($con, "SELECT * FROM tbl_kraftsman WHERE user_id = '$kraftsman_id'");
-        $countServices = mysqli_num_rows($execQuery4);
+    //COUNT ALL SERVICES OFFERED BY THE KRAFTSMAN
+    $execQuery4 = mysqli_query($con, "SELECT * FROM tbl_kraftsman WHERE user_id = '$kraftsman_id'");
+    $countServices = mysqli_num_rows($execQuery4);
 
-        //FETCH ALL THE DATA IN TBL_TIME
-        $listOfTimes = mysqli_query($con, "SELECT * FROM tbl_time");
-        while($row = mysqli_fetch_assoc($listOfTimes)){
-            $time .= "<option value='" . $row["id"] . "'>" . $row['time'] . "</option>";
-        }
+    //FETCH ALL THE DATA IN TBL_TIME
+    $listOfTimes = mysqli_query($con, "SELECT * FROM tbl_time");
+    while($row = mysqli_fetch_assoc($listOfTimes)){
+        $time .= "<option value='" . $row["id"] . "'>" . $row['time'] . "</option>";
+    }
 
+    if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
         //FOR BUTTON FAVORITE
         $selectQuery1 = mysqli_query($con, "SELECT * FROM tbl_favorites WHERE kraftsman_id = '$selected_id' AND klient_id = '$sessId'");
         $numOfRows = mysqli_num_rows($selectQuery1);
@@ -99,52 +103,58 @@
         <div class="w3-container chosen-service-container">
             <div class="selected-card">
                 <?php 
-                    if(isset($_SESSION["sess-id"])){
-                        echo'
-                            <div class="card service-template">
-                                <div class="service-left-section">
-                                    <img src="'; echo $cat . $picture; echo'">
-                                </div>
-                                <div class="service-right-section">
-                                    <h3>'; echo $service_name; echo'</h3>
-                                    <h1 class="price">'; echo $price; echo'</h1>
-                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit dolor consequuntur beatae commodi omnis quia aperiam magni odit incidunt culpa!</p>
-                                    <div class="two-buttons">
-                                        <form method="POST" action="favorites.php?serveid='; echo $service_id; echo'"><button type="submit" name="fave" id="fave">'; echo $addedFave; echo'</button></form>
-                                        <div class="btnBook" data-toggle="modal" data-target="#myModal"><i class="fa fa-calendar"></i> Book an Appointment</div>
-                                    </div>
-                                </div>
-                            </div>
+                    $disabled = 'disabled=disabled';
+                    if($verified)
+                    {
+                        $disabled = '';
+                    }
 
-                            <div class="profile-laborer">
-                                <div>';
-                                    if($dp == 'user.png'){
-                                        echo"
-                                            <img src='../uploads/display_picture/$dp' alt='Display Profile'>
-                                        ";
-                                    } else{
-                                        echo"
-                                            <img src='../uploads/display_picture/$kraftsman_id/$dp' alt='Display Profile'>
-                                        ";
-                                    } echo'
-                                </div>
-                                <div>
-                                    <p>Kraftsman:'; echo $kfname . " " . $klname; echo'</p>
-                                    <button class="btn1"><i class="fa fa-comments"></i> Chat Now</button>
-                                    <button class="btn2"><i class="fa fa-user-circle"></i> <a href="profile-page.php?id='; echo $kraftsman_id; echo'">View Profile</a></button>
-                                </div>
-                                <div class="profile-laborer-sidedish">
-                                    <p><b>Ratings:</b> 100</p>
-                                    <p><b>Response Rate:</b> 86%</p>
-                                    <p><b>Joined:</b>'; echo $joined; echo'</p>
-                                    <p><b>Services:</b>'; echo $countServices; echo'</p>
-                                    <p><b>Response Time:</b> within hours</p>
-                                    <p><b>Followers:</b> 1.6K</p>
+                    echo'
+                        <div class="card service-template">
+                            <div class="service-left-section">
+                                <img src="'; echo $cat . $picture; echo'">
+                            </div>
+                            <div class="service-right-section">
+                                <h3>'; echo $service_name; echo'</h3>
+                                <h1 class="price">'; echo $price; echo'</h1>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit dolor consequuntur beatae commodi omnis quia aperiam magni odit incidunt culpa!</p>
+                                <div class="two-buttons">';
+                                if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
+                                    echo '<form method="POST" action="favorites.php?serveid='; echo $service_id; echo'"><button type="submit" name="fave" id="fave">'; echo $addedFave; echo'</button></form>';
+                                }
+                                    echo '<button type="button" ';echo $disabled; echo' class="btnBook" data-toggle="modal" data-target="#myModal"><i class="fa fa-calendar"></i> Book an Appointment</button>
                                 </div>
                             </div>
-                        ';
-                        include_once("feedbacks.php");
-                    } 
+                        </div>
+
+                        <div class="profile-laborer">
+                            <div>';
+                                if($dp == 'user.png'){
+                                    echo"
+                                        <img src='../uploads/display_picture/$dp' alt='Display Profile'>
+                                    ";
+                                } else{
+                                    echo"
+                                        <img src='../uploads/display_picture/$kraftsman_id/$dp' alt='Display Profile'>
+                                    ";
+                                } echo'
+                            </div>
+                            <div>
+                                <p>Kraftsman:'; echo $kfname . " " . $klname; echo'</p>
+                                <button class="btn1"><i class="fa fa-comments"></i> Chat Now</button>
+                                <button class="btn2"><i class="fa fa-user-circle"></i> <a href="profile-page.php?id='; echo $kraftsman_id; echo'">View Profile</a></button>
+                            </div>
+                            <div class="profile-laborer-sidedish">
+                                <p><b>Ratings:</b> 100</p>
+                                <p><b>Response Rate:</b> 86%</p>
+                                <p><b>Joined:</b>'; echo $joined; echo'</p>
+                                <p><b>Services:</b>'; echo $countServices; echo'</p>
+                                <p><b>Response Time:</b> within hours</p>
+                                <p><b>Followers:</b> 1.6K</p>
+                            </div>
+                        </div>
+                    ';
+                    include_once("feedbacks.php");
                 ?>
             </div>
 
@@ -153,15 +163,15 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Book An Appointment</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <form action="handle-book.php" method="POST" class="needs-validation" novalidate>
+                        <form action="handle-book.php" method="POST" class="needs-validation" novalidate>
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Book An Appointment</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                            <!-- Modal body -->
+                            <div class="modal-body">
                                 <div class="form-group fg">
                                     <input type="date" name="date" class="form-control" min="<?php echo date("Y-m-d"); ?>" required>
                                     <div class="valid-feedback">Valid.</div>
@@ -174,17 +184,40 @@
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
-                        </div>
+
+                                <input type="hidden" name="kraftsman_id" value="<?php echo $kraftsman_id; ?>">
+                                <input type="hidden" name="service_id" value="<?php echo $service_id; ?>">
+                            </div>
                         
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
+                            <!-- Modal footer -->
+                            <div class="modal-footer input-book">
                                 <input type="submit" value="Book an Appointment">
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
   </div>
 </body>
+<script>
+    // Disable form submissions if there are invalid fields
+    (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Get the forms we want to add validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+        });
+    }, false);
+    })();
+</script>
 </html>

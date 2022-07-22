@@ -1,6 +1,6 @@
 <?php
-    $sessId = $_SESSION["sess-id"]; 
-    if($_SESSION["sess-role"] == 1 && (isset($_SESSION["sess-id"]))){
+    $sessId = isset($_SESSION["sess-id"]) ? $_SESSION["sess-id"] : false; 
+    if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] == 1 && (isset($_SESSION["sess-id"]))){
         $execQuery1 = mysqli_query($con, "SELECT * FROM tbl_kraftsman WHERE user_id = '$sessId' ORDER BY category_id ASC");
     } else{
         $execQuery1 = mysqli_query($con, "SELECT * FROM tbl_kraftsman ORDER BY category_id ASC");

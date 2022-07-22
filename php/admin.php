@@ -49,28 +49,35 @@
         <div class="modal-dialog">
             <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title edit-service-modal-header"></h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
+                <form action="handle-service-edit.php" method="POST" class="service-edit-modal needs-validation" novalidate>
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title edit-service-modal-header"></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
 
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form action="handle_service_edit.php" method="POST" class="service-edit-modal">
-                        <input type="text" name="serviceName" placeholder="Enter service name">
-                        <select name="inputCategory">
-                        <option value="" disabled selected hidden>Choose a Category</option>
-                            <?php echo $categories; ?>
-                        </select>
-                </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="form-group fg">
+                            <input type="text" name="serviceName" placeholder="Enter service name"  class="form-control" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group fg">
+                            <select name="inputCategory"  class="custom-select" required>
+                            <option value="" disabled selected hidden>Choose a Category</option>
+                                <?php echo $categories; ?>
+                            </select>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                    </div>
 
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <input type="submit" value="Update" class="edit-service-modal-link">
-                    </form>
-                </div>
-
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <input type="submit" value="Update" class="edit-service-modal-link">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -101,18 +108,35 @@
     </div>
 </div>
 <script>
-    function deleteService(id, name)
-    {
+    function deleteService(id, name){
         var p = document.getElementsByClassName("delete-service-modal-header");
         p[0].innerHTML = "Delete - "+name;
         var c = document.getElementsByClassName("delete-service-modal-link");
-        c[0].setAttribute('href', 'handle_service_delete.php?id='+id);
+        c[0].setAttribute('href', 'handle-service-delete.php?id='+id);
     }
-    function editService(id, name)
-    {
+    function editService(id, name){
         var p = document.getElementsByClassName("edit-service-modal-header");
         p[0].innerHTML = "Edit - "+name;
         var c = document.getElementsByClassName("service-edit-modal");
-        c[0].setAttribute('action', 'handle_service_edit.php?id='+id);
+        c[0].setAttribute('action', 'handle-service-edit.php?id='+id);
     }
+
+    // Disable form submissions if there are invalid fields
+    (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Get the forms we want to add validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+        });
+    }, false);
+    })();
 </script>

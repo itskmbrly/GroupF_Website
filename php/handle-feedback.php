@@ -2,19 +2,17 @@
     //CONNECTION TO THE DATABASE
     include_once("connection.php");
 
+    $sessId = $_SESSION["sess-id"];
+
     //VARDUMP
     $feedback = $_POST["feedback"];
-    $service_id = $_POST["service_id"];
+    $selected_id = $_POST["selected_id"];
 
-    $queryService = mysqli_query($con, "SELECT * FROM tbl_kraftsman WHERE id = '$service_id'");
-    $fetchQueryService = mysqli_fetch_assoc($queryService);
-    $fetchKraftsmanId = $fetchQueryService["user_id"];
-
-    $addFeedback = mysqli_query($con, "INSERT INTO tbl_feedbacks VALUES('', '$fetchKraftsmanId', '$sessId', '$feedback', now())");
+    $addFeedback = mysqli_query($con, "INSERT INTO tbl_feedbacks(kraftsman_id, klient_id, feedback, created_at) VALUES('$selected_id', '$sessId', '$feedback', now())");
 
     if($addFeedback){
         $_SESSION["msg"] = 21;
-        header("Location: service.php?id=$service_id"); exit;
+        header("Location: index.php"); exit;
     } else{
         $_SESSION["msg"] = 7;
         echo "<script> function returnToPreviousPage() { window.history.back(); } returnToPreviousPage(); </script>";

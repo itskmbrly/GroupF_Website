@@ -3,8 +3,8 @@
     include_once("connection.php");
     $roles = '';
 
-    if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
-        $sessId = $_SESSION["sess-id"];
+    // if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
+        $sessId = isset($_SESSION["sess-id"]) ? $_SESSION["sess-id"] : false;
         
         //GET ID
         $id = $_GET["id"];
@@ -33,16 +33,19 @@
             $roles .= "<option value='" . $row["id"] . "'>" . $row['role_type'] . "</option>";
         }
 
-        if($_SESSION["sess-role"] == 1){
-            //IF KRAFTSMAN; COUNT ALL THE SERVICES THEY OFFERED
-            $countServices = mysqli_query($con, "SELECT * FROM tbl_kraftsman WHERE user_id = '$id'");
-            $cs = mysqli_num_rows($countServices);
-        } else if($_SESSION["sess-role"] == 2){        
-            //IF KLIENT; COUNT ALL THE APPOINTMENTS THEY BOOKED
-            $countAppointments = mysqli_query($con, "SELECT * FROM tbl_transactions WHERE klient_id='$id'");
-            $ca = mysqli_num_rows($countAppointments);
+        if(isset($_SESSION["sess-role"]))
+        {
+            if($_SESSION["sess-role"] == 1){
+                //IF KRAFTSMAN; COUNT ALL THE SERVICES THEY OFFERED
+                $countServices = mysqli_query($con, "SELECT * FROM tbl_kraftsman WHERE user_id = '$id'");
+                $cs = mysqli_num_rows($countServices);
+            } else if($_SESSION["sess-role"] == 2){        
+                //IF KLIENT; COUNT ALL THE APPOINTMENTS THEY BOOKED
+                $countAppointments = mysqli_query($con, "SELECT * FROM tbl_transactions WHERE klient_id='$id'");
+                $ca = mysqli_num_rows($countAppointments);
+            }
         }
-    }
+    // }
     
 ?>
 <!DOCTYPE html>
@@ -79,7 +82,7 @@
 
         <div class="w3-container pp-container">
             <?php
-                if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
+                // if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
                     if($dp == 'user.png'){
                         echo"
                         <div class='profile-grid'>
@@ -99,28 +102,28 @@
                             </div>
                         ";
                     }
-                }
+                // }
             ?>
 
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
                     <?php
-                        if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
-                            if($_SESSION["sess-role"] == 1 || $sessId != $id){
+                        // if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
+                            if(!isset($_SESSION["sess-role"]) || $_SESSION["sess-role"] == 1 || $sessId != $id){
                                 echo"
                                     <a class='nav-link active' data-toggle='tab' href='#home'>Services</a>
                                 ";
-                            } else if($_SESSION["sess-role"] == 2){
+                            } else if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] == 2){
                                 echo"
                                     <a class='nav-link active' data-toggle='tab' href='#home'>Appointments</a>
                                 ";
-                            } else if($_SESSION["sess-role"] == 3 || $_SESSION["sess-role"] == 4){
+                            } else if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] == 3 || $_SESSION["sess-role"] == 4){
                                 echo"
                                     <a class='nav-link active' data-toggle='tab' href='#home'>Edit Profile</a>
                                 ";
                             }
-                        }
+                        // }
                     ?>
                 </li>
                 <li class="nav-item">
@@ -159,12 +162,12 @@
             <div class="tab-content">
                 <div id="home" class="container tab-pane active"><br>
                     <?php
-                        if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
-                            if($_SESSION["sess-role"] == 1 || $sessId != $id){
+                        // if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
+                            if(!isset($_SESSION["sess-role"]) || $_SESSION["sess-role"] == 1 || $sessId != $id){
                                 include_once("list_services.php");
-                            } else if($_SESSION["sess-role"] == 2 && $sessId == $id){
+                            } else if(isset($_SESSION["sess-role"])  && $_SESSION["sess-role"] == 2 && $sessId == $id){
                                 include_once('appointments.php');
-                            } else if($_SESSION["sess-role"] == 3 || $_SESSION["sess-role"] == 4){
+                            } else if(isset($_SESSION["sess-role"])  && $_SESSION["sess-role"] == 3 || $_SESSION["sess-role"] == 4){
                                 echo"
                                     <h2>Edit Profile</h2>
                                     <button type='button' class='btn btnChangePass' data-toggle='modal' data-target='#myModal'>
@@ -173,7 +176,7 @@
                                 ";
                                 include_once('edit-profile.php');
                             }
-                        }
+                        // }
                     ?>
                 </div>
                 <div id="menu1" class="container tab-pane fade"><br>

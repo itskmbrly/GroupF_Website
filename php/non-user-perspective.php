@@ -20,4 +20,6 @@
             <a href="#hair"><img class="card-img-top" src="../images/hair/Option 1.png" alt="Hair Category"></a>
         </div>
     </div>
+
+    <?php include_once("list_services.php"); ?>
 </div>

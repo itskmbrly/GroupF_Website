@@ -5,7 +5,8 @@
     $spa_serv  = '';
     $categories= '';
     $roles     = '';
-
+    $verified_user = 0;
+    
     if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
       $sessId = $_SESSION["sess-id"];
 
@@ -15,6 +16,7 @@
       $fname = $fetchInfo["first_name"];
       $lname = $fetchInfo["last_name"];
       $id   = $fetchInfo["id"];
+      $verified_user = $fetchInfo["verified"];
       $_SESSION["fname"] = $fname;
       $_SESSION["lname"] = $lname;
 
@@ -86,7 +88,13 @@
     <?php include_once("navbar.php"); ?>
     <div class="right">
         <!--ALERT MESSAGE-->
-        <?php include_once("msg.php"); ?>
+        <?php 
+            include_once("msg.php"); 
+
+            if($verified_user == 0){
+                $_SESSION["msg"] = 17;
+            }
+        ?>
 
         <div class="w3-container">
             <?php 

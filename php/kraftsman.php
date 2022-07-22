@@ -12,6 +12,7 @@
         $fetchInfo = mysqli_fetch_assoc($userInfo);
         $fname = $fetchInfo["first_name"];
         $lname = $fetchInfo["last_name"];
+        $verified = $fetchInfo["verified"];
         $id   = $fetchInfo["id"];
 
         //SELECT QUERY - TBL_CATEGORIES
@@ -39,7 +40,13 @@
         <h3>Welcome to JentleKare.</h3>
         <i>A platform for all your beauty needs.</i>
     </div>
-    <button type="button" class="btn btn-add-serv" data-toggle="modal" data-target="#myModal">
+    <?php 
+        $disabled=  "disabled='disabled'";
+        if($verified){
+            $disabled = '';
+        }
+    ?>
+    <button type="button" class="btn btn-add-serv" data-toggle="modal" data-target="#myModal" <?php echo $disabled; ?> >
         Add Service
     </button>
     <!-- The Modal -->

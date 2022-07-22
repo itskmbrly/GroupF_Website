@@ -14,10 +14,15 @@
                         echo"<th>Kraftsman Name</th>";
                     } echo'
                     <th>Service</th>
-                    <th>Date</th>
-                    <th>Address</th>
-                    <th>Status</th>
-                </tr>
+                    <th>Date</th>';
+                    if($_SESSION["sess-role"] == 1){
+                    echo "<th>Address</th>";
+                    }
+                    echo '<th>Status</th>';
+                    if($_SESSION["sess-role"] == 1){
+                        echo "<th>&nbsp;</th>";
+                    }
+                echo '</tr>
             </thead>
             <tbody>
     ';
@@ -27,14 +32,20 @@
         $klient_id = $fetchServices["klient_id"];
         $s_id = $fetchServices["service_id"];
         $s_date = $fetchServices["date"];
-        $s_time = $fetchTime["time"];
+        $s_time = $fetchServices["time"];
         $status = $fetchServices["status"];
 
-        if($status == 0){
-            $status = "Waiting for Approval";
-        } else{
-            $status = "Approved";
+        $status_name = 'Waiting for Approval';
+        if($status == 1){
+            $status_name = "Approved";
+        } else if($status == 2){
+            $status_name = "Declined";
         }
+
+        // GET TIME
+        $timeQuery = mysqli_query($con, "SELECT * FROM tbl_time WHERE id = '$s_time'");
+        $fetchAppointmentInfo2 = mysqli_fetch_assoc($timeQuery);
+        $time = $fetchAppointmentInfo2["time"];
 
         //SELECT QUERY FOR SERVICE APPOINTED
         $appointmentQuery = mysqli_query($con, "SELECT * FROM tbl_kraftsman WHERE service_id = '$s_id'");
@@ -44,7 +55,7 @@
         $appointmentQuery2 = mysqli_query($con, "SELECT * FROM tbl_services WHERE id = '$s_id2'");
         $fetchAppointmentInfo2 = mysqli_fetch_assoc($appointmentQuery2);
         $service_name = $fetchAppointmentInfo2["service_name"];
-
+        
         //SELECT QUERY FOR KLIENT
         $klientQuery = mysqli_query($con, "SELECT * FROM tbl_users WHERE id = '$klient_id'");
         $fetchKlientInfo = mysqli_fetch_assoc($klientQuery);
@@ -67,22 +78,32 @@
         $fetchKraftsmanInfo = mysqli_fetch_assoc($kraftsmanQuery);
         $kraftsman_fname = $fetchKraftsmanInfo["first_name"];
         $kraftsman_lname = $fetchKraftsmanInfo["last_name"];
-
+        $fullname = $lname.' '.$fname;
         echo'
                 <tr>';
                     if($_SESSION["sess-role"] == 1){
                         echo"<td>" . $klient_fname . " " . $klient_lname; "</td>";
                     } else if($_SESSION["sess-role"] == 2){
                         echo"<td>" . $kraftsman_fname . " " . $kraftsman_lname; "</td>";
-                    } echo'<td>'; $service_name; echo'</td>
-                    <td>'; echo $s_date . " " . $s_time; echo'</td>';
+                    } 
+                    echo'<td>'; echo $service_name; echo'</td>
+                    <td>'; echo $s_date . " @" . $time; echo'</td>';
+
                     if($_SESSION["sess-role"] == 1){
-                        echo"<td>" . $a_address . " " . $a_barangay . " ". $a_city . " " . $a_province . " " . $a_zip; "</td>";
-                    } echo'
-                    <td>'; echo $status; echo'<td>';
-                    if($_SESSION["sess-role"] == 1){
+                        echo"<td>" ; echo $a_address . " " . $a_barangay . " ". $a_city . " " . $a_province . " " . $a_zip; "</td>";
+                    } 
+                    echo'
+                    <td>'; echo $status_name; 
+                    if($_SESSION["sess-role"] == 1 && $status == 0){
                         echo"
-                            <td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal1' onclick='javascript: declineAppointment(".$transac_id.", ".$lname.", ".$fname.")'>Decline</button></td>
+                            <td style='width: 190px;'>
+                                <button type='button' class='btn btn-success' onclick='javascript: confirmAppointment(".$transac_id.")'>Accept</button>
+                                <button type='button' value='".$transac_id."' name=\"".$fullname."\" class='btn btn-danger declineBtn' data-toggle='modal' data-target='#myModal1'>Decline</button>
+                            </td>
+                        ";
+                    } else{
+                        echo"
+                            <td style='width: 190px;'>&nbsp;</td>
                         ";
                     } echo'
                 </tr>
@@ -108,6 +129,7 @@
             <div class="modal-body">
                 <form action="handle-appointment-decline.php" method="POST" class="needs-validation" novalidate>
                     <div class="form-group">
+                        <input type="hidden" name="id" id="kraftsman_id">
                         <textarea class="form-control" rows="5" cols="15" id="comment" name="reason" placeholder="Write your reason here" required></textarea>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
@@ -126,11 +148,23 @@
 </div> 
 
 <script>
+    $(document).ready(function(){
+        $(document).on('click', '.declineBtn', function(){
+            document.getElementById("kraftsman_id").value = this.value;
+            var p = document.getElementsByClassName("decline-user-modal-header");
+            p[0].innerHTML = "Decline - "+ this.name;
+            var c = document.getElementsByClassName("decline-appointment-modal-link");
+            c[0].setAttribute('href', 'handle-appointment-decline.php?id='+this.value);
+        });
+    });
+
+    function confirmAppointment(id)
+    {
+        location.href='handle-appointment-accept.php?id='+id;
+    }
+
     function declineAppointment(id, lname, fname){
-        var p = document.getElementsByClassName("decline-user-modal-header");
-        p[0].innerHTML = "Decline - "+ lname + ", " + fname;
-        var c = document.getElementsByClassName("decline-appointment-modal-link");
-        c[0].setAttribute('href', 'handle-appointment-decline.php?id='+id);
+        
     }
 
     // Disable form submissions if there are invalid fields

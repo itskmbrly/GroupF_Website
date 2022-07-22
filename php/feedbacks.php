@@ -2,19 +2,19 @@
     <center>
         <form action="handle-feedback.php" method="POST" class="needs-validation" novalidate>
             <div class="form-group">
-                <textarea class="form-control" rows="5" cols="15" id="comment" name="feeedback" placeholder="Write your feedback here" required></textarea>
+                <textarea class="form-control" rows="5" cols="15" id="comment" name="feedback" placeholder="Write your feedback here" required></textarea>
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <input type="submit" class="btnFeedback" value="Submit">
-            <input type="hidden" name="service_id" value="<?php echo $service_id; ?>">
+            <input type="hidden" name="selected_id" value="<?php echo $selected_id; ?>">
         </form>
     </center>
 
     <div class="shown-feedbacks">
         <?php
             //FETCH ALL COMMENTS FROM A CERTAIN SERVICE
-            $selectQuery2 = mysqli_query($con, "SELECT * FROM tbl_feedbacks WHERE kraftsman_id = '$service_id'");
+            $selectQuery2 = mysqli_query($con, "SELECT * FROM tbl_feedbacks WHERE kraftsman_id = '$selected_id'");
             while($serviceInformation = mysqli_fetch_assoc($selectQuery2)){
                 $userFeedbackId = $serviceInformation["klient_id"];
                 $feedback = $serviceInformation["feedback"];
@@ -22,7 +22,7 @@
 
                 //FETCH KLIENT INFORMATION
                 $selectQuery3 = mysqli_query($con, "SELECT * FROM tbl_users WHERE id = '$userFeedbackId'");
-                $userInformation - mysqli_fetch_assoc($selectQuery3);
+                $userInformation = mysqli_fetch_assoc($selectQuery3);
                 $feedback_fname = $userInformation["first_name"];
                 $feedback_lname = $userInformation["last_name"];
                 $feedback_dp = $userInformation["profile_picture"];
@@ -37,7 +37,7 @@
                             ';
                         } echo'
                         <div class="media-body">
-                            <h4>'; echo $feedback_fname . " " . $feedback_lname; echo'<small><i>Posted on'; echo $feedback_created_at; echo'</i></small></h4>
+                            <h4>'; echo $feedback_fname . " " . $feedback_lname; echo'<small><i> Posted on '; echo $feedback_created_at; echo'</i></small></h4>
                             <p>'; echo $feedback; echo'</p>      
                         </div>
                     </div>

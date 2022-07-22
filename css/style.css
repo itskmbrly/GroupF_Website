@@ -130,7 +130,7 @@ input[type=submit]:hover {
 
 /*create-user.php*/
 .cu-container {
-    height: 100vh;
+    height: 100%;
     padding: 30px;
 }
 
@@ -498,6 +498,13 @@ input[type=submit]:hover {
     padding: 7px;
 }
 
+.input-book input[type=submit] {
+    background: #8c615f;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
 /*feedbacks.php*/
 .feedback-section input[type=submit] {
     float: none;
@@ -512,4 +519,23 @@ input[type=submit]:hover {
 
 .feedback-section textarea {
     resize: none;
+}
+
+/*moderator.php*/
+.btnForDeclinedAppointments,
+.btnForVerification {
+    background-color: #cb8f8d;
+    color: #faf8e8;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin-top: 20px;
+    margin: 20px 30px;
+    width: 20%;
+}
+
+.moderator-container {
+    height: 100vh;
 }

@@ -101,7 +101,7 @@
                 echo"
                     <div class='alert alert-warning alert-dismissible fade show'>
                     <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                    Make sure to submit your credentials. If so, wait five days for the approval. If the approval takes longer than expected, submit your credentials again.
+                    Make sure to submit your credentials and wait five days for the approval. If the approval takes longer than expected, submit your credentials again.
                     </div>";
             } else if($_SESSION["msg"] == 18){
                 echo"
@@ -127,7 +127,31 @@
                     <button type='button' class='close' data-dismiss='alert'>&times;</button>
                     <strong>Success!</strong> Feedback created.
                     </div>";
-            } 
+            } else if($_SESSION["msg"] == 22){
+                echo"
+                    <div class='alert alert-danger alert-dismissible fade show'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Error!</strong> Your booking is already unavailable.
+                    </div>";
+            } else if($_SESSION["msg"] == 23){
+                echo"
+                    <div class='alert alert-success alert-dismissible fade show'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Success!</strong> Booked date created.
+                    </div>";
+            } else if($_SESSION["msg"] == 24){
+                echo"
+                    <div class='alert alert-success alert-dismissible fade show'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Success!</strong> Service has been updated.
+                    </div>";
+            } else if($_SESSION["msg"] == 25){
+                echo"
+                    <div class='alert alert-success alert-dismissible fade show'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Success!</strong> Service has been deleted.
+                    </div>";
+            }
         }
     echo"</div>";
 ?>  
