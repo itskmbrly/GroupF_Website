@@ -151,6 +151,12 @@
                     <button type='button' class='close' data-dismiss='alert'>&times;</button>
                     <strong>Success!</strong> Service has been deleted.
                     </div>";
+            } else if($_SESSION["msg"] == 26){
+                echo"
+                    <div class='alert alert-success alert-dismissible fade show'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Success!</strong> Appointment accepted.
+                    </div>";
             }
         }
     echo"</div>";

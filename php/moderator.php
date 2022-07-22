@@ -121,16 +121,17 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Service Name</th>
+                                    <th>Reason</th>
                                 </tr>
                             </thead>
-                        <?php
+                            <?php
                                 while($fetchDeclined = mysqli_fetch_assoc($declinedQuery)){
                                     $f_id = $fetchDeclined["id"];
                                     $f_transaction_id = $fetchDeclined["transaction_id"];
                                     $f_reason = $fetchDeclined["reason"];
 
                                     //FETCH USER INFORMATION OF KRAFTSMAN ID
-                                    $queryTransaction = mysqli_query($con, "SELECT * FROM tbl_transactions WHERE id= '$f_transaction_id'");
+                                    $queryTransaction = mysqli_query($con, "SELECT * FROM tbl_transactions WHERE id = '$f_transaction_id'");
                                     $fetchTransactionInfo = mysqli_fetch_assoc($queryTransaction);
                                     $f_kraftsman_id = $fetchTransactionInfo["kraftsman_id"];
                                     $f_service_id = $fetchTransactionInfo["service_id"];
@@ -154,8 +155,9 @@
                                             <tr>
                                                 <td>".str_replace('`', '', $fk_lname).", ".str_replace('`', '', $fk_fname)."</td>
                                                 <td>$fsn_service_name</td>
+                                                <td>$f_reason</td>
                                                 <td>
-                                                    <button type='button' class='btn btn-primary data-toggle='modal' data-target='#myModal4' onclick='javascript: open(".$f_id.", ".$f_transaction_id.", ".$fk_lname.", ".$fk_fname.", ".$fsn_service_name.", ".$f_reason.")'>Open</button>
+                                                    <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#myModal4' onclick='javascript: open(".$f_id.", ".$f_transaction_id.", ".$fk_lname.", ".$fk_fname.", ".$fsn_service_name.", ".$f_reason.")'>Open</button>
                                                 </td>
                                             </tr>        
                                         ";

@@ -3,9 +3,8 @@
     include_once("connection.php");
 
     $id = $_POST["id"];
-    $reason = $_POST["reason"];
-
-    $declineAppointment = mysqli_query($con, "INSERT INTO tbl_declinedappointments VALUES('', '$id', '$reason')");
+    $reason = $_POST["inputReason"];
+    $declineAppointment = mysqli_query($con, "INSERT INTO tbl_declinedappointments(transaction_id, reason) VALUES('$id', '$reason')");
     $decline = mysqli_query($con, "UPDATE tbl_transactions SET status = 2 WHERE id = ".$id);
 
     if($declineAppointment){

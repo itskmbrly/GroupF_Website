@@ -6,7 +6,13 @@
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>
-            <input type="submit" class="btnFeedback" value="Submit">
+            <?php 
+                if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
+                    echo'<input type="submit" class="btnFeedback" value="Submit">';
+                } else{
+                    echo'<input type="submit" class="btnFeedback" value="Submit" disabled>';
+                }
+            ?>
             <input type="hidden" name="selected_id" value="<?php echo $selected_id; ?>">
         </form>
     </center>

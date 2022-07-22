@@ -40,6 +40,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .right {
     background-color: #faf8e8;
     margin-left: 20%;
@@ -559,7 +563,11 @@ input[type=submit]:hover {
     height: 100vh;
 }
 
-
+.textarea {
+    height: 127px;
+    width: 465px;
+    resize: none;
+}
 
 #home,
 #menu1 {

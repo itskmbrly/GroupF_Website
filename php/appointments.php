@@ -44,17 +44,17 @@
 
         // GET TIME
         $timeQuery = mysqli_query($con, "SELECT * FROM tbl_time WHERE id = '$s_time'");
-        $fetchAppointmentInfo2 = mysqli_fetch_assoc($timeQuery);
-        $time = $fetchAppointmentInfo2["time"];
+        $fetchAppointmentInfo1 = mysqli_fetch_assoc($timeQuery);
+        $time = $fetchAppointmentInfo1["time"];
 
         //SELECT QUERY FOR SERVICE APPOINTED
         $appointmentQuery = mysqli_query($con, "SELECT * FROM tbl_kraftsman WHERE service_id = '$s_id'");
-        $fetchAppointmentInfo = mysqli_fetch_assoc($appointmentQuery);
-        $s_id2 = $fetchAppointmentInfo["service_id"];
+        $fetchAppointmentInfo2 = mysqli_fetch_assoc($appointmentQuery);
+        $s_id2 = $fetchAppointmentInfo2["service_id"];
 
         $appointmentQuery2 = mysqli_query($con, "SELECT * FROM tbl_services WHERE id = '$s_id2'");
-        $fetchAppointmentInfo2 = mysqli_fetch_assoc($appointmentQuery2);
-        $service_name = $fetchAppointmentInfo2["service_name"];
+        $fetchAppointmentInfo3 = mysqli_fetch_assoc($appointmentQuery2);
+        $service_name = $fetchAppointmentInfo3["service_name"];
         
         //SELECT QUERY FOR KLIENT
         $klientQuery = mysqli_query($con, "SELECT * FROM tbl_users WHERE id = '$klient_id'");
@@ -130,7 +130,7 @@
                 <form action="handle-appointment-decline.php" method="POST" class="needs-validation" novalidate>
                     <div class="form-group">
                         <input type="hidden" name="id" id="kraftsman_id">
-                        <textarea class="form-control" rows="5" cols="15" id="comment" name="reason" placeholder="Write your reason here" required></textarea>
+                        <textarea class="form-control textarea" rows="5" id="comment" name="inputReason" placeholder="Write your reason here" required></textarea>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>

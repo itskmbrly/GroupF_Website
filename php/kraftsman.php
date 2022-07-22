@@ -64,7 +64,7 @@
                 <div class="modal-body">
                     <form action="handle-kraft-add-service.php" method="POST" class="needs-validation" novalidate>
                         <div class="form-group fg">
-                            <select name="inputCategory" id="cat-slct" class="form-control" required onchange="catShow(value)">
+                            <select name="inputCategory" id="cat-slct" class="custom-select" required onchange="catShow(value)">
                                 <option value="" disabled selected hidden>Choose a Category</option>
                                 <?php echo $categories; ?>
                             </select>
@@ -72,7 +72,7 @@
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                         <div class="form-group fg" style="display:none;" id="select-services">
-                            <select name="inputService" id="serv-slct" class="form-control" required >
+                            <select name="inputService" id="serv-slct" class="custom-select" required >
                                 <option value="" disabled selected hidden>Choose a Service</option>
                                 <?php echo $services; ?>
                             </select>
@@ -80,7 +80,7 @@
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                         <div class="form-group fg" style="display:none;" id="select-picture">
-                            <select name="inputServPic" id="serv-pic" class="form-control" required onchange="picShow(value)">
+                            <select name="inputServPic" id="serv-pic" class="custom-select" required onchange="picShow(value)">
                                 <option value="" disabled selected hidden>Choose a Picture</option>
                                 <?php echo $pictures; ?>
                             </select>
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                         <div class="form-group fg">
-                            <input type="number" name="inputPrice" id="inputPrice" required placeholder="Enter Price">
+                            <input type="number" name="inputPrice" id="inputPrice" class="form-control" required placeholder="Enter Price">
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
