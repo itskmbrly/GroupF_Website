@@ -16,14 +16,13 @@
     $country    = trim($_POST["country"]);
     $role       = trim($_POST["inputRole"]);
 
-    // print_r($fname . $lname . $email . $password1 . $password2 . $mobile_no . $bday . $sex . $address . $barangay . $city . $province . $zipcode . $country . $role); exit;
     //CONNECTION TO THE DATABASE
     include_once("connection.php");
 
     //CHECKING IF THERE'S A DUPLICATION - email
     $execQuery1 = mysqli_query($con, "SELECT * FROM tbl_users WHERE email = '$email'");
     $numOfRows = mysqli_num_rows($execQuery1);
-
+    print_r($numOfRows); 
     if($numOfRows > 0){
         $_SESSION["msg"] = 4;
         echo "<script> function returnToPreviousPage() { window.history.back(); } returnToPreviousPage(); </script>";
@@ -37,7 +36,7 @@
         $_SESSION["msg"] = 5;
         echo "<script> function returnToPreviousPage() { window.history.back(); } returnToPreviousPage(); </script>";
     }
-
+    print_r($numOfRows2);exit;
     //CHECKING IF THE AGE OF THE USER IS ALREADY 18 AND ABOVE
     function check_age ($bday) {
     
@@ -46,7 +45,7 @@
         $age = $diff->format('%y');
 
         //DEFINE THE AGE RESTRICTIONS
-        if ($age < 19) {
+        if ($age < 18) {
             return false;
         } else {
             return true;

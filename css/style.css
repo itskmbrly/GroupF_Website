@@ -29,6 +29,7 @@ p,
 a,
 i,
 b,
+h1,
 h2,
 h3 {
     font-family: 'Baloo 2', cursive;
@@ -326,7 +327,7 @@ input[type=submit]:hover {
 }
 
 .card-img-top {
-    width: 80%;
+    width: 60%;
 }
 
 .card a {
