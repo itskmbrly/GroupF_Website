@@ -22,10 +22,9 @@
     //CHECKING IF THERE'S A DUPLICATION - email
     $execQuery1 = mysqli_query($con, "SELECT * FROM tbl_users WHERE email = '$email'");
     $numOfRows = mysqli_num_rows($execQuery1);
-    print_r($numOfRows); 
     if($numOfRows > 0){
         $_SESSION["msg"] = 4;
-        echo "<script> function returnToPreviousPage() { window.history.back(); } returnToPreviousPage(); </script>";
+        echo "<script> function returnToPreviousPage() { window.history.back(); } returnToPreviousPage(); </script>"; exit;
     }
 
     //CHECKING IF THERE'S A DUPLICATION - mobile number
@@ -34,9 +33,9 @@
 
     if($numOfRows2 > 0){
         $_SESSION["msg"] = 5;
-        echo "<script> function returnToPreviousPage() { window.history.back(); } returnToPreviousPage(); </script>";
+        echo "<script> function returnToPreviousPage() { window.history.back(); } returnToPreviousPage(); </script>"; exit;
     }
-    print_r($numOfRows2);exit;
+
     //CHECKING IF THE AGE OF THE USER IS ALREADY 18 AND ABOVE
     function check_age ($bday) {
     

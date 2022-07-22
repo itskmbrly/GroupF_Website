@@ -20,12 +20,12 @@
     </div> 
     <div class="input-group mb-3">
         <div class="form-group">
-            <input type="password" name="password1" min="8" placeholder="Password" class="form-control" required>
+            <input type="password" name="password1" minlength="8" placeholder="Password - minlength of 8 characters" class="form-control" required>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
         <div class="form-group">
-            <input type="password" name="password2" min="8" placeholder="Confirm Password" class="form-control" required>
+            <input type="password" name="password2" minlength="8" placeholder="Confirm Password" class="form-control" required>
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>

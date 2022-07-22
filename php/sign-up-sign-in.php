@@ -61,7 +61,7 @@
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                         <div class="form-group fg">
-                            <input type="password" name="password" min="8" placeholder="Enter your password" class="form-control" required>
+                            <input type="password" name="password" minlength="8" placeholder="Enter your password" class="form-control" required>
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
                             <a href="#"><i  class="fg-pass">Forgot Password?</i></a>
