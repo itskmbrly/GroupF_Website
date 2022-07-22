@@ -9,7 +9,7 @@
     
     if(isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
       $sessId = $_SESSION["sess-id"];
-
+        
       //FETCHING THE USER'S NAME AND ROLE
       $userInfo = mysqli_query($con,  "SELECT * FROM tbl_users WHERE id = '$sessId'");
       $fetchInfo = mysqli_fetch_assoc($userInfo);
@@ -90,8 +90,8 @@
         <!--ALERT MESSAGE-->
         <?php 
             include_once("msg.php"); 
-
-            if($verified_user == 0){
+            
+            if($verified_user == 0 && isset($_SESSION["sess-role"]) && $_SESSION["sess-role"] != ""){
                 $_SESSION["msg"] = 17;
             }
         ?>

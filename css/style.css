@@ -36,6 +36,10 @@ h3 {
     letter-spacing: 1px;
 }
 
+a {
+    text-decoration: none;
+}
+
 .right {
     background-color: #faf8e8;
     margin-left: 20%;
@@ -160,6 +164,10 @@ input[type=submit]:hover {
     padding: 20px;
 }
 
+.cu-container select {
+    padding: 0;
+}
+
 /*list-users.php*/
 .lu-container {
     height: 100vh;
@@ -180,6 +188,10 @@ input[type=submit]:hover {
     resize: vertical;
     background-color: #fff;
     padding: 20px;
+}
+
+.cs-container select {
+    padding: 5px;
 }
 
 /*profile-page.php*/
@@ -271,6 +283,11 @@ input[type=submit]:hover {
 }
 
 /*kraftsman.php*/
+
+.k-container {
+    height: 100vh;
+}
+
 .btn-add-serv {
     background-color: #cb8f8d;
     color: #faf8e8;
@@ -539,4 +556,10 @@ input[type=submit]:hover {
 
 .moderator-container {
     height: 100vh;
+}
+
+#home,
+#menu1 {
+    height: 100vh;
+    /*temporary only*/
 }

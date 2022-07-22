@@ -195,7 +195,7 @@
             
             <!-- Modal body -->
             <div class="modal-body">
-                Are you sure you want to accept the credentials of this user?
+                Are you sure you want to accept the credential of this user?
             </div>
             
             <!-- Modal footer -->

@@ -80,7 +80,7 @@
     </div>
     <div class="input-group mb-3">
         <div class="form-group">
-            <select name="inputSex" class="custom-select" required >
+            <select name="inputSex" class="form-control" required >
                 <option value="" disabled selected hidden>Choose a Sex</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -89,7 +89,7 @@
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
         <div class="form-group">
-            <select name="inputRole"  class="custom-select" required >
+            <select name="inputRole"  class="form-control" required >
                 <option value="" disabled selected hidden>Choose a Role</option>
                 <?php echo $roles; ?>
             </select>
@@ -106,3 +106,23 @@
     </div>
     <input type="submit" value="Submit">
 </form>
+<script>
+    // Disable form submissions if there are invalid fields
+    (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Get the forms we want to add validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+        });
+    }, false);
+    })();
+</script>

@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group fg">
                     <select name="inputCategory" required class="custom-select">
-                        <option value="" disabled selected hidden>Choose a Category</option>
+                        <option value="" disabled selected hidden> Choose a Category</option>
                         <?php echo $categories; ?>
                     </select>
                     <div class="valid-feedback">Valid.</div>

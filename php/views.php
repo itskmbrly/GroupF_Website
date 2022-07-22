@@ -9,7 +9,7 @@
     $file_type = $fetchCredential["file_type"];
     $credentials = $fetchCredential["credentials"];
     
-    if($file_type == 'pdf')
+    if(in_array($file_type, ['application/pdf', 'pdf']))
     {
         $file = $_SERVER['DOCUMENT_ROOT'].'/DTS/GroupF_Website/uploads/credentials/'.$id.'/'.$credentials;
         header('Content-type: application/pdf');
